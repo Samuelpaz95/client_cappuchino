@@ -1,14 +1,29 @@
 <template>
-	Frontend
-	<router-view />
+	<div class="frontend">
+		<BaseHeader />
+		<router-view />
+		<BaseFooter />
+	</div>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from "vue";
+	import BaseHeader from "../components/frontend/BaseHeader.vue";
+	import BaseFooter from "../components/frontend/BaseFooter.vue";
 
 	export default defineComponent({
 		name: "Frontend",
+		components: {
+			BaseHeader,
+			BaseFooter,
+		},
 	});
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	.frontend {
+		min-height: 100vh;
+		display: grid;
+		grid-template-rows: 80px calc(100% - 160px) 80px;
+	}
+</style>
