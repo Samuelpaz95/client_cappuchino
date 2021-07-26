@@ -9,6 +9,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -26,6 +27,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -43,6 +45,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -60,6 +63,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 576 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -77,6 +81,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 496 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -94,6 +99,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -111,6 +117,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -128,6 +135,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -145,6 +153,7 @@
 			role="img"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 320 512"
+			:height="height"
 		>
 			<path
 				fill="currentColor"
@@ -162,6 +171,11 @@
 			icon: {
 				type: String,
 				required: true,
+				default: "",
+			},
+			height: {
+				type: String,
+				default: "24",
 			},
 		},
 	});
