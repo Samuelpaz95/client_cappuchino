@@ -1,5 +1,5 @@
-import { Icarrer } from "./responseAPI/carrers";
-import { IdepartementCarrer, Idepartment } from "./responseAPI/departments";
-import { Inotifications } from "./responseAPI/notifications";
+import { Icarrer } from "./response-api/carrers";
+import { IdepartementCarrer, Idepartment } from "./response-api/departments";
+import { Inotifications } from "./response-api/notifications";
 
 export { Icarrer, IdepartementCarrer, Idepartment, Inotifications };
