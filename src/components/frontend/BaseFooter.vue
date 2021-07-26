@@ -1,16 +1,16 @@
 <template>
 	<footer class="footer">
-		<div class="footer_container">
+		<div class="footer__container">
 			<span>
-				<ul class="footer_links">
-					<li class="footer_link" v-for="(value, index) in links" :key="index">
-						<a :href="value.route" target="_blank" :hreflang="value.alt">
+				<ul class="footer__links">
+					<li class="footer__link" v-for="(value, index) in links" :key="index">
+						<a :href="value.route" target="_blank" :hreflang="value.alt" referrerpolicy="no-referrer">
 							<BaseSystemIcons :icon="value.alt" />
 						</a>
 					</li>
 				</ul>
 			</span>
-			<img class="footer_image" src="../../assets/scesi_white.png" alt="scesi" />
+			<img class="footer__image" src="../../assets/scesi_white.png" alt="scesi" />
 		</div>
 	</footer>
 </template>
@@ -63,7 +63,7 @@
 		display: flex;
 		align-items: center;
 
-		&_container {
+		&__container {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -72,12 +72,12 @@
 			padding: 0 1rem;
 		}
 
-		&_links {
+		&__links {
 			display: flex;
 			padding: 0;
 		}
 
-		&_link {
+		&__link {
 			position: relative;
 			bottom: -6px;
 			padding: 0 5px;
@@ -102,11 +102,11 @@
 		}
 
 		@include large {
-			&_container {
+			&__container {
 				padding: 0 2rem;
 			}
 
-			&_link {
+			&__link {
 				padding: 0 10px;
 
 				svg {
@@ -114,12 +114,12 @@
 				}
 			}
 
-			&_links::before {
+			&__links::before {
 				content: "Siguenos en:";
 				font-size: 18px;
 			}
 
-			&_image {
+			&__image {
 				width: 80px;
 			}
 		}
