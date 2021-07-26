@@ -167,6 +167,7 @@
 	import { defineComponent } from "vue";
 
 	export default defineComponent({
+		name: "BaseSystemIcons",
 		props: {
 			icon: {
 				type: String,

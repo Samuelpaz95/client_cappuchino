@@ -13,6 +13,7 @@
 	import BaseFooterListLinks from "./BaseFooterListLinks.vue";
 
 	export default defineComponent({
+		name: "BaseFooter",
 		components: {
 			BaseSystemIcons,
 			BaseFooterListLinks,
