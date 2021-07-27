@@ -15,14 +15,7 @@ const mutations: MutationTree<RootState> = {
 };
 
 const actions: ActionTree<RootState, RootState> = {
-	actionGetCarrers: async ({ commit }: ActionContext<RootState, RootState>) => {
-		try {
-			commit("mutationCarrers", []);
-		} catch (error) {
-			console.error(error);
-			commit("mutationCarrers", []);
-		}
-	},
+	actionGetCarrers: async ({ commit }: ActionContext<RootState, RootState>) => {},
 };
 
 export default {

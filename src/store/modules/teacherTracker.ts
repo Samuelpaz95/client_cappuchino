@@ -1,23 +1,27 @@
 import { ActionContext, ActionTree, GetterTree, MutationTree } from "vuex";
 
 const state = () => ({
-	schedulesTeacher: [],
 	allTeachers: [] as string[],
 });
 
 type RootState = ReturnType<typeof state>;
 
 const getters: GetterTree<RootState, RootState> = {
-	schedulesTeacher: (state) => state.schedulesTeacher,
 	allTeachers: (state) => state.allTeachers,
 };
 
 const mutations: MutationTree<RootState> = {
-	mutationSchedules: (state, payload: []) => (state.schedulesTeacher = payload),
 	mutationAllTeachers: (state, payload: string[]) => (state.allTeachers = payload),
 };
 
-const actions: ActionTree<RootState, RootState> = {};
+const actions: ActionTree<RootState, RootState> = {
+	actionGetScheludesByTeacher: async (
+		{ commit }: ActionContext<RootState, RootState>,
+		nameTeacher: string
+	) => {},
+
+	actionGetAllTeachers: async ({ commit }: ActionContext<RootState, RootState>, department: string) => {},
+};
 
 export default {
 	namespaced: true,
