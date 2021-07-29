@@ -1,16 +1,11 @@
 <template>
 	<ul class="list-carrers">
-		<li v-for="(value, index) in departmentCarrers" :key="index">
-			<span>
-				<div>{{ value.name }}</div>
-				<div>{{ departmentName }}</div>
-				<div>Actualizado al {{ value.semester }}</div>
-			</span>
-			<span>
-				<span>X</span>
-				<span>></span>
-			</span>
-		</li>
+		<ListItemCarrer
+			v-for="(value, index) in departmentCarrers"
+			:key="index"
+			:nameCarrer="value.name"
+			:updateAt="value.semester"
+		/>
 	</ul>
 </template>
 
@@ -18,17 +13,19 @@
 	import { computed, defineComponent } from "vue";
 	import { useStore } from "vuex";
 
+	import ListItemCarrer from "./ListItemCarrer.vue";
+
 	export default defineComponent({
 		name: "ListCarrers",
+		components: {
+			ListItemCarrer,
+		},
 		setup() {
 			const store = useStore();
-
 			const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
-			const departmentName = computed(() => store.getters["departments/departmentName"]);
 
 			return {
 				departmentCarrers,
-				departmentName,
 			};
 		},
 	});
