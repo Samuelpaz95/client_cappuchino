@@ -10,6 +10,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -28,6 +29,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -46,6 +48,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -64,6 +67,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 576 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -82,6 +86,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 496 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -100,6 +105,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 512 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -118,6 +124,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -136,6 +143,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 448 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -154,6 +162,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 320 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -172,6 +181,7 @@
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 352 512"
 			:height="height"
+			:style="styles"
 		>
 			<path
 				fill="currentColor"
@@ -182,7 +192,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from "vue";
+	import { defineComponent, toRef, ref, Ref } from "vue";
 
 	export default defineComponent({
 		name: "BaseSystemIcons",
@@ -196,6 +206,18 @@
 				type: String,
 				default: "24",
 			},
+			rotate: {
+				type: Number,
+				default: 0,
+			},
+		},
+		setup(props) {
+			const rotate: Ref<number> = toRef(props, "rotate");
+			let styles: Ref<string[]> = ref([`transform: rotate(${rotate.value}deg);`]);
+
+			return {
+				styles,
+			};
 		},
 	});
 </script>
