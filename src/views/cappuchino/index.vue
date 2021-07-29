@@ -9,7 +9,7 @@
 <script lang="ts">
 	import { defineComponent } from "vue";
 	import { useRoute } from "vue-router";
-	import { useGetDepartment } from "../../hooks/useGetDepartment";
+	import { useDepartment } from "../../hooks/useDepartment";
 
 	import ListCarrers from "../../components/ListCarrers.vue";
 
@@ -20,7 +20,7 @@
 		},
 		setup() {
 			const { params } = useRoute();
-			useGetDepartment(params.department);
+			useDepartment(params.department);
 		},
 	});
 </script>
