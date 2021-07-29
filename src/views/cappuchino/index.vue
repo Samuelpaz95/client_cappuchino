@@ -3,18 +3,15 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, onMounted } from "vue";
+	import { defineComponent } from "vue";
+	import { useGetDepartment } from "../../hooks/useGetDepartment";
 	import { useRoute } from "vue-router";
-	import { useStore } from "vuex";
 
 	export default defineComponent({
 		name: "Cappuchino",
 		setup() {
-			const store = useStore();
 			const { params } = useRoute();
-			onMounted(async () => {
-				await store.dispatch("departments/actionGetDepartmentDescription", params.department);
-			});
+			useGetDepartment(params.department);
 		},
 	});
 </script>
