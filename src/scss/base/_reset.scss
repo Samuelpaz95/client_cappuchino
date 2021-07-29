@@ -6,6 +6,10 @@ body {
 	min-height: 100vh;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 input:focus {
 	outline: none !important;
 	outline-width: 0 !important;
