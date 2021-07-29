@@ -33,5 +33,6 @@
 
 <style scoped lang="scss">
 	.list-carrers {
+		padding: 1rem;
 	}
 </style>
