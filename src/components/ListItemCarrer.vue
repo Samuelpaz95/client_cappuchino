@@ -14,6 +14,9 @@
 			<span class="list-item-carrer__action">
 				<BaseSystemIcons icon="angle" :rotate="180" />
 			</span>
+			<span class="list-item-carrer__action">
+				<BaseSystemIcons icon="close" :rotate="45" />
+			</span>
 		</span>
 	</li>
 </template>
@@ -75,10 +78,7 @@
 		}
 
 		&__actions {
-			width: 60px;
 			display: flex;
-			justify-content: space-between;
-			align-items: center;
 		}
 
 		&__action {
@@ -87,10 +87,6 @@
 			height: 100%;
 			justify-content: center;
 			align-items: center;
-
-			&:first-child {
-				margin-right: 5px;
-			}
 		}
 	}
 </style>
