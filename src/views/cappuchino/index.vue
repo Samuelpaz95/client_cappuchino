@@ -1,6 +1,8 @@
 <template>
 	<main>
-		<ListCarrers />
+		<aside>
+			<ListCarrers />
+		</aside>
 	</main>
 </template>
 

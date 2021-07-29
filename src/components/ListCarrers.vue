@@ -1,19 +1,17 @@
 <template>
-	<aside>
-		<ul>
-			<li v-for="(value, index) in departmentCarrers" :key="index">
-				<span>
-					<div>{{ value.name }}</div>
-					<div>{{ departmentName }}</div>
-					<div>Actualizado al {{ value.semester }}</div>
-				</span>
-				<span>
-					<span>X</span>
-					<span>></span>
-				</span>
-			</li>
-		</ul>
-	</aside>
+	<ul class="list-carrers">
+		<li v-for="(value, index) in departmentCarrers" :key="index">
+			<span>
+				<div>{{ value.name }}</div>
+				<div>{{ departmentName }}</div>
+				<div>Actualizado al {{ value.semester }}</div>
+			</span>
+			<span>
+				<span>X</span>
+				<span>></span>
+			</span>
+		</li>
+	</ul>
 </template>
 
 <script lang="ts">
@@ -36,4 +34,7 @@
 	});
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	.list-carrers {
+	}
+</style>
