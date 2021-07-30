@@ -5,6 +5,7 @@
 			:key="index"
 			:nameCarrer="value.name"
 			:updateAt="value.semester"
+			@carrer:select="selectCarrer"
 		/>
 	</ul>
 </template>
@@ -24,8 +25,13 @@
 			const store = useStore();
 			const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
 
+			const selectCarrer = (nameCarrer: string) => {
+				store.dispatch("departments/actionGetDepartmentCarrer", nameCarrer);
+			};
+
 			return {
 				departmentCarrers,
+				selectCarrer,
 			};
 		},
 	});

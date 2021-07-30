@@ -8,13 +8,13 @@
 			</div>
 		</span>
 		<span class="list-item-carrer__actions">
-			<span class="list-item-carrer__action">
+			<!-- <span class="list-item-carrer__action">
 				<BaseSystemIcons icon="close" />
 			</span>
 			<span class="list-item-carrer__action">
 				<BaseSystemIcons icon="angle" :rotate="180" />
-			</span>
-			<span class="list-item-carrer__action">
+			</span> -->
+			<span class="list-item-carrer__action" @click="selectCarrer">
 				<BaseSystemIcons icon="close" :rotate="45" />
 			</span>
 		</span>
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, computed } from "vue";
+	import { defineComponent, computed, toRef, Ref } from "vue";
 	import { useStore } from "vuex";
 
 	import BaseSystemIcons from "./BaseSystemIcons.vue";
@@ -32,9 +32,11 @@
 		components: {
 			BaseSystemIcons,
 		},
+		emits: ["carrer:select"],
 		props: {
 			nameCarrer: {
 				type: String,
+				default: "",
 				require: true,
 			},
 			updateAt: {
@@ -42,12 +44,18 @@
 				require: true,
 			},
 		},
-		setup() {
+		setup(props, { emit }) {
+			const nameCarrer: Ref<string> = toRef(props, "nameCarrer");
 			const store = useStore();
-			const departmentName = computed(() => store.getters["departments/departmentName"]);
+			const departmentName = computed(() => store.getters["departments/departmentInfo"].name);
+
+			const selectCarrer = () => {
+				emit("carrer:select", nameCarrer.value);
+			};
 
 			return {
 				departmentName,
+				selectCarrer,
 			};
 		},
 	});

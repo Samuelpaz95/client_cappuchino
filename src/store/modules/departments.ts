@@ -1,26 +1,27 @@
 import { ActionContext, ActionTree, GetterTree, MutationTree } from "vuex";
-import { IdepartementCarrer } from "../../interfaces";
+import { IdepartementCarrer, Icarrer } from "../../interfaces";
 import departmentService from "../../services/departments";
 import { router } from "../../router";
 
 const state = () => ({
-	departmentName: "",
+	departmentInfo: {} as { name: string; code: string },
 	indexCarrersInfo: [] as IdepartementCarrer[],
-	carrers: [],
+	selectCarrer: null as Icarrer | null,
 });
 
 type RootState = ReturnType<typeof state>;
 
 const getters: GetterTree<RootState, RootState> = {
-	departmentName: (state) => state.departmentName,
+	departmentInfo: (state) => state.departmentInfo,
 	indexCarrersInfo: (state) => state.indexCarrersInfo,
-	carrers: (state) => state.carrers,
+	selectCarrer: (state) => state.selectCarrer,
 };
 
 const mutations: MutationTree<RootState> = {
-	mutationDepartmentName: (state, payload: string) => (state.departmentName = payload),
+	mutationDepartmentInfo: (state, payload: { name: string; code: string }) =>
+		(state.departmentInfo = payload),
 	mutationIndexCarrersInfo: (state, payload: IdepartementCarrer[]) => (state.indexCarrersInfo = payload),
-	mutationCarrers: (state, payload: []) => (state.carrers = payload),
+	mutationSelectCarrer: (state, payload: Icarrer | null) => (state.selectCarrer = payload),
 };
 
 const actions: ActionTree<RootState, RootState> = {
@@ -33,7 +34,10 @@ const actions: ActionTree<RootState, RootState> = {
 		if (!actualDepartment) {
 			router.push({ name: "404" });
 		}
-		commit("mutationDepartmentName", actualDepartment?.name);
+		commit("mutationDepartmentInfo", {
+			name: actualDepartment?.name,
+			code: departmentName,
+		});
 		dispatch("actionGetIndexDepartmentCarrers", departmentName);
 	},
 	actionGetIndexDepartmentCarrers: async (
@@ -42,6 +46,17 @@ const actions: ActionTree<RootState, RootState> = {
 	) => {
 		const departementCarrers = await departmentService.getDepartmentCarrers(department);
 		commit("mutationIndexCarrersInfo", departementCarrers);
+	},
+
+	actionGetDepartmentCarrer: async (
+		{ commit, state }: ActionContext<RootState, RootState>,
+		nameCarrer: string
+	) => {
+		const indexCarrer = state.indexCarrersInfo.find(({ name }) => nameCarrer == name);
+		if (indexCarrer) {
+			const carrer = await departmentService.getDepartmentCarrer(state.departmentInfo.code, indexCarrer.code);
+			commit("mutationSelectCarrer", carrer);
+		}
 	},
 };
 
