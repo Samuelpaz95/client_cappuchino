@@ -21,9 +21,15 @@
 </script>
 
 <style scoped lang="scss">
+	@import "../scss/abstracts/_mixins.scss";
+
 	.frontend {
 		min-height: 100vh;
 		display: grid;
-		grid-template-rows: 80px calc(100% - 160px) 80px;
+		grid-template-rows: 45px calc(100% - 160px) 80px;
+
+		@include large {
+			grid-template-rows: 80px calc(100% - 160px) 80px;
+		}
 	}
 </style>

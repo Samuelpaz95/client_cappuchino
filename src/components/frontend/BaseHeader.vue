@@ -19,6 +19,7 @@
 
 <style scoped lang="scss">
 	@import "../../scss/abstracts/_variables.scss";
+	@import "../../scss/abstracts/_mixins.scss";
 
 	.header {
 		width: 100%;
@@ -35,8 +36,12 @@
 		}
 
 		&__title {
-			font-size: 2rem;
+			// font-size: 25px;
 			color: $font_color;
+
+			@include large {
+				font-size: 2rem;
+			}
 		}
 	}
 </style>
