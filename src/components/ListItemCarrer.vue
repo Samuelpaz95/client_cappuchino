@@ -14,9 +14,9 @@
 			<span class="list-item-carrer__action">
 				<BaseSystemIcons icon="angle" :rotate="180" />
 			</span> -->
-			<span class="list-item-carrer__action" @click="selectCarrer">
+			<button class="list-item-carrer__action" @click="selectCarrer">
 				<BaseSystemIcons icon="close" :rotate="45" />
-			</span>
+			</button>
 		</span>
 	</li>
 </template>
@@ -87,14 +87,17 @@
 
 		&__actions {
 			display: flex;
+			align-items: center;
 		}
 
 		&__action {
 			display: flex;
-			width: 30px;
-			height: 100%;
-			justify-content: center;
 			align-items: center;
+			justify-content: center;
+			width: 30px;
+			color: inherit;
+			background-color: inherit;
+			border: none;
 		}
 	}
 </style>
