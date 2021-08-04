@@ -21,12 +21,14 @@
 		components: {
 			ListItemCarrer,
 		},
-		setup() {
+		emits: ["carrer:select"],
+		setup(_, { emit }) {
 			const store = useStore();
 			const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
 
 			const selectCarrer = (nameCarrer: string) => {
 				store.dispatch("departments/actionGetDepartmentCarrer", nameCarrer);
+				emit("carrer:select");
 			};
 
 			return {
