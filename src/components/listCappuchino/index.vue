@@ -1,7 +1,10 @@
 <template>
 	<div class="list-carrers">
-		<ListHeader class="list-carrers__header" @menu:open="showCarrers" />
-		<ListCarrers v-show="isShowCarrers" />
+		<ListHeader class="list-carrers__header" @menu:open="showMenu" />
+		<template v-if="isOpenMenu">
+			<ListCarrers v-if="isShowCarrers" @carrer:select="showCarrers(false)" />
+			<ListSubjects v-else />
+		</template>
 	</div>
 </template>
 
@@ -10,23 +13,32 @@
 
 	import ListHeader from "./header/index.vue";
 	import ListCarrers from "./listCarrers/index.vue";
+	import ListSubjects from "./listSubjects/index.vue";
 
 	export default defineComponent({
 		name: "ListCappuchino",
 		components: {
 			ListHeader,
 			ListCarrers,
+			ListSubjects,
 		},
 		setup() {
-			let isShowCarrers: Ref<boolean> = ref(false);
+			let isShowCarrers: Ref<boolean> = ref(true);
+			let isOpenMenu: Ref<boolean> = ref(false);
 
 			const showCarrers = (isOpen: boolean) => {
 				isShowCarrers.value = isOpen;
 			};
 
+			const showMenu = (open: boolean) => {
+				isOpenMenu.value = open;
+			};
+
 			return {
 				isShowCarrers,
+				isOpenMenu,
 				showCarrers,
+				showMenu,
 			};
 		},
 	});
