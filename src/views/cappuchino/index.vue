@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<aside>
-			<ListCarrers />
+			<ListCappuchino />
 		</aside>
 	</main>
 </template>
@@ -11,12 +11,12 @@
 	import { useRoute } from "vue-router";
 	import { useDepartment } from "../../hooks/useDepartment";
 
-	import ListCarrers from "../../components/ListCarrers.vue";
+	import ListCappuchino from "../../components/listCappuchino/index.vue";
 
 	export default defineComponent({
 		name: "Cappuchino",
 		components: {
-			ListCarrers,
+			ListCappuchino,
 		},
 		setup() {
 			const { params } = useRoute();

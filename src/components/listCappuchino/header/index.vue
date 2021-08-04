@@ -9,7 +9,7 @@
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
 
-	import BaseSystemIcons from "./BaseSystemIcons.vue";
+	import BaseSystemIcons from "../../BaseSystemIcons.vue";
 
 	export default defineComponent({
 		name: "ListCarrersHeader",
@@ -38,7 +38,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../scss/abstracts/variables.scss";
+	@import "../../../scss/abstracts/variables.scss";
 
 	.list-carrers-header {
 		display: flex;

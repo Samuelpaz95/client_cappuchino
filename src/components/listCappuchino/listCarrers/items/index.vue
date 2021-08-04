@@ -15,7 +15,7 @@
 				<BaseSystemIcons icon="angle" :rotate="180" />
 			</span> -->
 			<button class="list-item-carrer__action" @click="selectCarrer">
-				<BaseSystemIcons icon="close" :rotate="45" />
+				<BaseSystemIcons icon="angle" :rotate="90" />
 			</button>
 		</span>
 	</li>
@@ -25,7 +25,7 @@
 	import { defineComponent, computed, toRef, Ref } from "vue";
 	import { useStore } from "vuex";
 
-	import BaseSystemIcons from "./BaseSystemIcons.vue";
+	import BaseSystemIcons from "../../../BaseSystemIcons.vue";
 
 	export default defineComponent({
 		name: "ListItemCarrers",
@@ -62,7 +62,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../scss/abstracts/variables.scss";
+	@import "../../../../scss/abstracts/variables.scss";
 
 	.list-item-carrer {
 		margin: 5px;
