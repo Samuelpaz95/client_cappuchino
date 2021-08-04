@@ -16,6 +16,7 @@ const getters: GetterTree<RootState, RootState> = {
 	departmentInfo: (state) => state.departmentInfo,
 	indexCarrersInfo: (state) => state.indexCarrersInfo,
 	selectCarrer: (state) => state.selectCarrer,
+	levelsSelectCarrer: (state) => state.selectCarrer?.levels.map((level) => level.code),
 	nameCarrer: (state) => state.nameCarrer,
 };
 
