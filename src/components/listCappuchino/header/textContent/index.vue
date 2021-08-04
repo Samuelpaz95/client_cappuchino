@@ -1,5 +1,5 @@
 <template>
-	<p v-if="isMenuOpen">
+	<p class="text-content-header" v-if="isMenuOpen">
 		<template v-if="isShowCarrers">Carreras</template>
 		<template v-else>{{ nameCarrer }}</template>
 	</p>
@@ -31,3 +31,9 @@
 		},
 	});
 </script>
+
+<style lang="scss" scoped>
+	.text-content-header {
+		margin: 0;
+	}
+</style>
