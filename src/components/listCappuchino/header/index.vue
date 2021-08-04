@@ -3,23 +3,21 @@
 		<button class="list-carrers-header__option" @click="openMenu">
 			<BaseSystemIcons :icon="typeIcon" />
 		</button>
-		<p v-if="isMenuOpen">
-			<template v-if="isShowCarrers">Carreras</template>
-			<template v-else>{{ nameCarrer }}</template>
-		</p>
+		<TextContent :isMenuOpen="isMenuOpen" :isShowCarrers="isShowCarrers" />
 	</header>
 </template>
 
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
-	import { useStore } from "vuex";
 
 	import BaseSystemIcons from "../../BaseSystemIcons.vue";
+	import TextContent from "./textContent/index.vue";
 
 	export default defineComponent({
 		name: "ListCarrersHeader",
 		components: {
 			BaseSystemIcons,
+			TextContent,
 		},
 		emits: ["menu:open"],
 		props: {
@@ -30,10 +28,8 @@
 			},
 		},
 		setup(_, { emit }) {
-			const store = useStore();
 			const icons: Ref<string[]> = ref(["bars", "close"]);
 			let isMenuOpen: Ref<boolean> = ref(false);
-			const nameCarrer = computed(() => store.getters["departments/nameCarrer"]);
 
 			const openMenu = () => {
 				isMenuOpen.value = !isMenuOpen.value;
@@ -46,7 +42,6 @@
 				isMenuOpen,
 				openMenu,
 				typeIcon,
-				nameCarrer,
 			};
 		},
 	});
@@ -58,11 +53,12 @@
 	.list-carrers-header {
 		display: flex;
 		justify-content: flex-start;
-		align-items: center;
 		padding: 0.5rem 1rem;
 		background-color: $primary_color;
 
 		&__option {
+			display: flex;
+			align-items: center;
 			background-color: inherit;
 			border: none;
 			color: inherit;
