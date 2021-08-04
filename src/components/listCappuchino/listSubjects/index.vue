@@ -1,5 +1,5 @@
 <template>
-	<ul>
+	<ul class="list-subjects">
 		<LevelList v-for="level in levels" :key="level" :level="level" />
 	</ul>
 </template>
@@ -26,4 +26,9 @@
 	});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	.list-subjects {
+		padding: 1rem;
+		margin: 0;
+	}
+</style>
