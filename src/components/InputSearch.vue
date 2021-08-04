@@ -10,9 +10,7 @@
 				class="search__input"
 				@focus="showOptions()"
 			/>
-			<button class="search__button">
-				<BaseSystemIcons icon="search" height="16" />
-			</button>
+			<ButtonIcon icon="search" height="16" class="search__button" />
 		</div>
 		<ul class="search__options" v-show="matches.length > 0">
 			<div>Resultados</div>
@@ -27,12 +25,12 @@
 <script lang="ts">
 	import { defineComponent, onMounted, PropType, Ref, ref, toRef } from "vue";
 
-	import BaseSystemIcons from "./BaseSystemIcons.vue";
+	import ButtonIcon from "./ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "InputSearch",
 		components: {
-			BaseSystemIcons,
+			ButtonIcon,
 		},
 		emits: [],
 		props: {
@@ -112,10 +110,8 @@
 		}
 
 		&__button {
-			background-color: transparent;
-			border: none;
-			cursor: pointer;
-			color: $font_color;
+			border-top-right-radius: $border_radius;
+			border-bottom-right-radius: $border_radius;
 			width: 5rem;
 		}
 

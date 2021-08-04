@@ -1,12 +1,8 @@
 <template>
 	<header class="list-carrers-header">
-		<button class="list-carrers-header__option" v-if="isMenuOpen && !isShowCarrers" @click="backToCarrers">
-			<BaseSystemIcons icon="angle" :rotate="270" />
-		</button>
+		<ButtonIcon icon="angle" :rotate="270" v-if="isMenuOpen && !isShowCarrers" @click="backToCarrers" />
 		<TextContent :isMenuOpen="isMenuOpen" :isShowCarrers="isShowCarrers" />
-		<button class="list-carrers-header__option" @click="openMenu">
-			<BaseSystemIcons :icon="typeIcon" />
-		</button>
+		<ButtonIcon :icon="typeIcon" @click="openMenu" />
 	</header>
 </template>
 
@@ -14,6 +10,7 @@
 	import { computed, defineComponent, Ref, ref } from "vue";
 
 	import BaseSystemIcons from "../../BaseSystemIcons.vue";
+	import ButtonIcon from "../../ui/ButtonIcon.vue";
 	import TextContent from "./textContent/index.vue";
 
 	export default defineComponent({
@@ -21,6 +18,7 @@
 		components: {
 			BaseSystemIcons,
 			TextContent,
+			ButtonIcon,
 		},
 		emits: ["menu:open", "menu:returnCarrers"],
 		props: {
@@ -63,13 +61,5 @@
 		justify-content: space-between;
 		padding: 0.5rem 1rem;
 		background-color: $primary_color;
-
-		&__option {
-			display: flex;
-			align-items: center;
-			background-color: inherit;
-			border: none;
-			color: inherit;
-		}
 	}
 </style>

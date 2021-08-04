@@ -8,15 +8,7 @@
 			</div>
 		</span>
 		<span class="list-item-carrer__actions">
-			<!-- <span class="list-item-carrer__action">
-				<BaseSystemIcons icon="close" />
-			</span>
-			<span class="list-item-carrer__action">
-				<BaseSystemIcons icon="angle" :rotate="180" />
-			</span> -->
-			<button class="list-item-carrer__action" @click="selectCarrer">
-				<BaseSystemIcons icon="angle" :rotate="90" />
-			</button>
+			<ButtonIcon icon="angle" :rotate="90" @click="selectCarrer" />
 		</span>
 	</li>
 </template>
@@ -25,12 +17,12 @@
 	import { defineComponent, computed, toRef, Ref } from "vue";
 	import { useStore } from "vuex";
 
-	import BaseSystemIcons from "../../../BaseSystemIcons.vue";
+	import ButtonIcon from "../../../ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "ListItemCarrers",
 		components: {
-			BaseSystemIcons,
+			ButtonIcon,
 		},
 		emits: ["carrer:select"],
 		props: {
@@ -88,16 +80,6 @@
 		&__actions {
 			display: flex;
 			align-items: center;
-		}
-
-		&__action {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 30px;
-			color: inherit;
-			background-color: inherit;
-			border: none;
 		}
 	}
 </style>
