@@ -1,7 +1,7 @@
 <template>
 	<p class="text-content-header" v-if="isMenuOpen">
-		<template v-if="isShowCarrers">Carreras</template>
-		<template v-else>{{ nameCarrer }}</template>
+		<template v-if="isShowCarrers">CARRERAS</template>
+		<template v-else>{{ nameCarrer.toUpperCase() }}</template>
 	</p>
 </template>
 
@@ -34,6 +34,11 @@
 
 <style lang="scss" scoped>
 	.text-content-header {
+		font-weight: 700;
 		margin: 0;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		line-height: 15px;
 	}
 </style>
