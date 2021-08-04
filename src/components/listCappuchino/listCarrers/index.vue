@@ -45,9 +45,5 @@
 	.list-carrers {
 		padding: 1rem;
 		margin: 0;
-		width: 100%;
-		background-color: $primary_color;
-		position: absolute;
-		z-index: 10;
 	}
 </style>
