@@ -3,11 +3,16 @@
 		<button class="list-carrers-header__option" @click="openMenu">
 			<BaseSystemIcons :icon="typeIcon" />
 		</button>
+		<p v-if="isMenuOpen">
+			<template v-if="isShowCarrers">Carreras</template>
+			<template v-else>{{ nameCarrer }}</template>
+		</p>
 	</header>
 </template>
 
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
+	import { useStore } from "vuex";
 
 	import BaseSystemIcons from "../../BaseSystemIcons.vue";
 
@@ -17,9 +22,18 @@
 			BaseSystemIcons,
 		},
 		emits: ["menu:open"],
+		props: {
+			isShowCarrers: {
+				require: true,
+				type: Boolean,
+				default: true,
+			},
+		},
 		setup(_, { emit }) {
-			let isMenuOpen: Ref<boolean> = ref(false);
+			const store = useStore();
 			const icons: Ref<string[]> = ref(["bars", "close"]);
+			let isMenuOpen: Ref<boolean> = ref(false);
+			const nameCarrer = computed(() => store.getters["departments/nameCarrer"]);
 
 			const openMenu = () => {
 				isMenuOpen.value = !isMenuOpen.value;
@@ -32,6 +46,7 @@
 				isMenuOpen,
 				openMenu,
 				typeIcon,
+				nameCarrer,
 			};
 		},
 	});
