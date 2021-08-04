@@ -1,6 +1,11 @@
 <template>
 	<div class="list-carrers">
-		<ListHeader class="list-carrers__header" @menu:open="showMenu" :isShowCarrers="isShowCarrers" />
+		<ListHeader
+			class="list-carrers__header"
+			@menu:open="showMenu"
+			:isShowCarrers="isShowCarrers"
+			@menu:returnCarrers="showCarrers(true)"
+		/>
 		<template v-if="isOpenMenu">
 			<ListCarrers v-if="isShowCarrers" @carrer:select="showCarrers(false)" />
 			<ListSubjects v-else />

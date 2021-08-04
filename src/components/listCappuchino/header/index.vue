@@ -1,9 +1,12 @@
 <template>
 	<header class="list-carrers-header">
+		<button class="list-carrers-header__option" v-if="isMenuOpen && !isShowCarrers" @click="backToCarrers">
+			<BaseSystemIcons icon="angle" :rotate="270" />
+		</button>
+		<TextContent :isMenuOpen="isMenuOpen" :isShowCarrers="isShowCarrers" />
 		<button class="list-carrers-header__option" @click="openMenu">
 			<BaseSystemIcons :icon="typeIcon" />
 		</button>
-		<TextContent :isMenuOpen="isMenuOpen" :isShowCarrers="isShowCarrers" />
 	</header>
 </template>
 
@@ -19,7 +22,7 @@
 			BaseSystemIcons,
 			TextContent,
 		},
-		emits: ["menu:open"],
+		emits: ["menu:open", "menu:returnCarrers"],
 		props: {
 			isShowCarrers: {
 				require: true,
@@ -36,12 +39,17 @@
 				emit("menu:open", isMenuOpen.value);
 			};
 
+			const backToCarrers = () => {
+				emit("menu:returnCarrers", isMenuOpen.value);
+			};
+
 			const typeIcon = computed(() => icons.value[Number(isMenuOpen.value)]);
 
 			return {
 				isMenuOpen,
 				openMenu,
 				typeIcon,
+				backToCarrers,
 			};
 		},
 	});
@@ -52,7 +60,7 @@
 
 	.list-carrers-header {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-between;
 		padding: 0.5rem 1rem;
 		background-color: $primary_color;
 
