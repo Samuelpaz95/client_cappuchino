@@ -1,13 +1,13 @@
 <template>
-	<div class="list-subjects__header" v-if="levelSelected">
+	<div class="list-subjects__header" v-if="levelSelect != null">
 		<ButtonIcon @click="showLevel(null)" class="list-subjects__back" icon="angle" :rotate="270" />
-		{{ mapLevels[levelSelected].toUpperCase() }}
+		<p>{{ formatLevel }}</p>
 	</div>
 	<LevelList v-else @level:select="showLevel" />
 </template>
 
 <script lang="ts">
-	import { defineComponent, Ref, ref } from "vue";
+	import { computed, defineComponent, Ref, ref } from "vue";
 	import { mapLevels } from "../../../enums/levels";
 
 	import LevelList from "./listLevels/index.vue";
@@ -20,15 +20,19 @@
 			ButtonIcon,
 		},
 		setup() {
-			const levelSelected: Ref<string | null> = ref(null);
+			const levelSelect: Ref<string | null> = ref(null);
 
 			const showLevel = (level: string | null) => {
-				levelSelected.value = level;
+				levelSelect.value = level;
 			};
 
+			const formatLevel = computed(() =>
+				levelSelect.value != null ? mapLevels[levelSelect.value].toUpperCase() : ""
+			);
+
 			return {
-				mapLevels,
-				levelSelected,
+				levelSelect,
+				formatLevel,
 				showLevel,
 			};
 		},
@@ -47,6 +51,10 @@
 			padding: 0.5rem;
 			background-color: $secondary_color;
 			font-weight: 700;
+
+			p {
+				margin: 0;
+			}
 		}
 
 		&__back {
