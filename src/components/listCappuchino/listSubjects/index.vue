@@ -1,15 +1,20 @@
 <template>
-	<div class="list-subjects__header" v-if="levelSelect != null">
-		<ButtonIcon @click="showLevel(null)" class="list-subjects__back" icon="angle" :rotate="270" />
-		<p>{{ formatLevel }}</p>
-	</div>
+	<template v-if="levelSelect != null">
+		<div class="list-subjects__header">
+			<ButtonIcon @click="showLevel(null)" class="list-subjects__back" icon="angle" :rotate="270" />
+			<p>{{ formatLevel }}</p>
+		</div>
+		<pre>{{ detailLevel }}</pre>
+	</template>
 	<LevelList v-else @level:select="showLevel" />
 </template>
 
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
-	import { mapLevels } from "@/enums/levels";
+	import { useStore } from "vuex";
 
+	import { subjects } from "@/interfaces";
+	import { mapLevels } from "@/enums/levels";
 	import LevelList from "./listLevels/index.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
@@ -20,6 +25,7 @@
 			ButtonIcon,
 		},
 		setup() {
+			const store = useStore();
 			const levelSelect: Ref<string | null> = ref(null);
 
 			const showLevel = (level: string | null) => {
@@ -30,7 +36,12 @@
 				levelSelect.value != null ? mapLevels[levelSelect.value].toUpperCase() : ""
 			);
 
+			const detailLevel: subjects | undefined = computed(() =>
+				store.getters["departments/levelSelectCarrer"](levelSelect.value)
+			);
+
 			return {
+				detailLevel,
 				levelSelect,
 				formatLevel,
 				showLevel,

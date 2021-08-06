@@ -1,5 +1,5 @@
 import { ActionContext, ActionTree, GetterTree, MutationTree } from "vuex";
-import { IdepartementCarrer, Icarrer } from "@/interfaces";
+import { IdepartementCarrer, Icarrer, level, subjects } from "@/interfaces";
 import departmentService from "@/services/departments";
 import { router } from "@/router";
 
@@ -16,7 +16,11 @@ const getters: GetterTree<RootState, RootState> = {
 	departmentInfo: (state) => state.departmentInfo,
 	indexCarrersInfo: (state) => state.indexCarrersInfo,
 	selectCarrer: (state) => state.selectCarrer,
-	levelsSelectCarrer: (state) => state.selectCarrer?.levels.map((level) => level.code),
+	levelsSelectCarrer: (state) => state.selectCarrer?.levels.map((level: level) => level.code),
+	levelSelectCarrer:
+		(state) =>
+		(codeLevel: string): subjects | undefined =>
+			state.selectCarrer?.levels.find((level: level) => level.code == codeLevel).subjects,
 	nameCarrer: (state) => state.nameCarrer,
 };
 
