@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, Ref, ref, toRef } from "vue";
+	import { defineComponent, Ref, toRef } from "vue";
 	import { mapLevels } from "../../../../../enums/levels";
 
 	import ButtonIcon from "../../../../ui/ButtonIcon.vue";
@@ -28,14 +28,9 @@
 		},
 		setup(props, { emit }) {
 			const level: Ref<string> = toRef(props, "level");
-			const isSelected: Ref<boolean> = ref(false);
 
 			const selectLevel = () => {
-				isSelected.value = !isSelected.value;
-				emit("level:select", {
-					level: level.value,
-					select: isSelected.value,
-				});
+				emit("level:select", level.value);
 			};
 
 			return {

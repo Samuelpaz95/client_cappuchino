@@ -19,7 +19,7 @@
 			const store = useStore();
 			const levels = computed(() => store.getters["departments/levelsSelectCarrer"]);
 
-			const showFullLevel = (levelInfo: { level: string; select: boolean }) => {
+			const showFullLevel = (levelInfo: string) => {
 				emit("level:select", levelInfo);
 			};
 
@@ -32,7 +32,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "../../../scss/abstracts/variables.scss";
+	@import "../../../../scss/abstracts/variables.scss";
 
 	.list-subjects-levels {
 		padding: 1rem;

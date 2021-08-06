@@ -1,8 +1,9 @@
 <template>
 	<div class="list-subjects__header" v-if="levelSelected">
-		{{ mapLevels[levelSelected] }}
+		<ButtonIcon @click="showLevel(null)" class="list-subjects__back" icon="angle" :rotate="270" />
+		{{ mapLevels[levelSelected].toUpperCase() }}
 	</div>
-	<LevelList v-else @level:select="showFullLevel" />
+	<LevelList v-else @level:select="showLevel" />
 </template>
 
 <script lang="ts">
@@ -10,27 +11,25 @@
 	import { mapLevels } from "../../../enums/levels";
 
 	import LevelList from "./listLevels/index.vue";
+	import ButtonIcon from "../../ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "ListSubjects",
 		components: {
 			LevelList,
+			ButtonIcon,
 		},
 		setup() {
 			const levelSelected: Ref<string | null> = ref(null);
 
-			const showFullLevel = ({ level, select }: { level: string; select: boolean }) => {
-				if (select) {
-					levelSelected.value = level;
-				} else {
-					levelSelected.value = null;
-				}
+			const showLevel = (level: string | null) => {
+				levelSelected.value = level;
 			};
 
 			return {
 				mapLevels,
 				levelSelected,
-				showFullLevel,
+				showLevel,
 			};
 		},
 	});
@@ -40,16 +39,19 @@
 	@import "../../../scss/abstracts/variables.scss";
 
 	.list-subjects {
-		&__levels {
-			padding: 1rem;
-			margin: 0;
-		}
-
 		&__header {
-			text-align: center;
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			padding: 0.5rem;
 			background-color: $secondary_color;
 			font-weight: 700;
+		}
+
+		&__back {
+			position: absolute;
+			left: 1.5rem;
 		}
 	}
 </style>
