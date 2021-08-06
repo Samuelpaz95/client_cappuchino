@@ -2,14 +2,14 @@
 	<footer class="footer">
 		<div class="footer__container">
 			<BaseFooterListLinks />
-			<img class="footer__image" src="../../assets/scesi_white.png" alt="scesi" />
+			<img class="footer__image" src="@/assets/scesi_white.png" alt="scesi" />
 		</div>
 	</footer>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from "vue";
-	import BaseSystemIcons from "../BaseSystemIcons.vue";
+	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 	import BaseFooterListLinks from "./BaseFooterListLinks.vue";
 
 	export default defineComponent({
@@ -22,8 +22,8 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../scss/abstracts/_variables.scss";
-	@import "../../scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/_variables.scss";
+	@import "@/scss/abstracts/_mixins.scss";
 
 	.footer {
 		background-color: $primary_color;

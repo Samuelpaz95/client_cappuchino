@@ -1,5 +1,5 @@
 import { http } from "./httpRequest";
-import { Icarrer, Idepartment, IdepartementCarrer } from "../interfaces";
+import { Icarrer, Idepartment, IdepartementCarrer } from "@/interfaces";
 
 class DepartmentsService {
 	private readonly breakPoint = "departments";

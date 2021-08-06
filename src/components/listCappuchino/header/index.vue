@@ -9,8 +9,8 @@
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
 
-	import BaseSystemIcons from "../../BaseSystemIcons.vue";
-	import ButtonIcon from "../../ui/ButtonIcon.vue";
+	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 	import TextContent from "./textContent/index.vue";
 
 	export default defineComponent({
@@ -54,7 +54,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.list-carrers-header {
 		display: flex;

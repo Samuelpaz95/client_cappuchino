@@ -8,7 +8,7 @@
 
 <script lang="ts">
 	import { defineComponent } from "vue";
-	import InputSearch from "../../components/InputSearch.vue";
+	import InputSearch from "@/components/InputSearch.vue";
 
 	export default defineComponent({
 		name: "TracherDocent",
@@ -19,7 +19,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../scss/abstracts/mixins";
+	@import "@/scss/abstracts/mixins";
 
 	.tracker {
 		margin: 1rem;

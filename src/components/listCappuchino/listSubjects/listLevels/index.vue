@@ -32,7 +32,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "../../../../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.list-subjects-levels {
 		padding: 1rem;

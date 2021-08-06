@@ -9,9 +9,9 @@
 
 <script lang="ts">
 	import { defineComponent, Ref, toRef } from "vue";
-	import { mapLevels } from "../../../../../enums/levels";
+	import { mapLevels } from "@/enums/levels";
 
-	import ButtonIcon from "../../../../ui/ButtonIcon.vue";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "ItemLevel",

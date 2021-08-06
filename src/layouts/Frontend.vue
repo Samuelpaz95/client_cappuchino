@@ -8,8 +8,8 @@
 
 <script lang="ts">
 	import { defineComponent } from "vue";
-	import BaseHeader from "../components/frontend/BaseHeader.vue";
-	import BaseFooter from "../components/frontend/BaseFooter.vue";
+	import BaseHeader from "@/components/frontend/BaseHeader.vue";
+	import BaseFooter from "@/components/frontend/BaseFooter.vue";
 
 	export default defineComponent({
 		name: "Frontend",
@@ -21,7 +21,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/_mixins.scss";
 
 	.frontend {
 		min-height: 100vh;

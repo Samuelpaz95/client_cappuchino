@@ -17,7 +17,7 @@
 	import { defineComponent, computed, toRef, Ref } from "vue";
 	import { useStore } from "vuex";
 
-	import ButtonIcon from "../../../ui/ButtonIcon.vue";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "ListItemCarrers",
@@ -54,7 +54,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../../../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.list-item-carrer {
 		margin: 5px;

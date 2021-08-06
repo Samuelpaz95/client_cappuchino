@@ -8,10 +8,10 @@
 
 <script lang="ts">
 	import { computed, defineComponent, Ref, ref } from "vue";
-	import { mapLevels } from "../../../enums/levels";
+	import { mapLevels } from "@/enums/levels";
 
 	import LevelList from "./listLevels/index.vue";
-	import ButtonIcon from "../../ui/ButtonIcon.vue";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "ListSubjects",
@@ -40,7 +40,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "../../../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.list-subjects {
 		&__header {

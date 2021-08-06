@@ -9,9 +9,9 @@
 <script lang="ts">
 	import { defineComponent } from "vue";
 	import { useRoute } from "vue-router";
-	import { useDepartment } from "../../composables/useDepartment";
+	import { useDepartment } from "@/composables/useDepartment";
 
-	import ListCappuchino from "../../components/listCappuchino/index.vue";
+	import ListCappuchino from "@/components/listCappuchino/index.vue";
 
 	export default defineComponent({
 		name: "Cappuchino",

@@ -40,7 +40,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../../../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.list-carrers {
 		padding: 1rem;

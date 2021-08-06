@@ -6,7 +6,7 @@
 
 <script lang="ts">
 	import { defineComponent } from "vue";
-	import BaseSystemIcons from "../BaseSystemIcons.vue";
+	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 
 	export default defineComponent({
 		components: {

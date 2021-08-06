@@ -1,7 +1,7 @@
 import { ActionContext, ActionTree, GetterTree, MutationTree } from "vuex";
-import { IdepartementCarrer, Icarrer } from "../../interfaces";
-import departmentService from "../../services/departments";
-import { router } from "../../router";
+import { IdepartementCarrer, Icarrer } from "@/interfaces";
+import departmentService from "@/services/departments";
+import { router } from "@/router";
 
 const state = () => ({
 	departmentInfo: {} as { name: string; code: string },

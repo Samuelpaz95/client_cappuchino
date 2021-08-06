@@ -25,7 +25,7 @@
 <script lang="ts">
 	import { defineComponent, onMounted, PropType, Ref, ref, toRef } from "vue";
 
-	import ButtonIcon from "./ui/ButtonIcon.vue";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	export default defineComponent({
 		name: "InputSearch",
@@ -66,7 +66,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "../scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss";
 
 	.search {
 		&__bar {

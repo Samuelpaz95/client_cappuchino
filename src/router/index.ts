@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from "vue-router";
 
-import Frontend from "../layouts/Frontend.vue";
+import Frontend from "@/layouts/Frontend.vue";
 
-import NotFound from "../views/404/index.vue";
-import Home from "../views/index.vue";
-import Cappuchino from "../views/cappuchino/index.vue";
-import TeacherTracker from "../views/teacher-tracker/index.vue";
+import NotFound from "@/views/404/index.vue";
+import Home from "@/views/index.vue";
+import Cappuchino from "@/views/cappuchino/index.vue";
+import TeacherTracker from "@/views/teacher-tracker/index.vue";
 
 const routes: RouteRecordRaw[] = [
 	{
