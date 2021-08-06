@@ -2,17 +2,14 @@
 	<div class="list-subjects__header" v-if="levelSelected">
 		{{ mapLevels[levelSelected] }}
 	</div>
-	<ul class="list-subjects__levels" v-else>
-		<LevelList v-for="level in levels" :key="level" :level="level" @level:select="showFullLevel" />
-	</ul>
+	<LevelList v-else @level:select="showFullLevel" />
 </template>
 
 <script lang="ts">
-	import { computed, defineComponent, Ref, ref } from "vue";
-	import { useStore } from "vuex";
+	import { defineComponent, Ref, ref } from "vue";
 	import { mapLevels } from "../../../enums/levels";
 
-	import LevelList from "./level/index.vue";
+	import LevelList from "./listLevels/index.vue";
 
 	export default defineComponent({
 		name: "ListSubjects",
@@ -20,8 +17,6 @@
 			LevelList,
 		},
 		setup() {
-			const store = useStore();
-			const levels = computed(() => store.getters["departments/levelsSelectCarrer"]);
 			const levelSelected: Ref<string | null> = ref(null);
 
 			const showFullLevel = ({ level, select }: { level: string; select: boolean }) => {
@@ -33,7 +28,6 @@
 			};
 
 			return {
-				levels,
 				mapLevels,
 				levelSelected,
 				showFullLevel,
