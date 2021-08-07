@@ -61,7 +61,7 @@ const actions: ActionTree<RootState, RootState> = {
 	actionGetDepartmentCarrer: async (
 		{ commit, state }: ActionContext<RootState, RootState>,
 		nameCarrer: string
-	) => {
+	): Promise<void> => {
 		const indexCarrer = state.indexCarrersInfo.find(({ name }) => nameCarrer == name);
 		if (indexCarrer) {
 			const carrer = await departmentService.getDepartmentCarrer(state.departmentInfo.code, indexCarrer.code);
