@@ -1,6 +1,6 @@
 <template>
 	<ul class="list-carrers">
-		<ListItemCarrer
+		<CarrerItem
 			v-for="(value, index) in departmentCarrers"
 			:key="index"
 			:nameCarrer="value.name"
@@ -14,12 +14,12 @@
 	import { computed, defineComponent } from "vue";
 	import { useStore } from "vuex";
 
-	import ListItemCarrer from "./items/index.vue";
+	import CarrerItem from "./CarrerItem.vue";
 
 	export default defineComponent({
 		name: "ListCarrers",
 		components: {
-			ListItemCarrer,
+			CarrerItem,
 		},
 		emits: ["carrer:select"],
 		setup(_, { emit }) {
