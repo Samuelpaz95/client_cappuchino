@@ -1,6 +1,6 @@
 <template>
 	<ul class="list-subjects-levels">
-		<LevelItem v-for="level in levels" :key="level" :level="level" @level:select="showFullLevel" />
+		<LevelItem v-for="level in levels" :key="level" :level="level" @level:select="selectLevel" />
 	</ul>
 </template>
 
@@ -18,13 +18,13 @@
 		setup(_, { emit }) {
 			const { levels } = useLevels();
 
-			const showFullLevel = (levelInfo: string) => {
+			const selectLevel = (levelInfo: string) => {
 				emit("level:select", levelInfo);
 			};
 
 			return {
 				levels,
-				showFullLevel,
+				selectLevel,
 			};
 		},
 	});
