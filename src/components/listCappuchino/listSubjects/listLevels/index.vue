@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-	import { computed, defineComponent } from "vue";
-	import { useStore } from "vuex";
+	import { defineComponent } from "vue";
 
 	import LevelItem from "./items/index.vue";
+	import { useLevels } from "@/composables/useLevels";
 
 	export default defineComponent({
 		name: "ListSubjects",
@@ -16,8 +16,7 @@
 			LevelItem,
 		},
 		setup(_, { emit }) {
-			const store = useStore();
-			const levels = computed(() => store.getters["departments/levelsSelectCarrer"]);
+			const { levels } = useLevels();
 
 			const showFullLevel = (levelInfo: string) => {
 				emit("level:select", levelInfo);

@@ -1,7 +1,7 @@
 <template>
 	<li class="list-subjects-level">
 		<div class="list-subjects-level__row">
-			<span>{{ mapLevels[level] }}</span>
+			<span>{{ getSemester(level) }}</span>
 			<ButtonIcon @click="selectLevel" icon="angle" :rotate="90" />
 		</div>
 	</li>
@@ -9,7 +9,7 @@
 
 <script lang="ts">
 	import { defineComponent, Ref, toRef } from "vue";
-	import { mapLevels } from "@/enums/levels";
+	import { useLevels } from "@/composables/useLevels";
 
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
@@ -28,13 +28,14 @@
 		},
 		setup(props, { emit }) {
 			const level: Ref<string> = toRef(props, "level");
+			const { getSemester } = useLevels();
 
 			const selectLevel = () => {
 				emit("level:select", level.value);
 			};
 
 			return {
-				mapLevels,
+				getSemester,
 				selectLevel,
 			};
 		},

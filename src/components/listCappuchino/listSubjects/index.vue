@@ -10,11 +10,9 @@
 </template>
 
 <script lang="ts">
-	import { computed, defineComponent, Ref, ref } from "vue";
-	import { useStore } from "vuex";
+	import { defineComponent } from "vue";
 
-	import { subjects } from "@/interfaces";
-	import { mapLevels } from "@/enums/levels";
+	import { useLevels } from "@/composables/useLevels";
 	import LevelList from "./listLevels/index.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
@@ -25,20 +23,7 @@
 			ButtonIcon,
 		},
 		setup() {
-			const store = useStore();
-			const levelSelect: Ref<string | null> = ref(null);
-
-			const showLevel = (level: string | null) => {
-				levelSelect.value = level;
-			};
-
-			const formatLevel = computed(() =>
-				levelSelect.value != null ? mapLevels[levelSelect.value].toUpperCase() : ""
-			);
-
-			const detailLevel: subjects | undefined = computed(() =>
-				store.getters["departments/levelSelectCarrer"](levelSelect.value)
-			);
+			const { detailLevel, levelSelect, formatLevel, showLevel } = useLevels();
 
 			return {
 				detailLevel,
