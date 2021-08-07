@@ -26,4 +26,4 @@ interface subject {
 
 type subjects = subject[];
 
-export { Icarrer, level, subjects };
+export { Icarrer, level, subjects, subject };
