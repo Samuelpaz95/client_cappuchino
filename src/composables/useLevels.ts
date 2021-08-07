@@ -7,15 +7,15 @@ export function useLevels() {
 	const store = useStore();
 	const levelSelect: Ref<string | null> = ref(null);
 
-	const isLevelSelect = computed(() => levelSelect.value != null);
+	const isLevelSelect: ComputedRef<boolean> = computed(() => levelSelect.value != null);
 
-	const setLevel = (level: string | null) => {
+	const setLevel = (level: string | null): void => {
 		levelSelect.value = level;
 	};
 
-	const getSemester = (level: string) => mapLevels[level];
+	const getSemester = (level: string): string => mapLevels[level];
 
-	const formatLevel = computed(() =>
+	const formatLevel: ComputedRef<string> = computed(() =>
 		levelSelect.value != null ? getSemester(levelSelect.value).toUpperCase() : ""
 	);
 
@@ -23,7 +23,7 @@ export function useLevels() {
 		store.getters["departments/levelSelectCarrer"](levelSelect.value)
 	);
 
-	const levels = computed(() => store.getters["departments/levelsSelectCarrer"]);
+	const levels: ComputedRef<string | undefined> = computed(() => store.getters["departments/levelCodes"]);
 
 	return {
 		levels,
