@@ -11,7 +11,7 @@
 
 	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-	import TextContent from "./textContent/index.vue";
+	import TextContent from "./TextContent.vue";
 
 	export default defineComponent({
 		name: "ListCarrersHeader",
