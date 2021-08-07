@@ -7,7 +7,7 @@
 <script lang="ts">
 	import { defineComponent } from "vue";
 
-	import LevelItem from "./items/index.vue";
+	import LevelItem from "./LevelItem.vue";
 	import { useLevels } from "@/composables/useLevels";
 
 	export default defineComponent({
