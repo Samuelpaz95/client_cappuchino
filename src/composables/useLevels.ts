@@ -7,7 +7,9 @@ export function useLevels() {
 	const store = useStore();
 	const levelSelect: Ref<string | null> = ref(null);
 
-	const showLevel = (level: string | null) => {
+	const isLevelSelect = computed(() => levelSelect.value != null);
+
+	const setLevel = (level: string | null) => {
 		levelSelect.value = level;
 	};
 
@@ -28,7 +30,8 @@ export function useLevels() {
 		detailLevel,
 		levelSelect,
 		formatLevel,
-		showLevel,
+		setLevel,
 		getSemester,
+		isLevelSelect,
 	};
 }
