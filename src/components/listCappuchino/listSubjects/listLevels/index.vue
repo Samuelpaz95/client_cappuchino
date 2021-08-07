@@ -8,7 +8,7 @@
 	import { defineComponent } from "vue";
 
 	import LevelItem from "./LevelItem.vue";
-	import { useLevels } from "@/composables/useLevels";
+	import { useLevels } from "../../../../composables/useLevels";
 
 	export default defineComponent({
 		name: "ListSubjects",

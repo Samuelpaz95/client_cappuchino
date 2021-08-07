@@ -1,6 +1,6 @@
 import { computed, ComputedRef, ref, Ref } from "vue";
 import { useStore } from "vuex";
-import { mapLevels } from "@/enums/levels";
+import { mapLevels } from "../enums/levels";
 import { subjects } from "../interfaces";
 
 export function useLevels() {

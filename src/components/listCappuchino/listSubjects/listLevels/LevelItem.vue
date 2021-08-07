@@ -9,7 +9,7 @@
 
 <script lang="ts">
 	import { defineComponent, Ref, toRef } from "vue";
-	import { useLevels } from "@/composables/useLevels";
+	import { useLevels } from "../../../../composables/useLevels";
 
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
