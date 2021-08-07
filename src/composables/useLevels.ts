@@ -19,9 +19,8 @@ export function useLevels() {
 		levelSelect.value != null ? getSemester(levelSelect.value).toUpperCase() : ""
 	);
 
-	const detailLevel: ComputedRef<subjects | undefined> = computed(() =>
-		store.getters["departments/levelSelectCarrer"](levelSelect.value)
-	);
+	const detailLevel = (level: string): subjects | undefined =>
+		store.getters["departments/levelSelectCarrer"](level);
 
 	const levels: ComputedRef<string | undefined> = computed(() => store.getters["departments/levelCodes"]);
 

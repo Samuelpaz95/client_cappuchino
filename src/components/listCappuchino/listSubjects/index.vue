@@ -1,7 +1,7 @@
 <template>
 	<template v-if="isLevelSelect">
 		<HeaderLevel @level:deselect="setLevel" :levelSelect="formatLevel" />
-		<pre>{{ detailLevel }}</pre>
+		<ListSubject :level="levelSelect" />
 	</template>
 	<ListLevels v-else @level:select="setLevel" />
 </template>
@@ -13,6 +13,7 @@
 	import ListLevels from "./listLevels/index.vue";
 	import HeaderLevel from "./HeaderLevel.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
+	import ListSubject from "./listSubjects/index.vue";
 
 	export default defineComponent({
 		name: "ListSubjects",
@@ -20,12 +21,12 @@
 			ListLevels,
 			ButtonIcon,
 			HeaderLevel,
+			ListSubject,
 		},
 		setup() {
-			const { detailLevel, levelSelect, setLevel, formatLevel, isLevelSelect } = useLevels();
+			const { levelSelect, setLevel, formatLevel, isLevelSelect } = useLevels();
 
 			return {
-				detailLevel,
 				levelSelect,
 				setLevel,
 				formatLevel,
