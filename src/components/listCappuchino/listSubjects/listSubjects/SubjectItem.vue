@@ -4,25 +4,21 @@
 			<p class="subject-item__name">{{ subject.name }}</p>
 			<p class="subject-item__group">GRUPO</p>
 		</div>
-		<ul style="padding: 0">
-			<li
-				style="display: flex; justify-content: space-between; padding: 0 1rem"
-				v-for="group of subject.groups"
-				:key="group.code"
-			>
-				<span>{{ group.schedule[0].teacher }}</span>
-				<span>{{ group.code }}</span>
-			</li>
-		</ul>
+		<GroupList :groups="subject.groups" />
 	</li>
 </template>
 
 <script lang="ts">
 	import { defineComponent, PropType } from "vue";
+
 	import { subject } from "../../../../interfaces";
+	import GroupList from "./GroupList.vue";
 
 	export default defineComponent({
 		name: "SubjectItem",
+		components: {
+			GroupList,
+		},
 		props: {
 			subject: {
 				type: Object as PropType<subject>,
