@@ -15,12 +15,16 @@ export function useLevels() {
 
 	const getSemester = (level: string): string => mapLevels[level];
 
+	const detailLevel = (codeLevel: string): subjects | undefined => {
+		const level = store.getters["departments/selectCarrer"]?.levels.find(
+			(level: level) => level.code == codeLevel
+		);
+		return level ? level.subjects : undefined;
+	};
+
 	const formatLevel: ComputedRef<string> = computed(() =>
 		levelSelect.value != null ? getSemester(levelSelect.value).toUpperCase() : ""
 	);
-
-	const detailLevel = (level: string): subjects | undefined =>
-		store.getters["departments/levelSelectCarrer"](level);
 
 	const levels: ComputedRef<string | undefined> = computed(() =>
 		store.getters["departments/selectCarrer"]?.levels.map((level: level) => level.code)
