@@ -1,7 +1,7 @@
 <template>
 	<template v-if="isLevelSelect">
-		<HeaderLevel @level:deselect="setLevel" :levelSelect="formatLevel" />
-		<ListSubject :level="levelSelect" />
+		<HeaderLevel @level:deselect="setLevel" :actualLevel="formatLevel" />
+		<ListSubject :level="actualLevel" />
 	</template>
 	<ListLevels v-else @level:select="setLevel" />
 </template>
@@ -24,10 +24,10 @@
 			ListSubject,
 		},
 		setup() {
-			const { levelSelect, setLevel, formatLevel, isLevelSelect } = useLevels();
+			const { actualLevel, setLevel, formatLevel, isLevelSelect } = useLevels();
 
 			return {
-				levelSelect,
+				actualLevel,
 				setLevel,
 				formatLevel,
 				isLevelSelect,

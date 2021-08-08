@@ -1,7 +1,7 @@
 <template>
 	<div class="list-subjects-header">
 		<ButtonIcon @click="deselectLevel" class="list-subjects-header__back" icon="angle" :rotate="270" />
-		<p>{{ levelSelect }}</p>
+		<p>{{ actualLevel }}</p>
 	</div>
 </template>
 
@@ -15,7 +15,7 @@
 			ButtonIcon,
 		},
 		props: {
-			levelSelect: String,
+			actualLevel: String,
 		},
 		setup(_, { emit }) {
 			const deselectLevel = () => {

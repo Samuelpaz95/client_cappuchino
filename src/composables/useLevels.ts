@@ -1,10 +1,9 @@
-import { computed, ComputedRef, ref, Ref } from "vue";
+import { computed, ComputedRef, readonly, ref, Ref } from "vue";
 import { useStore } from "vuex";
 import { mapLevels } from "../enums/levels";
 import { subjects, level } from "../interfaces";
 
 export function useLevels() {
-	const store = useStore();
 	const levelSelect: Ref<string | null> = ref(null);
 
 	const isLevelSelect: ComputedRef<boolean> = computed(() => levelSelect.value != null);
@@ -13,7 +12,13 @@ export function useLevels() {
 		levelSelect.value = level;
 	};
 
+	const formatLevel: ComputedRef<string> = computed(() =>
+		levelSelect.value != null ? getSemester(levelSelect.value).toUpperCase() : ""
+	);
+
 	const getSemester = (level: string): string => mapLevels[level];
+
+	const store = useStore();
 
 	const detailLevel = (codeLevel: string): subjects | undefined => {
 		const level = store.getters["departments/selectCarrer"]?.levels.find(
@@ -22,10 +27,6 @@ export function useLevels() {
 		return level ? level.subjects : undefined;
 	};
 
-	const formatLevel: ComputedRef<string> = computed(() =>
-		levelSelect.value != null ? getSemester(levelSelect.value).toUpperCase() : ""
-	);
-
 	const levels: ComputedRef<string | undefined> = computed(() =>
 		store.getters["departments/selectCarrer"]?.levels.map((level: level) => level.code)
 	);
@@ -33,7 +34,7 @@ export function useLevels() {
 	return {
 		levels,
 		detailLevel,
-		levelSelect,
+		actualLevel: readonly(levelSelect),
 		formatLevel,
 		setLevel,
 		getSemester,
