@@ -36,11 +36,13 @@
 
 	.subject-item {
 		list-style: none;
+		padding: 10px;
 
 		&__description {
 			display: flex;
 			justify-content: space-between;
 			padding: 0 10px;
+			line-height: 20px;
 		}
 
 		&__group,
