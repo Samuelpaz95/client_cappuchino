@@ -1,7 +1,7 @@
 import { computed, ComputedRef, ref, Ref } from "vue";
 import { useStore } from "vuex";
 import { mapLevels } from "../enums/levels";
-import { subjects } from "../interfaces";
+import { subjects, level } from "../interfaces";
 
 export function useLevels() {
 	const store = useStore();
@@ -22,7 +22,9 @@ export function useLevels() {
 	const detailLevel = (level: string): subjects | undefined =>
 		store.getters["departments/levelSelectCarrer"](level);
 
-	const levels: ComputedRef<string | undefined> = computed(() => store.getters["departments/levelCodes"]);
+	const levels: ComputedRef<string | undefined> = computed(() =>
+		store.getters["departments/selectCarrer"]?.levels.map((level: level) => level.code)
+	);
 
 	return {
 		levels,
