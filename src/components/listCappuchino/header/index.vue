@@ -1,53 +1,50 @@
 <template>
 	<header class="list-carrers-header">
-		<ButtonIcon icon="angle" :rotate="270" v-if="isMenuOpen && !isShowCarrers" @click="backToCarrers" />
-		<TextContent :isMenuOpen="isMenuOpen" :isShowCarrers="isShowCarrers" />
-		<ButtonIcon :icon="typeIcon" @click="openMenu" />
+		<template v-if="isOpenMenu">
+			<template v-if="!isInCarrers">
+				<ButtonIcon icon="angle" :rotate="270" @click="updateInCarrers(true)" />
+				<p>{{ selectCarrer }}</p>
+			</template>
+			<p v-else>CARRERAS</p>
+		</template>
+		<ButtonIcon :icon="typeIcon" @click="updateOpenMenu(!isOpenMenu)" />
 	</header>
 </template>
 
 <script lang="ts">
-	import { defineComponent } from "vue";
+	import { computed, defineComponent, inject, Ref, ref } from "vue";
 
-	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-	import TextContent from "./TextContent.vue";
 
 	export default defineComponent({
 		name: "ListCarrersHeader",
 		components: {
-			BaseSystemIcons,
-			TextContent,
 			ButtonIcon,
 		},
-		emits: ["menu:open", "menu:returnCarrers"],
-		props: {
-			isShowCarrers: {
-				require: true,
-				type: Boolean,
-				default: true,
-			},
-		},
-		data() {
-			return {
-				icons: ["bars", "close"],
-				isMenuOpen: false,
-			};
-		},
-		methods: {
-			openMenu(): void {
-				this.isMenuOpen = !this.isMenuOpen;
-				this.$emit("menu:open", this.isMenuOpen);
-			},
+		setup() {
+			const icons = ref(["bars", "close"]);
+			const isOpenMenu: Ref<boolean> | undefined = inject("isOpenMenu");
+			const isInCarrers: Ref<boolean> | undefined = inject("isInCarrers");
+			const selectCarrer: Ref<string | null> | undefined = inject("selectCarrer");
 
-			backToCarrers(): void {
-				this.$emit("menu:returnCarrers", this.isMenuOpen);
-			},
-		},
-		computed: {
-			typeIcon(): string {
-				return this.icons[Number(this.isMenuOpen)];
-			},
+			const updateInCarrers = inject("updateInCarrers");
+			const updateOpenMenu = inject("updateOpenMenu");
+
+			const typeIcon = computed(() => {
+				if (isOpenMenu) {
+					return icons.value[Number(isOpenMenu.value)];
+				}
+				return icons.value[0];
+			});
+
+			return {
+				typeIcon,
+				isInCarrers,
+				selectCarrer,
+				isOpenMenu,
+				updateOpenMenu,
+				updateInCarrers,
+			};
 		},
 	});
 </script>
@@ -60,5 +57,13 @@
 		justify-content: space-between;
 		padding: 0.5rem 1rem;
 		background-color: $primary_color;
+		p {
+			font-weight: 700;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			text-align: center;
+			line-height: 15px;
+		}
 	}
 </style>

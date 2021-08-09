@@ -1,11 +1,6 @@
 <template>
 	<div class="list-carrers">
-		<ListHeader
-			class="list-carrers__header"
-			@menu:open="updateOpenMenu"
-			:isShowCarrers="isInCarrers"
-			@menu:returnCarrers="updateInCarrers(true)"
-		/>
+		<ListHeader class="list-carrers__header" />
 		<template v-if="isOpenMenu">
 			<ListCarrers v-if="isInCarrers" />
 			<ListSubjects v-else />
@@ -29,13 +24,11 @@
 			ListSubjects,
 		},
 		setup() {
-			const { isOpenMenu, isInCarrers, updateInCarrers, updateOpenMenu } = useStateMenu();
+			const { isOpenMenu, isInCarrers } = useStateMenu();
 
 			return {
 				isOpenMenu,
 				isInCarrers,
-				updateOpenMenu,
-				updateInCarrers,
 			};
 		},
 	});

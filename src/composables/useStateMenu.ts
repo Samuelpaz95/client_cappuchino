@@ -15,7 +15,7 @@ export function useStateMenu() {
 	};
 
 	const updateSelectCarrer = (carrer: string | null) => {
-		selectCarrer.value = carrer;
+		selectCarrer.value = carrer ? carrer.toUpperCase() : carrer;
 	};
 
 	const updateSelectLevel = (level: string | null) => {
@@ -34,7 +34,5 @@ export function useStateMenu() {
 	return {
 		isOpenMenu,
 		isInCarrers,
-		updateOpenMenu,
-		updateInCarrers,
 	};
 }

@@ -7,7 +7,6 @@ const state = () => ({
 	departmentInfo: {} as { name: string; code: string },
 	indexCarrersInfo: [] as IdepartementCarrer[],
 	selectCarrer: null as Icarrer | null,
-	nameCarrer: "",
 });
 
 type actualState = ReturnType<typeof state>;
@@ -16,7 +15,6 @@ const getters: GetterTree<actualState, unknown> = {
 	departmentInfo: (state) => state.departmentInfo,
 	indexCarrersInfo: (state) => state.indexCarrersInfo,
 	selectCarrer: (state) => state.selectCarrer,
-	nameCarrer: (state) => state.nameCarrer,
 };
 
 const mutations: MutationTree<actualState> = {
@@ -24,7 +22,6 @@ const mutations: MutationTree<actualState> = {
 		(state.departmentInfo = payload),
 	mutationIndexCarrersInfo: (state, payload: IdepartementCarrer[]) => (state.indexCarrersInfo = payload),
 	mutationSelectCarrer: (state, payload: Icarrer | null) => (state.selectCarrer = payload),
-	mutationNameCarrer: (state, payload: string) => (state.nameCarrer = payload),
 };
 
 const actions: ActionTree<actualState, unknown> = {
@@ -59,7 +56,6 @@ const actions: ActionTree<actualState, unknown> = {
 		if (indexCarrer) {
 			const carrer = await departmentService.getDepartmentCarrer(state.departmentInfo.code, indexCarrer.code);
 			commit("mutationSelectCarrer", carrer);
-			commit("mutationNameCarrer", indexCarrer.name);
 		}
 	},
 };
