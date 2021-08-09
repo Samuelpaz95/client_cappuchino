@@ -15,19 +15,23 @@ interface subject {
 
 interface group {
 	code: string;
-	schedule: {
-		day: string;
-		start: string;
-		end: string;
-		duration: number;
-		room: string;
-		teacher: string;
-		isClass: boolean;
-	}[];
+	schedule: schedules;
 }
+
+interface schedule {
+	day: string;
+	start: string;
+	end: string;
+	duration: number;
+	room: string;
+	teacher: string;
+	isClass: boolean;
+}
+
+type schedules = schedule[];
 
 type groups = group[];
 
 type subjects = subject[];
 
-export { Icarrer, level, subjects, subject, groups, group };
+export { Icarrer, level, subjects, subject, groups, group, schedule, schedules };
