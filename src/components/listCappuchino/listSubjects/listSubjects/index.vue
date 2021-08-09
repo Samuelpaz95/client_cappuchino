@@ -5,6 +5,7 @@
 			v-for="subject of subjects"
 			:key="subject.code"
 			:subject="subject"
+			:level="level"
 		/>
 	</ul>
 </template>

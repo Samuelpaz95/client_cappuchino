@@ -4,7 +4,7 @@
 			<p class="subject-item__name">{{ subject.name }}</p>
 			<p class="subject-item__group">GRUPO</p>
 		</div>
-		<GroupList :groups="subject.groups" />
+		<GroupList :groups="subject.groups" :codeSubject="subject.code" :level="level" />
 	</li>
 </template>
 
@@ -22,6 +22,11 @@
 		props: {
 			subject: {
 				type: Object as PropType<subject>,
+				require: true,
+			},
+			level: {
+				type: String,
+				default: "",
 				require: true,
 			},
 		},
