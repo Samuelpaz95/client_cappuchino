@@ -6,8 +6,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent, computed } from "vue";
-	import { useStore } from "vuex";
+	import { defineComponent } from "vue";
 
 	export default defineComponent({
 		name: "textContentHeader",
@@ -21,13 +20,10 @@
 				require: true,
 			},
 		},
-		setup() {
-			const store = useStore();
-			const nameCarrer = computed(() => store.getters["departments/nameCarrer"]);
-
-			return {
-				nameCarrer,
-			};
+		computed: {
+			nameCarrer(): string {
+				return this.$store.getters["departments/nameCarrer"];
+			},
 		},
 	});
 </script>

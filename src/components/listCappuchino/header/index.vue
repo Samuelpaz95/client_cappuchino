@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-	import { computed, defineComponent, Ref, ref } from "vue";
+	import { defineComponent } from "vue";
 
 	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
@@ -28,27 +28,26 @@
 				default: true,
 			},
 		},
-		setup(_, { emit }) {
-			const icons: Ref<string[]> = ref(["bars", "close"]);
-			let isMenuOpen: Ref<boolean> = ref(false);
-
-			const openMenu = () => {
-				isMenuOpen.value = !isMenuOpen.value;
-				emit("menu:open", isMenuOpen.value);
-			};
-
-			const backToCarrers = () => {
-				emit("menu:returnCarrers", isMenuOpen.value);
-			};
-
-			const typeIcon = computed(() => icons.value[Number(isMenuOpen.value)]);
-
+		data() {
 			return {
-				isMenuOpen,
-				openMenu,
-				typeIcon,
-				backToCarrers,
+				icons: ["bars", "close"],
+				isMenuOpen: false,
 			};
+		},
+		methods: {
+			openMenu(): void {
+				this.isMenuOpen = !this.isMenuOpen;
+				this.$emit("menu:open", this.isMenuOpen);
+			},
+
+			backToCarrers(): void {
+				this.$emit("menu:returnCarrers", this.isMenuOpen);
+			},
+		},
+		computed: {
+			typeIcon(): string {
+				return this.icons[Number(this.isMenuOpen)];
+			},
 		},
 	});
 </script>
