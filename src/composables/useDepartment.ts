@@ -1,9 +1,15 @@
-import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
-export function useDepartment(department: string | string[]) {
+export function useDepartment() {
+	const { params } = useRoute();
 	const store = useStore();
-	onMounted(async () => {
-		await store.dispatch("departments/actionGetDepartment", department);
-	});
+
+	const fetchDepartmentData = async () => {
+		await store.dispatch("departments/actionGetDepartment", params.department);
+	};
+
+	return {
+		fetchDepartmentData,
+	};
 }

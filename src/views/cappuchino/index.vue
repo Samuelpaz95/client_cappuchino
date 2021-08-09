@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-	import { defineComponent } from "vue";
-	import { useRoute } from "vue-router";
+	import { defineComponent, onBeforeMount } from "vue";
 	import { useDepartment } from "../../composables/useDepartment";
 
 	import ListCappuchino from "@/components/listCappuchino/index.vue";
@@ -19,8 +18,10 @@
 			ListCappuchino,
 		},
 		setup() {
-			const { params } = useRoute();
-			useDepartment(params.department);
+			const { fetchDepartmentData } = useDepartment();
+			onBeforeMount(() => {
+				fetchDepartmentData();
+			});
 		},
 	});
 </script>
