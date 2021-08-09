@@ -2,20 +2,21 @@
 	<div class="list-carrers">
 		<ListHeader
 			class="list-carrers__header"
-			@menu:open="showMenu"
-			:isShowCarrers="isShowCarrers"
-			@menu:returnCarrers="showCarrers(true)"
+			@menu:open="updateOpenMenu"
+			:isShowCarrers="isInCarrers"
+			@menu:returnCarrers="updateInCarrers(true)"
 		/>
 		<template v-if="isOpenMenu">
-			<ListCarrers v-if="isShowCarrers" @carrer:select="showCarrers(false)" />
+			<ListCarrers v-if="isInCarrers" />
 			<ListSubjects v-else />
 		</template>
 	</div>
 </template>
 
 <script lang="ts">
-	import { defineComponent, ref, Ref } from "vue";
+	import { defineComponent } from "vue";
 
+	import { useStateMenu } from "../../composables/useStateMenu";
 	import ListHeader from "./header/index.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
@@ -28,22 +29,13 @@
 			ListSubjects,
 		},
 		setup() {
-			let isShowCarrers: Ref<boolean> = ref(true);
-			let isOpenMenu: Ref<boolean> = ref(false);
-
-			const showCarrers = (isOpen: boolean) => {
-				isShowCarrers.value = isOpen;
-			};
-
-			const showMenu = (open: boolean) => {
-				isOpenMenu.value = open;
-			};
+			const { isOpenMenu, isInCarrers, updateInCarrers, updateOpenMenu } = useStateMenu();
 
 			return {
-				isShowCarrers,
 				isOpenMenu,
-				showCarrers,
-				showMenu,
+				isInCarrers,
+				updateOpenMenu,
+				updateInCarrers,
 			};
 		},
 	});
