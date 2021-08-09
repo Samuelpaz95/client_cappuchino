@@ -10,16 +10,16 @@ const state = () => ({
 	nameCarrer: "",
 });
 
-type RootState = ReturnType<typeof state>;
+type actualState = ReturnType<typeof state>;
 
-const getters: GetterTree<RootState, RootState> = {
+const getters: GetterTree<actualState, unknown> = {
 	departmentInfo: (state) => state.departmentInfo,
 	indexCarrersInfo: (state) => state.indexCarrersInfo,
 	selectCarrer: (state) => state.selectCarrer,
 	nameCarrer: (state) => state.nameCarrer,
 };
 
-const mutations: MutationTree<RootState> = {
+const mutations: MutationTree<actualState> = {
 	mutationDepartmentInfo: (state, payload: { name: string; code: string }) =>
 		(state.departmentInfo = payload),
 	mutationIndexCarrersInfo: (state, payload: IdepartementCarrer[]) => (state.indexCarrersInfo = payload),
@@ -27,9 +27,9 @@ const mutations: MutationTree<RootState> = {
 	mutationNameCarrer: (state, payload: string) => (state.nameCarrer = payload),
 };
 
-const actions: ActionTree<RootState, RootState> = {
+const actions: ActionTree<actualState, unknown> = {
 	actionGetDepartment: async (
-		{ commit, dispatch }: ActionContext<RootState, RootState>,
+		{ commit, dispatch }: ActionContext<actualState, unknown>,
 		departmentName: string
 	): Promise<void> => {
 		const response = await departmentService.getAllDepartments();
@@ -44,7 +44,7 @@ const actions: ActionTree<RootState, RootState> = {
 		dispatch("actionGetIndexDepartmentCarrers", departmentName);
 	},
 	actionGetIndexDepartmentCarrers: async (
-		{ commit }: ActionContext<RootState, RootState>,
+		{ commit }: ActionContext<actualState, unknown>,
 		department: string
 	) => {
 		const departementCarrers = await departmentService.getDepartmentCarrers(department);
@@ -52,7 +52,7 @@ const actions: ActionTree<RootState, RootState> = {
 	},
 
 	actionGetDepartmentCarrer: async (
-		{ commit, state }: ActionContext<RootState, RootState>,
+		{ commit, state }: ActionContext<actualState, unknown>,
 		nameCarrer: string
 	): Promise<void> => {
 		const indexCarrer = state.indexCarrersInfo.find(({ name }) => nameCarrer == name);
