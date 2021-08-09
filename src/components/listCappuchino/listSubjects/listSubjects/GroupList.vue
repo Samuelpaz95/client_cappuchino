@@ -5,6 +5,7 @@
 			:key="group.code"
 			:groupCode="group.code"
 			:nameTeacher="group.schedule[0].teacher"
+			@group:select="selectGroup"
 		/>
 	</ul>
 </template>
@@ -24,6 +25,11 @@
 			groups: {
 				type: Object as PropType<groups>,
 				require: true,
+			},
+		},
+		methods: {
+			selectGroup({ isSelect, groupCode }: { isSelect: boolean; groupCode: string }) {
+				console.log({ isSelect, groupCode });
 			},
 		},
 	});

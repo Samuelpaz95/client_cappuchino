@@ -1,11 +1,9 @@
 <template>
 	<li class="group-item">
-		<input v-model="asd" class="group-item__radio" type="checkbox" :id="groupCode + nameTeacher" />
+		<input v-model="isSelect" class="group-item__radio" type="checkbox" :id="groupCode + nameTeacher" />
 		<label class="group-item__label" :for="groupCode + nameTeacher">
-			<span class="group-item__description">
-				<span class="group-item__teacher">{{ transformNameTeacherToCapitalize }}</span>
-				<span class="group-item__group">{{ groupCode }}</span>
-			</span>
+			<span class="group-item__teacher">{{ transformNameTeacherToCapitalize }}</span>
+			<span class="group-item__group">{{ groupCode }}</span>
 		</label>
 	</li>
 </template>
@@ -17,7 +15,7 @@
 		name: "GroupItem",
 		data() {
 			return {
-				asd: "",
+				isSelect: false,
 			};
 		},
 		props: {
@@ -38,6 +36,14 @@
 				return capitalizeArrayName.join(" ");
 			},
 		},
+		watch: {
+			isSelect(value: boolean) {
+				this.$emit("group:select", {
+					isSelect: value,
+					groupCode: this.groupCode,
+				});
+			},
+		},
 	});
 </script>
 
@@ -51,29 +57,18 @@
 			overflow: hidden;
 		}
 
-		&__description {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-		}
-
 		&__label {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
 			width: 100%;
-
-			&::before {
-				content: "";
-				display: block;
-				width: 13px;
-				height: 13px;
-				margin-right: 10px;
-				background-color: red;
-			}
+			padding-left: 1rem;
+			padding-top: 2px;
+			padding-bottom: 2px;
 		}
 
 		&__radio {
-			display: none;
+			margin: 0;
 		}
 
 		&__group {
