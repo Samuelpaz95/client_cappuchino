@@ -1,15 +1,14 @@
 <template>
-	<template v-if="isLevelSelect">
-		<HeaderLevel @level:deselect="setLevel" :actualLevel="formatLevel" />
-		<ListSubject :level="actualLevel" />
+	<template v-if="selectLevel">
+		<HeaderLevel @level:deselect="updateSelectLevel" :actualLevel="formatLevel(selectLevel)" />
+		<ListSubject :level="selectLevel" />
 	</template>
-	<ListLevels v-else @level:select="setLevel" />
+	<ListLevels v-else @level:select="updateSelectLevel" />
 </template>
 
 <script lang="ts">
-	import { defineComponent } from "vue";
+	import { computed, defineComponent, inject, Ref } from "vue";
 
-	import { useLevels } from "../../../composables/useLevels";
 	import ListLevels from "./listLevels/index.vue";
 	import HeaderLevel from "./HeaderLevel.vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
@@ -24,13 +23,14 @@
 			ListSubject,
 		},
 		setup() {
-			const { actualLevel, setLevel, formatLevel, isLevelSelect } = useLevels();
+			const selectLevel: Ref<string | null> | undefined = inject("selectLevel");
+			const updateSelectLevel = inject("updateSelectLevel") as Function;
+			const formatLevel = inject("formatLevel") as Function;
 
 			return {
-				actualLevel,
-				setLevel,
 				formatLevel,
-				isLevelSelect,
+				selectLevel,
+				updateSelectLevel,
 			};
 		},
 	});

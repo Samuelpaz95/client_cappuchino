@@ -1,4 +1,6 @@
-import { provide, readonly, ref, Ref } from "vue";
+import { computed, provide, readonly, ref, Ref } from "vue";
+
+import { mapLevels } from "../enums/levels";
 
 export function useStateMenu() {
 	const isOpenMenu = ref(false);
@@ -22,14 +24,19 @@ export function useStateMenu() {
 		selectLevel.value = level;
 	};
 
+	const formatLevel = (level: string) => mapLevels[level];
+
 	provide("isOpenMenu", readonly(isOpenMenu));
 	provide("isInCarrers", readonly(isInCarrers));
 	provide("selectCarrer", readonly(selectCarrer));
 	provide("selectLevel", readonly(selectLevel));
+
 	provide("updateOpenMenu", updateOpenMenu);
 	provide("updateInCarrers", updateInCarrers);
 	provide("updateSelectCarrer", updateSelectCarrer);
 	provide("updateSelectLevel", updateSelectLevel);
+
+	provide("formatLevel", formatLevel);
 
 	return {
 		isOpenMenu,

@@ -1,15 +1,14 @@
 <template>
 	<li class="list-subjects-level">
 		<div class="list-subjects-level__row">
-			<span>{{ getSemester(level) }}</span>
+			<span>{{ formatLevel(level) }}</span>
 			<ButtonIcon @click="selectLevel" icon="angle" :rotate="90" />
 		</div>
 	</li>
 </template>
 
 <script lang="ts">
-	import { defineComponent, Ref, toRef } from "vue";
-	import { useLevels } from "../../../../composables/useLevels";
+	import { defineComponent, inject, Ref, toRef } from "vue";
 
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
@@ -28,14 +27,14 @@
 		},
 		setup(props, { emit }) {
 			const level: Ref<string> = toRef(props, "level");
-			const { getSemester } = useLevels();
+			const formatLevel = inject("formatLevel") as Function;
 
 			const selectLevel = () => {
 				emit("level:select", level.value);
 			};
 
 			return {
-				getSemester,
+				formatLevel,
 				selectLevel,
 			};
 		},
