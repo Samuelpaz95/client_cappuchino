@@ -31,9 +31,13 @@
 
 <style scoped lang="scss">
 	.cappuchino {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		// grid-template-columns: 1fr, 200px;
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 1fr, 200px;
+
+		&__table {
+			margin: 1rem;
+			width: calc(100% - 2rem);
+		}
 	}
 </style>

@@ -39,6 +39,7 @@
 				border: 1px solid red;
 				border-top: none;
 				text-align: center;
+				min-width: 50px;
 			}
 
 			th:first-child {

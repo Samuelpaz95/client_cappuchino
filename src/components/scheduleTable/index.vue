@@ -38,6 +38,7 @@
 		padding: 1rem;
 		background-color: $primary_color;
 		border-radius: $border_radius;
+		overflow-x: auto;
 
 		&__table {
 			border-collapse: collapse;
