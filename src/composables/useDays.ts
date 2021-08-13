@@ -6,5 +6,5 @@ export function useDays() {
 
 	const semanticDays = () => days.value.map((day) => day.slice(0, 3).toUpperCase());
 
-	return { days, semanticDays };
+	return { days, semanticDays: semanticDays() };
 }

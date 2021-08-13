@@ -25,7 +25,7 @@
 		setup() {
 			const { semanticDays } = useDays();
 
-			return { semanticDays: semanticDays() };
+			return { semanticDays };
 		},
 	});
 </script>
