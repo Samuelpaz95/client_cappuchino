@@ -34,15 +34,13 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.schedule-table {
-		width: 100%;
-		padding: 1rem;
 		background-color: $primary_color;
 		border-radius: $border_radius;
 		overflow-x: auto;
 
 		&__table {
 			border-collapse: collapse;
-			width: 100%;
+			margin: 1rem;
 		}
 	}
 </style>

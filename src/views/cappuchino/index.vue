@@ -32,11 +32,11 @@
 <style scoped lang="scss">
 	.cappuchino {
 		display: grid;
-		gap: 1rem;
 		grid-template-columns: 1fr, 200px;
 
 		&__table {
 			margin: 1rem;
+			margin-right: 5rem;
 			width: calc(100% - 2rem);
 		}
 	}

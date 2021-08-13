@@ -1,12 +1,10 @@
 <template>
 	<tbody class="schedule-table-body">
 		<tr v-for="hour of hours" :key="hour">
-			<template v-for="(day, indexDay) of days" :key="day + hour">
-				<td>
-					<template v-if="indexDay == 0">{{ hour }}</template>
-					<template v-else></template>
-				</td>
-			</template>
+			<td v-for="(day, indexDay) of days" :key="day + hour">
+				<template v-if="indexDay == 0">{{ hour }}</template>
+				<template v-else></template>
+			</td>
 		</tr>
 	</tbody>
 </template>
