@@ -34,10 +34,15 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.schedule-table {
-		width: 1rem;
 		padding: 1rem;
 		background-color: $primary_color;
 		border-radius: $border_radius;
+
+		&__title {
+			text-align: left;
+			font-size: 1.2rem;
+			margin-bottom: 1rem;
+		}
 
 		&__table {
 			width: 100%;
@@ -67,11 +72,5 @@
 			}
 		}
 		width: 100%;
-
-		&__title {
-			margin: 0;
-			text-align: left;
-			font-size: 1.2rem;
-		}
 	}
 </style>
