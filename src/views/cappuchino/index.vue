@@ -1,6 +1,7 @@
 <template>
-	<main>
-		<aside>
+	<main class="cappuchino">
+		<ScheduleTable class="cappuchino__table" />
+		<aside class="cappuchino__options">
 			<ListCappuchino />
 		</aside>
 	</main>
@@ -11,11 +12,13 @@
 	import { useDepartment } from "../../composables/useDepartment";
 
 	import ListCappuchino from "@/components/listCappuchino/index.vue";
+	import ScheduleTable from "@/components/scheduleTable/index.vue";
 
 	export default defineComponent({
 		name: "Cappuchino",
 		components: {
 			ListCappuchino,
+			ScheduleTable,
 		},
 		setup() {
 			const { fetchDepartmentData } = useDepartment();
@@ -26,4 +29,11 @@
 	});
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	.cappuchino {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		// grid-template-columns: 1fr, 200px;
+	}
+</style>
