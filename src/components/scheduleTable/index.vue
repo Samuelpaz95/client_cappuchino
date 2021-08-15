@@ -4,14 +4,15 @@
 			<schedule-table-header :days="semanticDays"> Horarios Disponibles </schedule-table-header>
 			<ScheduleTableBody :days="semanticDays" :schedules="schedules" />
 		</table>
+		<pre>{{ schedules }}</pre>
 	</div>
 </template>
 
 <script lang="ts">
 	import { defineComponent } from "vue";
-	import { useStore } from "vuex";
 
 	import { useDays } from "../../composables/useDays";
+	import { useSchedules } from "../../composables/useSchedules";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 
@@ -23,9 +24,7 @@
 		},
 		setup() {
 			const { semanticDays } = useDays();
-			const store = useStore();
-
-			const schedules = store.getters["scheduleSubjects/scheduleSubjects"];
+			const { schedules } = useSchedules();
 
 			return { semanticDays, schedules };
 		},
