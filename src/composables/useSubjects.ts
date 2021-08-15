@@ -8,6 +8,28 @@ interface codeProperty {
 export function useSubjects() {
 	const store = useStore();
 
+	const fotmatData = ({
+		groupCode,
+		subjectCode,
+		levelCode,
+	}: {
+		groupCode: string;
+		subjectCode: string;
+		levelCode: string;
+	}): scheduleSubject => {
+		const carrer: Icarrer = store.getters["departments/selectCarrer"];
+		const level: level = getLevel(carrer.levels, levelCode);
+		const subject: subject = getLevel(level.subjects, subjectCode);
+		const group: group = getLevel(subject.groups, groupCode);
+		const scheduleSubject: scheduleSubject = {
+			key: groupCode + subjectCode,
+			subjectName: subject.name,
+			groupCode: groupCode,
+			schedule: group.schedule,
+		};
+		return scheduleSubject;
+	};
+
 	const addSubject = ({
 		groupCode,
 		subjectCode,
@@ -18,18 +40,9 @@ export function useSubjects() {
 		levelCode: string;
 	}) => {
 		try {
-			const carrer: Icarrer = store.getters["departments/selectCarrer"];
-			const level: level = getLevel(carrer.levels, levelCode);
-			const subject: subject = getLevel(level.subjects, subjectCode);
-			const group: group = getLevel(subject.groups, groupCode);
-			const scheduleSubject: scheduleSubject = {
-				key: groupCode + subjectCode,
-				subjectName: subject.name,
-				groupCode: groupCode,
-				schedule: group.schedule,
-			};
+			const schedule = fotmatData({ groupCode, subjectCode, levelCode });
 
-			store.commit("scheduleSubjects/addScheduleSubjects", scheduleSubject);
+			store.commit("scheduleSubjects/addScheduleSubjects", schedule);
 		} catch (error) {
 			console.error(error);
 		}
