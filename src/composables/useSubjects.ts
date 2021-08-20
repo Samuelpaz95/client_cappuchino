@@ -30,6 +30,13 @@ export function useSubjects() {
 		return scheduleSubject;
 	};
 
+	//TODO: fill logic
+	const resolveConfictiveSchedule = (scheduleSubject: scheduleSubject): scheduleSubject[] => {
+		const resolvedConflicts: scheduleSubject[] = [scheduleSubject];
+
+		return resolvedConflicts;
+	};
+
 	const addSubject = ({
 		groupCode,
 		subjectCode,
@@ -41,8 +48,11 @@ export function useSubjects() {
 	}) => {
 		try {
 			const schedule = fotmatData({ groupCode, subjectCode, levelCode });
+			const resolvedConflicts = resolveConfictiveSchedule(schedule);
 
-			store.commit("scheduleSubjects/addScheduleSubjects", schedule);
+			resolvedConflicts.forEach((schedule) => {
+				store.commit("scheduleSubjects/addScheduleSubjects", schedule);
+			});
 		} catch (error) {
 			console.error(error);
 		}
