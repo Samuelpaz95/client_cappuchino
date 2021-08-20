@@ -4,7 +4,6 @@
 			<schedule-table-header :days="semanticDays"> Horarios Disponibles </schedule-table-header>
 			<ScheduleTableBody :days="semanticDays" :schedules="schedules" />
 		</table>
-		<pre>{{ schedules }}</pre>
 	</div>
 </template>
 
@@ -37,6 +36,7 @@
 	.schedule-table {
 		background-color: $primary_color;
 		border-radius: $border_radius;
+		display: flex;
 		overflow-x: auto;
 
 		&__table {
