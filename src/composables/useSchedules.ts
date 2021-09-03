@@ -1,14 +1,36 @@
 import { computed, ComputedRef } from "vue";
 import { useStore } from "vuex";
 
-import { scheduleSubject } from "../interfaces";
+import { scheduleSubject, scheduleMap } from "../interfaces";
 
 export function useSchedules() {
 	const store = useStore();
 
-	const schedules: ComputedRef<scheduleSubject[]> = computed(
-		() => store.getters["scheduleSubjects/scheduleSubjects"]
-	);
+	const schedules: ComputedRef<scheduleMap> = computed(() => {
+		const scheduleSubjects: scheduleSubject[] = store.getters["scheduleSubjects/scheduleSubjects"];
+
+		const schedulesTable: scheduleMap = {};
+		scheduleSubjects.forEach((scheduleSubject) => {
+			scheduleSubject.schedule.forEach((subjectSchedule) => {
+				const { schedule, ...subject } = scheduleSubject;
+				if (!schedulesTable[subjectSchedule.day + subjectSchedule.start]) {
+					schedulesTable[subjectSchedule.day + subjectSchedule.start] = [
+						{
+							...subject,
+							...subjectSchedule,
+						},
+					];
+				} else {
+					schedulesTable[subjectSchedule.day + subjectSchedule.start].push({
+						...subject,
+						...subjectSchedule,
+					});
+				}
+			});
+		});
+
+		return schedulesTable;
+	});
 
 	return { schedules };
 }
