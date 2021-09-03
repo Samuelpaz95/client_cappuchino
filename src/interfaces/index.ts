@@ -11,7 +11,7 @@ import {
 import { IdepartementCarrer, Idepartment } from "./response-api/departments";
 import { Inotifications } from "./response-api/notifications";
 import { scheduleSubject } from "./scheduleSubjects";
-import { scheduleTable } from "./scheduleTable";
+import { scheduleTable, scheduleMap } from "./scheduleTable";
 
 export {
 	Icarrer,
@@ -27,4 +27,5 @@ export {
 	schedules,
 	scheduleSubject,
 	scheduleTable,
+	scheduleMap,
 };

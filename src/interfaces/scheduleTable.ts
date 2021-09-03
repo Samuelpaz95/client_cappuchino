@@ -6,4 +6,8 @@ interface scheduleTable extends schedule {
 	groupCode: string;
 }
 
-export { scheduleTable };
+interface scheduleMap {
+	[index: string]: scheduleTable[];
+}
+
+export { scheduleTable, scheduleMap };
