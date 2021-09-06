@@ -3,9 +3,7 @@
 		<tr v-for="hour of semanticHours" :key="hour">
 			<td v-for="(day, indexDay) of days" :key="day + hour">
 				<template v-if="indexDay == 0">{{ hour }}</template>
-				<pre style='text-aling="left"' v-else-if="isTimeSchedule(day, hour)">{{
-					getSchedule(day, hour)
-				}}</pre>
+				<ScheduleTableItem v-else-if="isTimeSchedule(day, hour)" :schedules="getSchedule(day, hour)" />
 				<template v-else></template>
 			</td>
 		</tr>
@@ -15,11 +13,16 @@
 <script lang="ts">
 	import { defineComponent, PropType, Ref, toRef } from "vue";
 
+	import ScheduleTableItem from "./ScheduleTableItem.vue";
+
 	import { scheduleMap } from "../../interfaces";
 	import { useHours } from "../../composables/useHours";
 
 	export default defineComponent({
 		name: "ScheduleTableBody",
+		components: {
+			ScheduleTableItem,
+		},
 		props: {
 			days: {
 				type: Array as PropType<string[]>,

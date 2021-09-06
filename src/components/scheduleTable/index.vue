@@ -34,6 +34,7 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.schedule-table {
+		font-size: 12px;
 		background-color: $primary_color;
 		border-radius: $border_radius;
 		display: flex;
