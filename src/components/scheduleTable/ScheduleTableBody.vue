@@ -1,11 +1,13 @@
 <template>
 	<tbody class="schedule-table-body">
 		<tr v-for="hour of semanticHours" :key="hour">
-			<td v-for="(day, indexDay) of days" :key="day + hour">
-				<template v-if="indexDay == 0">{{ hour }}</template>
-				<ScheduleTableItem v-else-if="isTimeSchedule(day, hour)" :schedules="getSchedule(day, hour)" />
-				<template v-else></template>
-			</td>
+			<template v-for="(day, indexDay) of days" :key="day + hour">
+				<td v-if="indexDay == 0">{{ hour }}</td>
+				<td :rowspan="getRows(day, hour)" v-else-if="isTimeSchedule(day, hour)">
+					<ScheduleTableItem :schedules="getSchedule(day, hour)" />
+				</td>
+				<td v-else></td>
+			</template>
 		</tr>
 	</tbody>
 </template>
@@ -15,7 +17,7 @@
 
 	import ScheduleTableItem from "./ScheduleTableItem.vue";
 
-	import { scheduleMap } from "../../interfaces";
+	import { scheduleMap, scheduleTable } from "../../interfaces";
 	import { useHours } from "../../composables/useHours";
 
 	export default defineComponent({
@@ -35,15 +37,26 @@
 			},
 		},
 		setup(props) {
-			const schedules: Ref<any> = toRef(props, "schedules");
+			const schedules: Ref<scheduleMap> = toRef(props, "schedules");
 			const { semanticHours } = useHours();
 
-			const isTimeSchedule = (day: string, hour: string) =>
-				schedules.value[day.slice(0, 2) + hour] != undefined;
+			const isTimeSchedule = (day: string, hour: string) => {
+				return schedules.value[day.slice(0, 2) + hour.replace(":", "")] != undefined;
+			};
 
-			const getSchedule = (day: string, hour: string) => schedules.value[day.slice(0, 2) + hour];
+			const getRows = (day: string, hour: string) => {
+				const scheduleTable: scheduleTable[] = schedules.value[day.slice(0, 2) + hour];
+				return scheduleTable ? scheduleTable[0].duration : 1;
+			};
 
-			return { semanticHours, isTimeSchedule, getSchedule };
+			const getSchedule = (day: string, hour: string) =>
+				schedules.value[day.slice(0, 2) + hour.replace(":", "")];
+
+			const isTdConflic = (day: string, hour: string) => {
+				// TODO: ver que si un td no se tiene que renderizar si alguien ya la esta usando
+			};
+
+			return { semanticHours, isTimeSchedule, getSchedule, getRows };
 		},
 	});
 </script>
