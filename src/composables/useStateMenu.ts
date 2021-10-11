@@ -1,4 +1,4 @@
-import { computed, provide, readonly, ref, Ref } from "vue";
+import { provide, readonly, ref, Ref } from "vue";
 
 import { mapLevels } from "../enums/levels";
 
@@ -18,6 +18,7 @@ export function useStateMenu() {
 
 	const updateSelectCarrer = (carrer: string | null) => {
 		selectCarrer.value = carrer ? carrer.toUpperCase() : carrer;
+		selectLevel.value = null;
 	};
 
 	const updateSelectLevel = (level: string | null) => {
