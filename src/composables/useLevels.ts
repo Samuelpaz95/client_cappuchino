@@ -12,9 +12,12 @@ export function useLevels() {
 		return level ? level.subjects : undefined;
 	};
 
-	const levels: ComputedRef<string | undefined> = computed(() =>
-		store.getters["departments/selectCarrer"]?.levels.map((level: level) => level.code)
-	);
+	const levels: ComputedRef<string[]> = computed(() => {
+		const data: string[] | undefined = store.getters["departments/selectCarrer"]?.levels.map(
+			(level: level) => level.code
+		);
+		return data ? data : [];
+	});
 
 	return {
 		levels,
