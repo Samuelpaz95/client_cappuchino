@@ -6,6 +6,7 @@ interface codeProperty {
 }
 
 export function useSubjects() {
+	const renderTable: number[][] = [];
 	const store = useStore();
 
 	const fotmatData = ({
@@ -18,9 +19,9 @@ export function useSubjects() {
 		levelCode: string;
 	}): scheduleSubject => {
 		const carrer: Icarrer = store.getters["departments/selectCarrer"];
-		const level: level = getLevel(carrer.levels, levelCode);
-		const subject: subject = getLevel(level.subjects, subjectCode);
-		const group: group = getLevel(subject.groups, groupCode);
+		const level: level = getProperties(carrer.levels, levelCode);
+		const subject: subject = getProperties(level.subjects, subjectCode);
+		const group: group = getProperties(subject.groups, groupCode);
 		const scheduleSubject: scheduleSubject = {
 			key: groupCode + subjectCode,
 			subjectName: subject.name,
@@ -28,13 +29,6 @@ export function useSubjects() {
 			schedule: group.schedule,
 		};
 		return scheduleSubject;
-	};
-
-	//TODO: fill logic
-	const resolveConfictiveSchedule = (scheduleSubject: scheduleSubject): scheduleSubject[] => {
-		const resolvedConflicts: scheduleSubject[] = [scheduleSubject];
-
-		return resolvedConflicts;
 	};
 
 	const addSubject = ({
@@ -48,11 +42,7 @@ export function useSubjects() {
 	}) => {
 		try {
 			const schedule = fotmatData({ groupCode, subjectCode, levelCode });
-			const resolvedConflicts = resolveConfictiveSchedule(schedule);
-
-			resolvedConflicts.forEach((schedule) => {
-				store.commit("scheduleSubjects/addScheduleSubjects", schedule);
-			});
+			store.commit("scheduleSubjects/addScheduleSubjects", schedule);
 		} catch (error) {
 			console.error(error);
 		}
@@ -63,7 +53,7 @@ export function useSubjects() {
 		store.commit("scheduleSubjects/removeScheduleSubjects", key);
 	};
 
-	const getLevel = <T extends codeProperty>(iterable: T[], code: string) => {
+	const getProperties = <T extends codeProperty>(iterable: T[], code: string) => {
 		const iteration = iterable.find((iteration) => iteration.code == code);
 		if (!iteration) throw new Error("Not find the code");
 		return iteration;
