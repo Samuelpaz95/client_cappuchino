@@ -1,32 +1,21 @@
 <template>
 	<div class="list-subjects-header">
-		<ButtonIcon @click="deselectLevel" class="list-subjects-header__back" icon="angle" :rotate="270" />
+		<ButtonIcon
+			@click="$emit('level:deselect', null)"
+			class="list-subjects-header__back"
+			icon="angle"
+			:rotate="270"
+		/>
 		<p>{{ actualLevel }}</p>
 	</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-
-	export default defineComponent({
-		name: "HeaderLevel",
-		components: {
-			ButtonIcon,
-		},
-		props: {
-			actualLevel: String,
-		},
-		setup(_, { emit }) {
-			const deselectLevel = () => {
-				emit("level:deselect", null);
-			};
-
-			return {
-				deselectLevel,
-			};
-		},
+	defineProps({
+		actualLevel: String,
 	});
+	defineEmits(["level:deselect"]);
 </script>
 
 <style lang="scss" scoped>

@@ -6,20 +6,8 @@
 	</header>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
-
-	export default defineComponent({
-		name: "BaseHeader",
-		setup() {
-			return {};
-		},
-	});
-</script>
-
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_variables.scss";
-	@import "@/scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
 
 	.header {
 		width: 100%;
@@ -36,7 +24,6 @@
 		}
 
 		&__title {
-			// font-size: 25px;
 			color: $font_color;
 
 			@include large {

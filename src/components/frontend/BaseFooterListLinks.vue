@@ -8,46 +8,35 @@
 	</ul>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 
-	export default defineComponent({
-		name: "BaseFooterListLinks",
-		components: {
-			BaseSystemIcons,
+	const links: { alt: string; route: string }[] = [
+		{
+			alt: "facebook",
+			route: "https://www.facebook.com/scesi",
 		},
-		setup() {
-			const links: { alt: string; route: string }[] = [
-				{
-					alt: "facebook",
-					route: "https://www.facebook.com/scesi",
-				},
-				{
-					alt: "instagram",
-					route: "https://www.instagram.com/scesiumss/?hl=es",
-				},
-				{
-					alt: "twitter",
-					route: "https://twitter.com/ScesiU",
-				},
-				{
-					alt: "github",
-					route: "https://github.com/scesi",
-				},
-				{
-					alt: "youtube",
-					route: "https://www.youtube.com/channel/UCfhSc_xLVxFubp9exyacy0Q",
-				},
-			];
-			return { links };
+		{
+			alt: "instagram",
+			route: "https://www.instagram.com/scesiumss/?hl=es",
 		},
-	});
+		{
+			alt: "twitter",
+			route: "https://twitter.com/ScesiU",
+		},
+		{
+			alt: "github",
+			route: "https://github.com/scesi",
+		},
+		{
+			alt: "youtube",
+			route: "https://www.youtube.com/channel/UCfhSc_xLVxFubp9exyacy0Q",
+		},
+	];
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_variables.scss";
-	@import "@/scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
 
 	.footer-links {
 		display: flex;

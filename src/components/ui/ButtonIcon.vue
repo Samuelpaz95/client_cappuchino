@@ -4,28 +4,22 @@
 	</button>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
 
-	export default defineComponent({
-		components: {
-			BaseSystemIcons,
+	const { icon, height, rotate } = defineProps({
+		icon: {
+			type: String,
+			require: true,
+			default: "",
 		},
-		props: {
-			icon: {
-				type: String,
-				require: true,
-				default: "",
-			},
-			height: {
-				type: String,
-				default: "24",
-			},
-			rotate: {
-				type: Number,
-				default: 0,
-			},
+		height: {
+			type: String,
+			default: "24",
+		},
+		rotate: {
+			type: Number,
+			default: 0,
 		},
 	});
 </script>

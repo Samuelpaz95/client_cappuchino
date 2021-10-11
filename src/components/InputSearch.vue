@@ -22,47 +22,32 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent, onMounted, PropType, Ref, ref, toRef } from "vue";
-
+<script setup lang="ts">
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
-	export default defineComponent({
-		name: "InputSearch",
-		components: {
-			ButtonIcon,
-		},
-		emits: [],
-		props: {
-			listOfItems: {
-				required: true,
-				type: Array as PropType<string[]>,
-				default: () => [],
-			},
-		},
-		setup(props) {
-			const listOfItems: Ref<string[]> = toRef(props, "listOfItems");
-			const inputSearch = ref("");
-			let matches: Ref<string[]> = ref([]);
+	import { onMounted, ref, toRefs, PropType, Ref } from "vue";
 
-			onMounted(() => {
-				matches.value = listOfItems.value;
-			});
-
-			const showOptions = () => {
-				if (inputSearch.value != "") {
-				} else {
-					matches.value = listOfItems.value;
-				}
-			};
-
-			return {
-				inputSearch,
-				matches,
-				showOptions,
-			};
+	const props = defineProps({
+		listOfItems: {
+			required: true,
+			type: Array as PropType<string[]>,
 		},
 	});
+
+	const { listOfItems } = toRefs(props);
+	const inputSearch = ref("");
+	let matches: Ref<string[]> = ref([]);
+
+	onMounted(() => {
+		matches.value = listOfItems.value;
+	});
+
+	const showOptions = () => {
+		if (inputSearch.value != "") {
+		} else {
+			matches.value = listOfItems.value;
+		}
+	};
 </script>
 
 <style scoped lang="scss">

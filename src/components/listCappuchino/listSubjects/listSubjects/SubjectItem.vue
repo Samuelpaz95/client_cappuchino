@@ -8,30 +8,22 @@
 	</li>
 </template>
 
-<script lang="ts">
-	import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+	import { PropType } from "vue";
 
-	import { subject } from "../../../../interfaces";
+	import { subject as ISubject } from "../../../../interfaces";
 	import GroupList from "./GroupList.vue";
 
-	export default defineComponent({
-		name: "SubjectItem",
-		components: {
-			GroupList,
+	defineProps({
+		subject: {
+			type: Object as PropType<ISubject>,
+			default: {},
+			require: true,
 		},
-		props: {
-			subject: {
-				type: Object as PropType<subject>,
-				require: true,
-			},
-			level: {
-				type: String,
-				default: "",
-				require: true,
-			},
-		},
-		setup() {
-			return {};
+		level: {
+			type: String,
+			default: "",
+			require: true,
 		},
 	});
 </script>

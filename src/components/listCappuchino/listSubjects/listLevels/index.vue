@@ -1,33 +1,20 @@
 <template>
 	<ul class="list-subjects-levels">
-		<LevelItem v-for="level in levels" :key="level" :level="level" @level:select="selectLevel" />
+		<LevelItem
+			v-for="level in levels"
+			:key="level"
+			:level="level"
+			@level:select="$emit('level:select', $event)"
+		/>
 	</ul>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
-
+<script setup lang="ts">
 	import LevelItem from "./LevelItem.vue";
 	import { useLevels } from "../../../../composables/useLevels";
+	defineProps(["level:select"]);
 
-	export default defineComponent({
-		name: "ListSubjects",
-		components: {
-			LevelItem,
-		},
-		setup(_, { emit }) {
-			const { levels } = useLevels();
-
-			const selectLevel = (levelInfo: string) => {
-				emit("level:select", levelInfo);
-			};
-
-			return {
-				levels,
-				selectLevel,
-			};
-		},
-	});
+	const { levels } = useLevels();
 </script>
 
 <style lang="scss" scoped>

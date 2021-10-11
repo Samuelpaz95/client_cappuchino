@@ -7,27 +7,14 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
-
+<script setup lang="ts">
 	import { useDays } from "../../composables/useDays";
 	import { useSchedules } from "../../composables/useSchedules";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 
-	export default defineComponent({
-		name: "ScheduleTable",
-		components: {
-			ScheduleTableHeader,
-			ScheduleTableBody,
-		},
-		setup() {
-			const { semanticDays } = useDays();
-			const { schedules } = useSchedules();
-
-			return { semanticDays, schedules };
-		},
-	});
+	const { semanticDays } = useDays();
+	const { schedules } = useSchedules();
 </script>
 
 <style lang="scss" scoped>

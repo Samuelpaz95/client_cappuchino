@@ -9,25 +9,19 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+	import { PropType, computed } from "vue";
 	import { scheduleTable } from "../../interfaces";
 
-	export default defineComponent({
-		name: "ScheduleTableItem",
-		props: {
-			schedules: {
-				require: true,
-				default: () => [],
-				type: Array as PropType<scheduleTable[]>,
-			},
-		},
-		computed: {
-			conflictiveSchedule(): Boolean {
-				return this.schedules.length > 1;
-			},
+	const { schedules } = defineProps({
+		schedules: {
+			require: true,
+			default: () => [],
+			type: Array as PropType<scheduleTable[]>,
 		},
 	});
+
+	const conflictiveSchedule = computed(() => schedules.length > 1);
 </script>
 
 <style lang="scss" scoped>

@@ -199,35 +199,25 @@
 	</svg>
 </template>
 
-<script lang="ts">
-	import { defineComponent, toRef, ref, Ref } from "vue";
+<script setup lang="ts">
+	import { ref } from "vue";
 
-	export default defineComponent({
-		name: "BaseSystemIcons",
-		props: {
-			icon: {
-				type: String,
-				required: true,
-				default: "",
-			},
-			height: {
-				type: String,
-				default: "24",
-			},
-			rotate: {
-				type: Number,
-				default: 0,
-			},
+	const { rotate, height, icon } = defineProps({
+		icon: {
+			default: "",
+			type: String,
 		},
-		setup(props) {
-			const rotate: Ref<number> = toRef(props, "rotate");
-			let styles: Ref<string[]> = ref([`transform: rotate(${rotate.value}deg);`]);
-
-			return {
-				styles,
-			};
+		height: {
+			type: String,
+			default: "24",
+		},
+		rotate: {
+			type: Number,
+			default: 0,
 		},
 	});
+
+	let styles = ref(`transform: rotate(${rotate}deg);`);
 </script>
 
 <style lang="scss" scoped>

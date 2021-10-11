@@ -10,33 +10,22 @@
 	</ul>
 </template>
 
-<script lang="ts">
-	import { defineComponent, Ref, toRef } from "vue";
+<script setup lang="ts">
+	import { ref, toRefs } from "vue";
 
 	import { useLevels } from "../../../../composables/useLevels";
 	import SubjectItem from "./SubjectItem.vue";
 
-	export default defineComponent({
-		name: "SubjetcList",
-		components: {
-			SubjectItem,
-		},
-		props: {
-			level: {
-				type: String,
-				default: "",
-				require: true,
-			},
-		},
-		setup(props) {
-			const level: Ref<string> = toRef(props, "level");
-			const { detailLevel } = useLevels();
-
-			return {
-				subjects: detailLevel(level.value),
-			};
+	const props = defineProps({
+		level: {
+			type: String,
+			default: "",
+			require: true,
 		},
 	});
+	const { level } = toRefs(props);
+	const { detailLevel } = useLevels();
+	const subjects = ref(detailLevel(level.value));
 </script>
 
 <style lang="scss" scoped>

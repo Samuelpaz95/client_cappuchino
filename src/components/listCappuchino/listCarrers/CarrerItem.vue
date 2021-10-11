@@ -8,49 +8,32 @@
 			</div>
 		</span>
 		<span class="list-item-carrer__actions">
-			<ButtonIcon icon="angle" :rotate="90" @click="selectCarrer" />
+			<ButtonIcon icon="angle" :rotate="90" @click="$emit('carrer:select', nameCarrer)" />
 		</span>
 	</li>
 </template>
 
-<script lang="ts">
-	import { defineComponent, computed, toRef, Ref } from "vue";
+<script setup="props, { emit }" lang="ts">
+	import { computed } from "vue";
 	import { useStore } from "vuex";
 
+	const store = useStore();
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
-	export default defineComponent({
-		name: "ListItemCarrers",
-		components: {
-			ButtonIcon,
-		},
-		emits: ["carrer:select"],
-		props: {
-			nameCarrer: {
-				type: String,
-				default: "",
-				require: true,
-			},
-			updateAt: {
-				type: String,
-				require: true,
-			},
-		},
-		setup(props, { emit }) {
-			const nameCarrer: Ref<string> = toRef(props, "nameCarrer");
-			const store = useStore();
-			const departmentName = computed(() => store.getters["departments/departmentInfo"].name);
+	defineEmits(["carrer:select"]);
 
-			const selectCarrer = () => {
-				emit("carrer:select", nameCarrer.value);
-			};
-
-			return {
-				departmentName,
-				selectCarrer,
-			};
+	const props = defineProps({
+		nameCarrer: {
+			type: String,
+			default: "",
+			require: true,
+		},
+		updateAt: {
+			type: String,
+			require: true,
 		},
 	});
+	const departmentName = computed(() => store.getters["departments/departmentInfo"].name);
 </script>
 
 <style scoped lang="scss">

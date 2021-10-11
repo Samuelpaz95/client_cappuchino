@@ -10,35 +10,22 @@
 	</ul>
 </template>
 
-<script lang="ts">
-	import { computed, defineComponent, inject } from "vue";
+<script setup lang="ts">
+	import { computed, inject } from "vue";
 	import { useStore } from "vuex";
 
 	import CarrerItem from "./CarrerItem.vue";
 
-	export default defineComponent({
-		name: "ListCarrers",
-		components: {
-			CarrerItem,
-		},
-		setup() {
-			const store = useStore();
-			const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
-			const updateInCarrers = inject("updateInCarrers") as Function;
-			const updateSelectCarrer = inject("updateSelectCarrer") as Function;
+	const store = useStore();
+	const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
+	const updateInCarrers = inject("updateInCarrers") as Function;
+	const updateSelectCarrer = inject("updateSelectCarrer") as Function;
 
-			const selectCarrer = (nameCarrer: string) => {
-				store.dispatch("departments/actionGetDepartmentCarrer", nameCarrer);
-				updateSelectCarrer(nameCarrer);
-				updateInCarrers(false);
-			};
-
-			return {
-				departmentCarrers,
-				selectCarrer,
-			};
-		},
-	});
+	const selectCarrer = (nameCarrer: string) => {
+		store.dispatch("departments/actionGetDepartmentCarrer", nameCarrer);
+		updateSelectCarrer(nameCarrer);
+		updateInCarrers(false);
+	};
 </script>
 
 <style scoped lang="scss">

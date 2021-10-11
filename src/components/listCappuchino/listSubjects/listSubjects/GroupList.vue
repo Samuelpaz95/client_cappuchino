@@ -10,50 +10,40 @@
 	</ul>
 </template>
 
-<script lang="ts">
-	import { defineComponent, PropType, Ref, toRef } from "vue";
+<script setup lang="ts">
+	import { PropType, toRefs } from "vue";
 
 	import { useSubjects } from "../../../../composables/useSubjects";
-	import { groups } from "../../../../interfaces";
+	import { groups as IGroups } from "../../../../interfaces";
 	import GroupItem from "./GroupItem.vue";
 
-	export default defineComponent({
-		name: "GroupList",
-		components: {
-			GroupItem,
+	const props = defineProps({
+		groups: {
+			type: Array as PropType<IGroups>,
+			default: [],
+			require: true,
 		},
-		props: {
-			groups: {
-				type: Object as PropType<groups>,
-				require: true,
-			},
-			codeSubject: {
-				type: String,
-				require: true,
-				default: "",
-			},
-			level: {
-				type: String,
-				default: "",
-				require: true,
-			},
+		codeSubject: {
+			type: String,
+			default: "",
+			require: true,
 		},
-		setup(props) {
-			const subjectCode: Ref<string> = toRef(props, "codeSubject");
-			const levelCode: Ref<string> = toRef(props, "level");
-			const { addSubject, removeSubject } = useSubjects();
-
-			const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string }) => {
-				if (isSelect) {
-					addSubject({ groupCode, levelCode: levelCode.value, subjectCode: subjectCode.value });
-				} else {
-					removeSubject({ groupCode, subjectCode: subjectCode.value });
-				}
-			};
-
-			return { selectGroup };
+		level: {
+			type: String,
+			default: "",
+			require: true,
 		},
 	});
+	const { codeSubject, level } = toRefs(props);
+	const { addSubject, removeSubject } = useSubjects();
+
+	const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string }) => {
+		if (isSelect) {
+			addSubject({ groupCode, levelCode: level.value, subjectCode: codeSubject.value });
+		} else {
+			removeSubject({ groupCode, subjectCode: codeSubject.value });
+		}
+	};
 </script>
 
 <style lang="scss" scoped>

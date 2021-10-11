@@ -11,16 +11,13 @@
 	</thead>
 </template>
 
-<script lang="ts">
-	import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+	import { PropType } from "vue";
 
-	export default defineComponent({
-		name: "ScheduleTableHeader",
-		props: {
-			days: {
-				type: Array as PropType<string[]>,
-				require: true,
-			},
+	defineProps({
+		days: {
+			type: Array as PropType<string[]>,
+			require: true,
 		},
 	});
 </script>
