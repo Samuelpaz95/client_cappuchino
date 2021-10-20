@@ -3,7 +3,7 @@ import { useStore } from "vuex";
 
 import { scheduleSubject, scheduleMap } from "../interfaces";
 
-export function useSchedules() {
+export function useSchedulesTable() {
 	const store = useStore();
 
 	const schedules: ComputedRef<scheduleMap> = computed(() => {

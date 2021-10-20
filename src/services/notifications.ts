@@ -1,5 +1,5 @@
 import { http } from "./httpRequest";
-import { Inotifications } from "@/interfaces";
+import { Inotifications } from "../interfaces";
 
 class NotificationsService {
 	private readonly breakPoint = "notifications";

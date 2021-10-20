@@ -11,10 +11,10 @@
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/useScheduleTime";
-	import { useSchedules } from "../../composables/useParseSchedules";
+	import { useSchedulesTable } from "../../composables/useSchedulesTable";
 
 	const { semanticDays } = useScheduleTime();
-	const { schedules } = useSchedules();
+	const { schedules } = useSchedulesTable();
 </script>
 
 <style lang="scss" scoped>
