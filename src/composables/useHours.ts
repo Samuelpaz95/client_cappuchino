@@ -9,11 +9,8 @@ export function useHours() {
 	const convertToSemanticHour = (hour: string) =>
 		hour.slice(0, hour.length > 3 ? 2 : 1) + ":" + hour.slice(-2);
 
-	const compareHours = (hour: string, semanticHour: string) => semanticHour == convertToSemanticHour(hour);
-
 	return {
 		hours,
 		semanticHours: semanticHours(),
-		compareHours,
 	};
 }

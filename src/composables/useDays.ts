@@ -10,7 +10,5 @@ export function useDays() {
 		return semanticDays;
 	};
 
-	const compareDays = (day: string, semanticDay: string) => semanticDay.slice(0, 2) == day;
-
-	return { days, semanticDays: semanticDays(), compareDays };
+	return { days, semanticDays: semanticDays() };
 }
