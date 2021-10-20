@@ -1,54 +1,33 @@
 import { useStore } from "vuex";
 import { Icarrer, subject, level, group, scheduleSubject } from "../interfaces";
 
-interface codeProperty {
-	code: string;
-}
-
 export function useSubjects() {
-	const renderTable: number[][] = [];
 	const store = useStore();
 
-	const fotmatData = ({
-		groupCode,
-		subjectCode,
-		levelCode,
-	}: {
-		groupCode: string;
-		subjectCode: string;
-		levelCode: string;
-	}): scheduleSubject => {
+	const formatSchedules = ({ groupCode, subjectCode, levelCode }: propsFormat): scheduleSubject => {
 		const carrer: Icarrer = store.getters["departments/selectCarrer"];
 		const level: level = getProperties(carrer.levels, levelCode);
 		const subject: subject = getProperties(level.subjects, subjectCode);
 		const group: group = getProperties(subject.groups, groupCode);
-		const scheduleSubject: scheduleSubject = {
+
+		return {
 			key: groupCode + subjectCode,
 			subjectName: subject.name,
 			groupCode: groupCode,
 			schedule: group.schedule,
 		};
-		return scheduleSubject;
 	};
 
-	const addSubject = ({
-		groupCode,
-		subjectCode,
-		levelCode,
-	}: {
-		groupCode: string;
-		subjectCode: string;
-		levelCode: string;
-	}) => {
+	const addSubject = ({ groupCode, subjectCode, levelCode }: propsFormat): void => {
 		try {
-			const schedule = fotmatData({ groupCode, subjectCode, levelCode });
+			const schedule = formatSchedules({ groupCode, subjectCode, levelCode });
 			store.commit("scheduleSubjects/addScheduleSubjects", schedule);
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	const removeSubject = ({ groupCode, subjectCode }: { groupCode: string; subjectCode: string }) => {
+	const removeSubject = ({ groupCode, subjectCode }: propsRemoveData): void => {
 		const key = groupCode + subjectCode;
 		store.commit("scheduleSubjects/removeScheduleSubjects", key);
 	};
@@ -60,4 +39,19 @@ export function useSubjects() {
 	};
 
 	return { addSubject, removeSubject };
+}
+
+interface codeProperty {
+	code: string;
+}
+
+interface propsFormat {
+	groupCode: string;
+	subjectCode: string;
+	levelCode: string;
+}
+
+interface propsRemoveData {
+	groupCode: string;
+	subjectCode: string;
 }
