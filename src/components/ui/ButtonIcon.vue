@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-	import BaseSystemIcons from "@/components/BaseSystemIcons.vue";
+	import BaseSystemIcons from "@/components/ui/BaseSystemIcons.vue";
 
 	const { icon, height, rotate } = defineProps({
 		icon: {
