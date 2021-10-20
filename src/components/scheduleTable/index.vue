@@ -8,10 +8,10 @@
 </template>
 
 <script setup lang="ts">
-	import { useDays } from "../../composables/useDays";
-	import { useSchedules } from "../../composables/useParseSchedules";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
+	import { useDays } from "../../composables/useDays";
+	import { useSchedules } from "../../composables/useParseSchedules";
 
 	const { semanticDays } = useDays();
 	const { schedules } = useSchedules();

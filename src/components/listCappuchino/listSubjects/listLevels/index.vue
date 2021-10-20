@@ -12,8 +12,8 @@
 <script setup lang="ts">
 	import LevelItem from "./LevelItem.vue";
 	import { useLevels } from "../../../../composables/useLevels";
-	defineProps(["level:select"]);
 
+	defineEmits(["level:select"]);
 	const { levels } = useLevels();
 </script>
 

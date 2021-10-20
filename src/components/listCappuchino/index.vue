@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-	import { useStateMenu } from "../../composables/useStateMenu";
 	import Header from "./Header.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
+	import { useStateMenu } from "../../composables/useStateMenu";
 
 	const { isOpenMenu, isInCarrers } = useStateMenu();
 </script>

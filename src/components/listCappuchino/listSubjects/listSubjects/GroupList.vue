@@ -13,9 +13,9 @@
 <script setup lang="ts">
 	import { PropType, toRefs } from "vue";
 
+	import GroupItem from "./GroupItem.vue";
 	import { useSubjects } from "../../../../composables/useSubjects";
 	import { groups as IGroups } from "../../../../interfaces";
-	import GroupItem from "./GroupItem.vue";
 
 	const props = defineProps({
 		groups: {

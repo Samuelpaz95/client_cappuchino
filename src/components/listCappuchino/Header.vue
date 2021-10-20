@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 	import { computed, inject, Ref, ref } from "vue";
-
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	const icons = ref(["bars", "close"]);

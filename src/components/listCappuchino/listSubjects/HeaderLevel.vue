@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
+
 	defineProps({
 		actualLevel: String,
 	});

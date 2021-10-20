@@ -16,9 +16,9 @@
 <script setup="props, { emit }" lang="ts">
 	import { computed } from "vue";
 	import { useStore } from "vuex";
+	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	const store = useStore();
-	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	defineEmits(["carrer:select"]);
 

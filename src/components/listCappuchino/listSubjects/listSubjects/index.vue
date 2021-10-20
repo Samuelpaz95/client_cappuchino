@@ -11,10 +11,9 @@
 </template>
 
 <script setup lang="ts">
-	import { ref, toRefs } from "vue";
-
-	import { useLevels } from "../../../../composables/useLevels";
+	import { toRefs } from "vue";
 	import SubjectItem from "./SubjectItem.vue";
+	import { useLevels } from "../../../../composables/useLevels";
 
 	const props = defineProps({
 		level: {
@@ -25,7 +24,7 @@
 	});
 	const { level } = toRefs(props);
 	const { detailLevel } = useLevels();
-	const subjects = ref(detailLevel(level.value));
+	const subjects = detailLevel(level.value);
 </script>
 
 <style lang="scss" scoped>

@@ -10,9 +10,8 @@
 
 <script setup lang="ts">
 	import { PropType } from "vue";
-
-	import { subject as ISubject } from "../../../../interfaces";
 	import GroupList from "./GroupList.vue";
+	import { subject as ISubject } from "../../../../interfaces";
 
 	defineProps({
 		subject: {

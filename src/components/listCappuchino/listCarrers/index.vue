@@ -13,7 +13,6 @@
 <script setup lang="ts">
 	import { computed, inject } from "vue";
 	import { useStore } from "vuex";
-
 	import CarrerItem from "./CarrerItem.vue";
 
 	const store = useStore();

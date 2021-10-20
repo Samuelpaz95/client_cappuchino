@@ -9,7 +9,6 @@
 
 <script setup lang="ts">
 	import { inject, Ref, toRef } from "vue";
-
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
 	defineEmits(["level:select"]);
