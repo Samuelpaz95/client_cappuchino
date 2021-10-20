@@ -7,7 +7,11 @@ interface scheduleTable extends schedule {
 }
 
 interface scheduleMap {
-	[index: string]: scheduleTable[];
+	[index: string]: {
+		schedules: scheduleTable[];
+		duration: number;
+		isConfictive: boolean;
+	};
 }
 
 export { scheduleTable, scheduleMap };

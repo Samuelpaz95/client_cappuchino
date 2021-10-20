@@ -30,9 +30,10 @@
 	const { semanticHours, semanticDays } = useScheduleTime();
 
 	const isTimeSchedule = (day: string, hour: string) =>
-		schedules.value[day.slice(0, 2) + hour.replace(":", "")] != undefined;
+		schedules.value[day.slice(0, 2) + hour.replace(":", "")].schedules.length != 0;
 
-	const getSchedule = (day: string, hour: string) => schedules.value[day.slice(0, 2) + hour.replace(":", "")];
+	const getSchedule = (day: string, hour: string) =>
+		schedules.value[day.slice(0, 2) + hour.replace(":", "")].schedules;
 </script>
 
 <style lang="scss" scoped>
