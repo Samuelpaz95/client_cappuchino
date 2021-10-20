@@ -2,7 +2,7 @@
 	<div class="schedule-table">
 		<table class="schedule-table__table">
 			<schedule-table-header :days="semanticDays"> Horarios Disponibles </schedule-table-header>
-			<ScheduleTableBody :days="semanticDays" :schedules="schedules" />
+			<ScheduleTableBody :schedules="schedules" />
 		</table>
 	</div>
 </template>
@@ -10,10 +10,10 @@
 <script setup lang="ts">
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
-	import { useDays } from "../../composables/useDays";
+	import { useScheduleTime } from "../../composables/useScheduleTime";
 	import { useSchedules } from "../../composables/useParseSchedules";
 
-	const { semanticDays } = useDays();
+	const { semanticDays } = useScheduleTime();
 	const { schedules } = useSchedules();
 </script>
 
@@ -30,6 +30,7 @@
 		&__table {
 			border-collapse: collapse;
 			margin: 1rem;
+			width: 100%;
 		}
 	}
 </style>
