@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 	import { useDays } from "../../composables/useDays";
-	import { useSchedules } from "../../composables/useSchedules";
+	import { useSchedules } from "../../composables/useParseSchedules";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 
