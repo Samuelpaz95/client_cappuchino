@@ -3,10 +3,12 @@
 		<tr v-for="hour of semanticHours" :key="hour">
 			<template v-for="(day, indexDay) of semanticDays" :key="day + hour">
 				<td v-if="indexDay == 0">{{ hour }}</td>
-				<td v-else-if="isTimeSchedule(day, hour)">
-					<ScheduleTableItem :schedules="getSchedule(day, hour)" />
-				</td>
-				<td v-else></td>
+				<template v-else-if="isTimeSchedule(day, hour)">
+					<td :rowspan="getRowSpan(day, hour)">
+						<ScheduleTableItem :schedules="getSchedule(day, hour)" />
+					</td>
+				</template>
+				<td v-else-if="canRender(day, hour)"></td>
 			</template>
 		</tr>
 	</tbody>
@@ -29,11 +31,16 @@
 	const { schedules } = toRefs(props);
 	const { semanticHours, semanticDays } = useScheduleTime();
 
-	const isTimeSchedule = (day: string, hour: string) =>
-		schedules.value[day.slice(0, 2) + hour.replace(":", "")].schedules.length != 0;
+	const getScheduleItem = (day: string, hour: string) =>
+		schedules.value[day.slice(0, 2) + hour.replace(":", "")];
 
-	const getSchedule = (day: string, hour: string) =>
-		schedules.value[day.slice(0, 2) + hour.replace(":", "")].schedules;
+	const getSchedule = (day: string, hour: string) => getScheduleItem(day, hour).schedules;
+
+	const isTimeSchedule = (day: string, hour: string) => getSchedule(day, hour).length != 0;
+
+	const getRowSpan = (day: string, hour: string) => getScheduleItem(day, hour).duration;
+
+	const canRender = (day: string, hour: string) => getRowSpan(day, hour) != 0;
 </script>
 
 <style lang="scss" scoped>

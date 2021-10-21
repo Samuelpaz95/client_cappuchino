@@ -15,9 +15,12 @@ export function useScheduleTime() {
 	const convertToSemanticHour = (hour: string) =>
 		hour.slice(0, hour.length > 3 ? 2 : 1) + ":" + hour.slice(-2);
 
+	const nextHourByStep = (hour: string, step: number) => hours.value[hours.value.indexOf(hour) + step];
+
 	return {
 		hours,
 		semanticHours: semanticHours(),
+		nextHourByStep,
 		days,
 		semanticDays: semanticDays(),
 	};
