@@ -9,8 +9,7 @@ export function useSchedulesTable() {
 
 	const schedules: ComputedRef<scheduleMap> = computed(() => {
 		const scheduleSubjects: scheduleSubject[] = store.getters["scheduleSubjects/scheduleSubjects"];
-		// Se crea el objeto en cada busqueda :'v
-		const schedulesTable: scheduleMap = buildScheduleMap();
+		const schedulesTable: scheduleMap = Object.assign({}, emptyScheduleTable);
 
 		scheduleSubjects.forEach((scheduleSubject) => {
 			const { schedule: schedules, ...subject } = scheduleSubject;
@@ -58,6 +57,7 @@ export function useSchedulesTable() {
 
 		return schedulesTable;
 	};
+	const emptyScheduleTable: scheduleMap = buildScheduleMap();
 
 	return { schedules };
 }
