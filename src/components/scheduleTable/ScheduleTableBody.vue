@@ -5,7 +5,7 @@
 				<td v-if="indexDay == 0">{{ hour }}</td>
 				<template v-else-if="isTimeSchedule(day, hour)">
 					<td :rowspan="getRowSpan(day, hour)">
-						<ScheduleTableItem :schedules="getSchedule(day, hour)" />
+						<ScheduleTableItem :schedulesItem="getScheduleItem(day, hour)" />
 					</td>
 				</template>
 				<td v-else-if="canRender(day, hour)"></td>
@@ -34,9 +34,7 @@
 	const getScheduleItem = (day: string, hour: string) =>
 		schedules.value[day.slice(0, 2) + hour.replace(":", "")];
 
-	const getSchedule = (day: string, hour: string) => getScheduleItem(day, hour).schedules;
-
-	const isTimeSchedule = (day: string, hour: string) => getSchedule(day, hour).length != 0;
+	const isTimeSchedule = (day: string, hour: string) => getScheduleItem(day, hour).schedules.length != 0;
 
 	const getRowSpan = (day: string, hour: string) => getScheduleItem(day, hour).duration;
 

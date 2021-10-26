@@ -1,27 +1,23 @@
 <template>
-	<div
-		v-for="schedule in schedules"
-		:key="schedule.key"
-		:class="[{ 'schedule-item__conflictive': conflictiveSchedule }, 'schedule-item']"
-	>
-		<div>{{ schedule.subjectName }}</div>
-		<span>G {{ schedule.groupCode }}</span> - <span>A {{ schedule.room }}</span>
+	<div :class="[{ 'schedule-item__conflictive': schedulesItem.isConfictive }, 'schedule-item']">
+		<div v-for="schedule of schedulesItem.schedules" :key="schedule.key">
+			<div>{{ schedule.subjectName }}</div>
+			<span>G {{ schedule.groupCode }}</span> - <span>A {{ schedule.room }}</span>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import { PropType, computed } from "vue";
-	import { scheduleTable } from "../../interfaces";
+	import { PropType } from "vue";
+	import { scheduleItem } from "../../interfaces";
 
-	const { schedules } = defineProps({
-		schedules: {
+	const { schedulesItem } = defineProps({
+		schedulesItem: {
 			require: true,
 			default: () => [],
-			type: Array as PropType<scheduleTable[]>,
+			type: Object as PropType<scheduleItem>,
 		},
 	});
-
-	const conflictiveSchedule = computed(() => schedules.length > 1);
 </script>
 
 <style lang="scss" scoped>
