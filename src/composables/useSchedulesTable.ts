@@ -2,7 +2,7 @@ import { computed, ComputedRef } from "vue";
 import { useStore } from "vuex";
 import { useScheduleTime } from "./useScheduleTime";
 import { scheduleSubject, scheduleMap, schedule } from "../interfaces";
-import { copyObject } from "../lib/copyObject";
+import { copyObject } from "../utils/copyObject";
 
 export function useSchedulesTable() {
 	const store = useStore();
