@@ -1,7 +1,7 @@
 <template>
 	<ul class="footer-links">
 		<li class="footer-links__link" v-for="(value, index) in links" :key="index">
-			<a :href="value.route" target="_blank" :hreflang="value.alt" referrerpolicy="no-referrer">
+			<a :href="value.route" target="_blank" :aria-label="value.alt" :hreflang="value.alt" rel="noopener">
 				<BaseSystemIcons :icon="value.alt" />
 			</a>
 		</li>
@@ -43,8 +43,6 @@
 		padding: 0;
 
 		&__link {
-			position: relative;
-			bottom: -6px;
 			padding: 0 5px;
 			list-style: none;
 
@@ -54,6 +52,11 @@
 
 			:visited {
 				color: $font_color;
+			}
+
+			a {
+				display: flex;
+				align-items: center;
 			}
 
 			@include large {

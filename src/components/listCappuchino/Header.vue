@@ -2,12 +2,12 @@
 	<header class="list-carrers-header">
 		<template v-if="isOpenMenu">
 			<template v-if="!isInCarrers">
-				<ButtonIcon icon="angle" :rotate="270" @click="updateInCarrers(true)" />
+				<ButtonIcon aria-label="close-menu" icon="angle" :rotate="270" @click="updateInCarrers(true)" />
 				<p>{{ selectCarrer }}</p>
 			</template>
 			<p v-else>CARRERAS</p>
 		</template>
-		<ButtonIcon :icon="typeIcon" @click="updateOpenMenu(!isOpenMenu)" />
+		<ButtonIcon aria-label="burger-menu" :icon="typeIcon" @click="updateOpenMenu(!isOpenMenu)" />
 	</header>
 </template>
 
