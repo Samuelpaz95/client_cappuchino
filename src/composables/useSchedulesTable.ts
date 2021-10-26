@@ -2,6 +2,7 @@ import { computed, ComputedRef } from "vue";
 import { useStore } from "vuex";
 import { useScheduleTime } from "./useScheduleTime";
 import { scheduleSubject, scheduleMap, schedule } from "../interfaces";
+import { copyObject } from "../lib/copyObject";
 
 export function useSchedulesTable() {
 	const store = useStore();
@@ -9,18 +10,21 @@ export function useSchedulesTable() {
 
 	const schedules: ComputedRef<scheduleMap> = computed(() => {
 		const scheduleSubjects: scheduleSubject[] = store.getters["scheduleSubjects/scheduleSubjects"];
-		const schedulesTable: scheduleMap = Object.assign({}, emptyScheduleTable);
+		const schedulesTable: scheduleMap = copyObject(emptyScheduleTable);
 
 		scheduleSubjects.forEach((scheduleSubject) => {
 			const { schedule: schedules, ...subject } = scheduleSubject;
 			schedules.forEach((schedule) => {
+				const actualSchedule = schedulesTable[schedule.day + schedule.start];
 				const isConflictive = isConfictive(schedulesTable, schedule);
 				if (!isConflictive) {
-					schedulesTable[schedule.day + schedule.start].schedules.push({ ...subject, ...schedule });
-					schedulesTable[schedule.day + schedule.start].duration = schedule.duration;
-					updateDuration(schedulesTable, schedule);
-				} else {
-					//TODO: processing conflicts
+					actualSchedule.schedules.push({ ...subject, ...schedule });
+					actualSchedule.duration = schedule.duration;
+					updateDurationOfCellsInTable(schedulesTable, schedule);
+				} else if (actualSchedule.duration == schedule.duration) {
+					actualSchedule.schedules.push({ ...subject, ...schedule });
+					actualSchedule.isConfictive = true;
+					console.log(actualSchedule);
 				}
 			});
 		});
@@ -36,7 +40,10 @@ export function useSchedulesTable() {
 		return false;
 	};
 
-	const updateDuration = (schedulesTable: scheduleMap, { day, duration, start }: schedule): void => {
+	const updateDurationOfCellsInTable = (
+		schedulesTable: scheduleMap,
+		{ day, duration, start }: schedule
+	): void => {
 		for (let i = 1; i < duration; i++) {
 			const nextHour = nextHourByStep(start, i);
 			schedulesTable[day + nextHour].duration = 0;
