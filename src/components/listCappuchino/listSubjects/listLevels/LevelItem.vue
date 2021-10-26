@@ -1,9 +1,9 @@
 <template>
 	<li class="list-subjects-level">
-		<div class="list-subjects-level__row">
-			<span>{{ formatLevel(level) }}</span>
-			<ButtonIcon @click="$emit('level:select', level)" icon="angle" :rotate="90" />
-		</div>
+		<span class="list-subjects-level__level" @click="$emit('level:select', level)">{{
+			formatLevel(level)
+		}}</span>
+		<ButtonIcon icon="angle" :rotate="90" @click="$emit('level:select', level)" />
 	</li>
 </template>
 
@@ -24,12 +24,17 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/scss/abstracts/variables.scss";
 	.list-subjects-level {
 		list-style: none;
+		height: $lineHeigth;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-		&__row {
-			display: flex;
-			justify-content: space-between;
+		&__level {
+			cursor: pointer;
+			font-weight: 700;
 		}
 	}
 </style>
