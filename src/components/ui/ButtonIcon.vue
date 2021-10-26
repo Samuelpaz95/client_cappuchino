@@ -32,5 +32,6 @@
 		background-color: inherit;
 		border: none;
 		color: inherit;
+		cursor: pointer;
 	}
 </style>
