@@ -41,10 +41,10 @@
 
 	.list-item-carrer {
 		margin: 5px;
-		height: $lineHeigth;
 		list-style: none;
 		display: flex;
 		justify-content: space-between;
+		padding: 1rem;
 
 		&__content {
 			font-size: 0.8rem;

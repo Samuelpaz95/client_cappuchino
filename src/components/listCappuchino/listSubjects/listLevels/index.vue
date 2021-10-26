@@ -3,6 +3,7 @@
 		<LevelItem
 			v-for="level in levels"
 			:key="level"
+			class="list-subjects-levels__item"
 			:level="level"
 			@level:select="$emit('level:select', $event)"
 		/>
@@ -21,7 +22,11 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.list-subjects-levels {
-		padding: 1rem;
+		padding: 0;
 		margin: 0;
+
+		&__item:not(:last-child) {
+			border-bottom: 1px solid transparentize($font_color, 0.7);
+		}
 	}
 </style>

@@ -3,6 +3,7 @@
 		<CarrerItem
 			v-for="(value, index) in departmentCarrers"
 			:key="index"
+			class="list-carrers__item"
 			:nameCarrer="value.name"
 			:updateAt="value.semester"
 			@carrer:select="selectCarrer"
@@ -31,7 +32,11 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.list-carrers {
-		padding: 1rem;
+		padding: 0;
 		margin: 0;
+
+		&__item:not(:last-child) {
+			border-bottom: 1px solid transparentize($font_color, 0.7);
+		}
 	}
 </style>

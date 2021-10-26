@@ -21,8 +21,6 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.list-carrers {
-		background-color: $primary_color;
-
 		&__list {
 			padding: 1rem;
 			margin: 0;
