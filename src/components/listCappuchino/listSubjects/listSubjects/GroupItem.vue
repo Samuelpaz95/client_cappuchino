@@ -1,6 +1,6 @@
 <template>
 	<li class="group-item">
-		<input v-model="isSelect" class="group-item__radio" type="checkbox" :id="groupCode + nameTeacher" />
+		<input v-model="isSelect" class="group-item__input" type="checkbox" :id="groupCode + nameTeacher" />
 		<label class="group-item__label" :for="groupCode + nameTeacher">
 			<span class="group-item__teacher">{{ transformNameTeacherToCapitalize }}</span>
 			<span class="group-item__group">{{ groupCode }}</span>
@@ -48,6 +48,7 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/scss/abstracts/variables.scss";
 	.group-item {
 		display: flex;
 		line-height: 24px;
@@ -67,8 +68,9 @@
 			padding-bottom: 2px;
 		}
 
-		&__radio {
+		&__input {
 			margin: 0;
+			accent-color: $secondary_color;
 		}
 
 		&__group {
