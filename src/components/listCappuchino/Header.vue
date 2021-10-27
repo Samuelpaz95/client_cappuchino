@@ -38,7 +38,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables.scss", "@/scss/abstracts/mixins.scss";
 
 	.list-carrers-header {
 		display: flex;
@@ -46,6 +46,12 @@
 		padding: 0.5rem 1rem;
 		height: $lineHeigth;
 		background-color: $primary_color;
+
+		@include large {
+			border-top-left-radius: $border_radius;
+			border-top-right-radius: $border_radius;
+		}
+
 		p {
 			font-weight: 700;
 			margin: 0;
