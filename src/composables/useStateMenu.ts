@@ -1,9 +1,14 @@
-import { provide, readonly, ref, Ref } from "vue";
+import { provide, readonly, ref, Ref, watchEffect } from "vue";
 
 import { mapLevels } from "../enums/levels";
+import { mediaQueries } from "../enums/mediaQueries";
+import { useMediaQueries } from "./useMediaQueries";
 
 export function useStateMenu() {
-	const isOpenMenu = ref(false);
+	const { listenMediaQuery } = useMediaQueries();
+
+	const isInDesktop = ref(false);
+	const isOpenMenu = ref(isInDesktop.value);
 	const isInCarrers = ref(true);
 	const selectCarrer: Ref<string | null> = ref(null);
 	const selectLevel: Ref<string | null> = ref(null);
@@ -27,10 +32,19 @@ export function useStateMenu() {
 
 	const formatLevel = (level: string) => mapLevels[level];
 
+	listenMediaQuery(mediaQueries.isLarge, (evt) => {
+		isInDesktop.value = evt.matches;
+	});
+
+	watchEffect(() => {
+		isOpenMenu.value = isInDesktop.value || isOpenMenu.value;
+	});
+
 	provide("isOpenMenu", readonly(isOpenMenu));
 	provide("isInCarrers", readonly(isInCarrers));
 	provide("selectCarrer", readonly(selectCarrer));
 	provide("selectLevel", readonly(selectLevel));
+	provide("isInDesktop", readonly(isInDesktop));
 
 	provide("updateOpenMenu", updateOpenMenu);
 	provide("updateInCarrers", updateInCarrers);

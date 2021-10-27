@@ -2,33 +2,37 @@
 	<header class="list-carrers-header">
 		<template v-if="isOpenMenu">
 			<template v-if="!isInCarrers">
-				<ButtonIcon aria-label="close-menu" icon="angle" :rotate="270" @click="updateInCarrers(true)" />
+				<ButtonIcon aria-label="back-to-menu" icon="angle" :rotate="270" @click="updateInCarrers(true)" />
 				<p>{{ selectCarrer }}</p>
 			</template>
 			<p v-else>CARRERAS</p>
 		</template>
-		<ButtonIcon aria-label="burger-menu" :icon="typeIcon" @click="updateOpenMenu(!isOpenMenu)" />
+		<ButtonIcon
+			v-if="!isOpenMenu"
+			aria-label="burger-menu"
+			icon="bars"
+			@click="updateOpenMenu(!isOpenMenu)"
+		/>
+		<ButtonIcon
+			v-if="isOpenMenu && !isInDesktop"
+			aria-label="close-menu"
+			icon="close"
+			@click="updateOpenMenu(!isOpenMenu)"
+		/>
 	</header>
 </template>
 
 <script setup lang="ts">
-	import { computed, inject, Ref, ref } from "vue";
+	import { inject, Ref } from "vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
-	const icons = ref(["bars", "close"]);
-	const isOpenMenu: Ref<boolean> | undefined = inject("isOpenMenu");
-	const isInCarrers: Ref<boolean> | undefined = inject("isInCarrers");
-	const selectCarrer: Ref<string | null> | undefined = inject("selectCarrer");
+	const isOpenMenu = inject("isOpenMenu") as Ref<boolean>;
+	const isInCarrers = inject("isInCarrers") as Ref<boolean>;
+	const selectCarrer = inject("selectCarrer") as Ref<string | null>;
+	const isInDesktop = inject("isInDesktop") as Ref<string | null>;
 
 	const updateInCarrers = inject("updateInCarrers") as Function;
 	const updateOpenMenu = inject("updateOpenMenu") as Function;
-
-	const typeIcon = computed(() => {
-		if (isOpenMenu) {
-			return icons.value[Number(isOpenMenu.value)];
-		}
-		return icons.value[0];
-	});
 </script>
 
 <style scoped lang="scss">
