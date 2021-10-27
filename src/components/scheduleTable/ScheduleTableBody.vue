@@ -59,12 +59,8 @@
 			}
 		}
 
-		:nth-last-child(2) td {
-			border-bottom: none;
-		}
-
 		:last-child td {
-			display: none;
+			border-bottom: none;
 		}
 	}
 </style>

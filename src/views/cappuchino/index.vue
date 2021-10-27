@@ -9,23 +9,23 @@
 
 <script setup lang="ts">
 	import { useDepartment } from "../../composables/useDepartment";
-	import ListCappuchino from "@/components/listCappuchino/index.vue";
-	import ScheduleTable from "@/components/scheduleTable/index.vue";
+	import ListCappuchino from "../../components/listCappuchino/index.vue";
+	import ScheduleTable from "../../components/scheduleTable/index.vue";
 
 	const { fetchDepartmentData } = useDepartment();
 	fetchDepartmentData();
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/_mixins.scss";
 
 	.cappuchino {
 		display: grid;
 		grid-template-columns: 1fr;
 
 		@include large {
-			grid-template-columns: 1fr 3fr;
-			grid-template-rows: 1fr;
+			grid-template-columns: 1fr 2fr;
+			align-items: start;
 		}
 
 		&__table {

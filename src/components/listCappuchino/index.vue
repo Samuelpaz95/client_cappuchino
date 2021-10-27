@@ -2,8 +2,10 @@
 	<div class="list-carrers">
 		<Header class="list-carrers__header" />
 		<template v-if="isOpenMenu">
-			<ListCarrers v-if="isInCarrers" />
-			<ListSubjects v-else />
+			<div class="list-carrers__options">
+				<ListCarrers v-if="isInCarrers" />
+				<ListSubjects v-else />
+			</div>
 		</template>
 	</div>
 </template>
@@ -29,8 +31,14 @@
 			position: absolute;
 			z-index: 10;
 		}
+
 		&__header {
 			position: relative;
+		}
+
+		&__options {
+			height: 500px;
+			overflow-y: auto;
 		}
 	}
 </style>

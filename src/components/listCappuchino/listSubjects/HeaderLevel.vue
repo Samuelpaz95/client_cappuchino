@@ -23,7 +23,7 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.list-subjects-header {
-		height: $lineHeigth;
+		height: $lineHeight;
 		position: relative;
 		display: flex;
 		align-items: center;

@@ -27,7 +27,7 @@
 	@import "@/scss/abstracts/variables.scss";
 	.list-subjects-level {
 		list-style: none;
-		height: $lineHeigth;
+		height: $lineHeight;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
