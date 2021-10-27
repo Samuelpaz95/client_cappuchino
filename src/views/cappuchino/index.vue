@@ -7,24 +7,14 @@
 	</main>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import { useDepartment } from "../../composables/useDepartment";
 
 	import ListCappuchino from "@/components/listCappuchino/index.vue";
 	import ScheduleTable from "@/components/scheduleTable/index.vue";
 
-	export default defineComponent({
-		name: "Cappuchino",
-		components: {
-			ListCappuchino,
-			ScheduleTable,
-		},
-		setup() {
-			const { fetchDepartmentData } = useDepartment();
-			fetchDepartmentData();
-		},
-	});
+	const { fetchDepartmentData } = useDepartment();
+	fetchDepartmentData();
 </script>
 
 <style scoped lang="scss">
