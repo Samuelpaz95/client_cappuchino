@@ -13,12 +13,14 @@
 			icon="bars"
 			@click="updateOpenMenu(!isOpenMenu)"
 		/>
-		<ButtonIcon
-			v-if="isOpenMenu && !isInDesktop"
-			aria-label="close-menu"
-			icon="close"
-			@click="updateOpenMenu(!isOpenMenu)"
-		/>
+		<div v-if="isOpenMenu">
+			<ButtonIcon
+				v-if="!isInDesktop"
+				aria-label="close-menu"
+				icon="close"
+				@click="updateOpenMenu(!isOpenMenu)"
+			/>
+		</div>
 	</header>
 </template>
 
