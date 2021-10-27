@@ -8,13 +8,21 @@
 </template>
 
 <script setup lang="ts">
+	import { ref } from "vue";
 	import { useDepartment } from "../../composables/useDepartment";
-
+	import { useMediaQueries } from "../../composables/useMediaQueries";
 	import ListCappuchino from "@/components/listCappuchino/index.vue";
 	import ScheduleTable from "@/components/scheduleTable/index.vue";
+	import { mediaQueries } from "../../enums/mediaQueries";
 
+	const showOptions = ref(false);
+
+	const { listenMediaQuery } = useMediaQueries();
 	const { fetchDepartmentData } = useDepartment();
 	fetchDepartmentData();
+	listenMediaQuery(mediaQueries.isLarge, (evt) => {
+		showOptions.value = evt.matches;
+	});
 </script>
 
 <style scoped lang="scss">
