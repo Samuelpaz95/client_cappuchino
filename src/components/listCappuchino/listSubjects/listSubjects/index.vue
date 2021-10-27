@@ -34,6 +34,8 @@
 		padding: 0;
 		margin: 0;
 		background-color: $background_color;
+		height: calc(100vh - 80px - 1rem - 50px - 50px);
+		overflow-y: auto;
 
 		&__item:not(:first-child) {
 			border-top: 1px solid transparentize($font_color, 0.7);

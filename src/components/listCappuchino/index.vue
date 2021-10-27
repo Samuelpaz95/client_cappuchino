@@ -37,10 +37,5 @@
 		&__header {
 			position: relative;
 		}
-
-		&__options {
-			height: 500px;
-			overflow-y: auto;
-		}
 	}
 </style>
