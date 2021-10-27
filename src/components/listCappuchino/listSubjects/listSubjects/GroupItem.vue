@@ -1,6 +1,12 @@
 <template>
 	<li class="group-item">
-		<input v-model="isSelect" class="group-item__input" type="checkbox" :id="groupCode + nameTeacher" />
+		<input
+			checked="isSelected"
+			v-model="isSelect"
+			class="group-item__input"
+			type="checkbox"
+			:id="groupCode + nameTeacher"
+		/>
 		<label class="group-item__label" :for="groupCode + nameTeacher">
 			<span class="group-item__teacher">{{ transformNameTeacherToCapitalize }}</span>
 			<span class="group-item__group">{{ groupCode }}</span>
@@ -15,7 +21,7 @@
 		name: "GroupItem",
 		data() {
 			return {
-				isSelect: false,
+				isSelect: this.isSelected,
 			};
 		},
 		props: {
@@ -25,6 +31,7 @@
 				require: true,
 			},
 			groupCode: String,
+			isSelected: Boolean,
 		},
 		computed: {
 			transformNameTeacherToCapitalize(): string {
@@ -41,6 +48,7 @@
 				this.$emit("group:select", {
 					isSelect: value,
 					groupCode: this.groupCode,
+					key: this.groupCode + this.nameTeacher,
 				});
 			},
 		},

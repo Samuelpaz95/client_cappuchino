@@ -15,8 +15,10 @@
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
 	import { useStateMenu } from "../../composables/useStateMenu";
+	import { useScheduleGroup } from "../../composables/useScheduleGroup";
 
 	const { isOpenMenu, isInCarrers } = useStateMenu();
+	useScheduleGroup();
 </script>
 
 <style scoped lang="scss">

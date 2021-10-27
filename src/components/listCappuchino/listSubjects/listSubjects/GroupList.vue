@@ -6,12 +6,13 @@
 			:groupCode="group.code"
 			:nameTeacher="group.schedule[0].teacher"
 			@group:select="selectGroup"
+			:isSelected="isInGroup(group.code + group.schedule[0].teacher)"
 		/>
 	</ul>
 </template>
 
 <script setup lang="ts">
-	import { PropType, toRefs } from "vue";
+	import { PropType, toRefs, inject } from "vue";
 
 	import GroupItem from "./GroupItem.vue";
 	import { useSubjects } from "../../../../composables/useSubjects";
@@ -37,10 +38,24 @@
 	const { codeSubject, level } = toRefs(props);
 	const { addSubject, removeSubject } = useSubjects();
 
-	const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string }) => {
+	const addGroup = inject("addGroup") as Function;
+	const removeGroup = inject("removeGroup") as Function;
+	const isInGroup = inject("isInGroup") as Function;
+
+	const selectGroup = ({
+		isSelect,
+		groupCode,
+		key,
+	}: {
+		isSelect: boolean;
+		groupCode: string;
+		key: string;
+	}) => {
 		if (isSelect) {
+			addGroup(key);
 			addSubject({ groupCode, levelCode: level.value, subjectCode: codeSubject.value });
 		} else {
+			removeGroup(key);
 			removeSubject({ groupCode, subjectCode: codeSubject.value });
 		}
 	};
