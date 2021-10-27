@@ -28,14 +28,34 @@
 </script>
 
 <style scoped lang="scss">
+	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
+
 	.cappuchino {
 		display: grid;
-		grid-template-columns: 1fr, 200px;
+		grid-template-columns: 1fr;
+
+		@include large {
+			grid-template-columns: 1fr 3fr;
+			grid-template-rows: 1fr;
+		}
 
 		&__table {
 			margin: 1rem;
-			margin-right: 5rem;
-			width: calc(100% - 2rem);
+
+			@include large {
+				grid-column: 2 / 3;
+				grid-row: 1;
+			}
+		}
+
+		&__options {
+			@include large {
+				grid-column: 1 / 2;
+				grid-row: 1;
+
+				margin-top: 1rem;
+				margin-left: 1rem;
+			}
 		}
 	}
 </style>
