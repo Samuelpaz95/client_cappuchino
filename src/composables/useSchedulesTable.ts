@@ -15,7 +15,9 @@ export function useSchedulesTable() {
 		scheduleSubjects.forEach((scheduleSubject) => {
 			const { schedule: schedules, ...subject } = scheduleSubject;
 			schedules.forEach((schedule) => {
+				schedule.start = schedule.start.length == 3 ? "0" + schedule.start : schedule.start;
 				const actualSchedule = schedulesTable[schedule.day + schedule.start];
+
 				const isConflictive = isConfictive(schedulesTable, schedule);
 				if (!isConflictive) {
 					actualSchedule.schedules.push({ ...subject, ...schedule });
@@ -24,7 +26,6 @@ export function useSchedulesTable() {
 				} else if (actualSchedule.duration == schedule.duration) {
 					actualSchedule.schedules.push({ ...subject, ...schedule });
 					actualSchedule.isConfictive = true;
-					console.log(actualSchedule);
 				}
 			});
 		});
