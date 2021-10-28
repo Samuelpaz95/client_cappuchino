@@ -4,13 +4,14 @@ import { useStore } from "vuex";
 export function useDepartment() {
 	const { params } = useRoute();
 	const store = useStore();
+	const currentDepartment = params.department as string;
 
 	const fetchDepartmentData = async () => {
-		const currentDepartment = params.department;
 		await store.dispatch("departments/actionGetDepartment", currentDepartment);
 	};
 
 	return {
+		currentDepartment: currentDepartment.toUpperCase(),
 		fetchDepartmentData,
 	};
 }

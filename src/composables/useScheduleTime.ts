@@ -1,10 +1,12 @@
 import { ref } from "vue";
 import { DAYS } from "../enums/days";
 import { HOURS } from "../enums/hours";
+import { useDepartment } from "./useDepartment";
 
 export function useScheduleTime() {
-	const days = ref(DAYS);
-	const hours = ref(HOURS);
+	const { currentDepartment } = useDepartment();
+	const days = ref(DAYS[currentDepartment]);
+	const hours = ref(HOURS[currentDepartment]);
 
 	const semanticDays = () => [""].concat(days.value.map(converToSemanticDay));
 

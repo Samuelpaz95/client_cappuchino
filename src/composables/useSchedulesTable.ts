@@ -34,9 +34,10 @@ export function useSchedulesTable() {
 	});
 
 	const isConfictive = (schedulesTable: scheduleMap, { day, duration, start }: schedule): boolean => {
-		for (let i = 1; i < duration; i++) {
+		for (let i = 0; i < duration; i++) {
 			const nextHour = nextHourByStep(start, i);
-			if (schedulesTable[day + nextHour].duration != 1) return true;
+			if (schedulesTable[day + nextHour].duration != 1 || schedulesTable[day + start].schedules.length > 0)
+				return true;
 		}
 		return false;
 	};
