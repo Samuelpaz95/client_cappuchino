@@ -7,13 +7,9 @@ export function useDepartment() {
 	const store = useStore();
 	const currentDepartment = params.department as string;
 
-	const fetchDepartmentData = async () => {
-		await store.dispatch("departments/actionGetDepartment", currentDepartment);
-	};
+	store.dispatch("departments/actionGetDepartment", currentDepartment);
 
 	provide("currentDepartment", currentDepartment);
 
-	return {
-		fetchDepartmentData,
-	};
+	return {};
 }

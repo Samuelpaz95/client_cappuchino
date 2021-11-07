@@ -6,18 +6,12 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import BaseHeader from "@/components/frontend/BaseHeader.vue";
 	import BaseFooter from "@/components/frontend/BaseFooter.vue";
+	import { useDepartment } from "../composables/useDepartment";
 
-	export default defineComponent({
-		name: "Frontend",
-		components: {
-			BaseHeader,
-			BaseFooter,
-		},
-	});
+	useDepartment();
 </script>
 
 <style scoped lang="scss">

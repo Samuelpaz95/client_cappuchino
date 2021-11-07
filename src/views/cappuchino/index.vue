@@ -8,12 +8,8 @@
 </template>
 
 <script setup lang="ts">
-	import { useDepartment } from "../../composables/useDepartment";
 	import ListCappuchino from "../../components/listCappuchino/index.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
-
-	const { fetchDepartmentData } = useDepartment();
-	fetchDepartmentData();
 </script>
 
 <style scoped lang="scss">
