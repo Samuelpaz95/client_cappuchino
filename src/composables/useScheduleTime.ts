@@ -1,10 +1,9 @@
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { DAYS } from "../enums/days";
 import { HOURS } from "../enums/hours";
-import { useDepartment } from "./useDepartment";
 
 export function useScheduleTime() {
-	const { currentDepartment } = useDepartment();
+	const currentDepartment = (inject("currentDepartment") as string).toUpperCase();
 	const days = ref(DAYS[currentDepartment]);
 	const hours = ref(HOURS[currentDepartment]);
 

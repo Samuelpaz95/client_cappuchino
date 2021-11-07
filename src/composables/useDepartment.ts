@@ -1,3 +1,4 @@
+import { provide } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
@@ -10,8 +11,9 @@ export function useDepartment() {
 		await store.dispatch("departments/actionGetDepartment", currentDepartment);
 	};
 
+	provide("currentDepartment", currentDepartment);
+
 	return {
-		currentDepartment: currentDepartment.toUpperCase(),
 		fetchDepartmentData,
 	};
 }
