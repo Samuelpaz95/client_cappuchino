@@ -1,6 +1,6 @@
 import { Ref, ref, provide } from "vue";
 
-export const useScheduleGroup = () => {
+export const useCheckboxSubjects = () => {
 	const groupsSelect: Ref<String[]> = ref([]);
 
 	const addGroup = (groupKey: string) => {
