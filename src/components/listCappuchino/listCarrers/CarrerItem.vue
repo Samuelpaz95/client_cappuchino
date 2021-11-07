@@ -14,15 +14,12 @@
 </template>
 
 <script setup="props, { emit }" lang="ts">
-	import { computed } from "vue";
-	import { useStore } from "vuex";
+	import { inject, Ref } from "vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-
-	const store = useStore();
-
+	import { IdepartementCarrer } from "../../../interfaces";
 	defineEmits(["carrer:select"]);
 
-	const props = defineProps({
+	defineProps({
 		nameCarrer: {
 			type: String,
 			default: "",
@@ -33,7 +30,8 @@
 			require: true,
 		},
 	});
-	const departmentName = computed(() => store.getters["departments/departmentInfo"].name);
+
+	const departmentName = (inject("departmentInfo") as Ref<IdepartementCarrer | undefined>).value?.name;
 </script>
 
 <style scoped lang="scss">

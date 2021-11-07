@@ -1,15 +1,29 @@
-import { provide } from "vue";
-import { useRoute } from "vue-router";
+import { ref, Ref, provide } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { Idepartment } from "../interfaces";
+import departmentService from "../services/departments";
 
 export function useDepartment() {
 	const { params } = useRoute();
-	const store = useStore();
+	const router = useRouter();
 	const currentDepartment = params.department as string;
+	const departmentInfo: Ref<Idepartment | null> = ref(null);
 
-	store.dispatch("departments/actionGetDepartment", currentDepartment);
+	(async () => {
+		const response = await departmentService.getAllDepartments();
+		const actualDepartment = response?.find((department) => department.semanticName === currentDepartment);
+		if (!actualDepartment) {
+			router.push({ name: "404" });
+		} else {
+			departmentInfo.value = actualDepartment;
+		}
+	})();
 
 	provide("currentDepartment", currentDepartment);
+	provide("departmentInfo", departmentInfo);
 
+	const store = useStore();
+	store.dispatch("departments/actionGetDepartment", currentDepartment);
 	return {};
 }
