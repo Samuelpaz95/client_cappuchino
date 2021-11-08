@@ -44,11 +44,8 @@
 			@include large {
 				grid-column: 1 / 2;
 				grid-row: 1;
-
 				margin-top: 1rem;
 				margin-left: 1rem;
-				// height: 100%;
-				// align-self: stretch;
 			}
 		}
 	}
