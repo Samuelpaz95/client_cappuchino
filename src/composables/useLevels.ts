@@ -1,21 +1,16 @@
-import { computed, ComputedRef } from "vue";
-import { useStore } from "vuex";
-import { subjects, level } from "../interfaces";
-
+import { computed, ComputedRef, inject, Ref } from "vue";
+import { subjects, level, Icarrer } from "../interfaces";
+//TODO: move to cappuchino
 export function useLevels() {
-	const store = useStore();
-
 	const detailLevel = (codeLevel: string): subjects | undefined => {
-		const level = store.getters["departments/selectCarrer"]?.levels.find(
-			(level: level) => level.code == codeLevel
-		);
+		const carrer = inject("currentCarrer") as Ref<Icarrer>;
+		const level = carrer.value?.levels.find((level: level) => level.code == codeLevel);
 		return level ? level.subjects : undefined;
 	};
 
 	const levels: ComputedRef<string[]> = computed(() => {
-		const data: string[] | undefined = store.getters["departments/selectCarrer"]?.levels.map(
-			(level: level) => level.code
-		);
+		const carrer = inject("currentCarrer") as Ref<Icarrer>;
+		const data: string[] | undefined = carrer.value?.levels.map((level: level) => level.code);
 		return data ? data : [];
 	});
 

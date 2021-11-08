@@ -10,7 +10,7 @@ export function useDepartment() {
 	const currentDepartment = params.department as string;
 	const departmentInfo: Ref<Idepartment | null> = ref(null);
 
-	(async () => {
+	const verifyDepartment = async () => {
 		const response = await departmentService.getAllDepartments();
 		const actualDepartment = response?.find((department) => department.semanticName === currentDepartment);
 		if (!actualDepartment) {
@@ -18,12 +18,11 @@ export function useDepartment() {
 		} else {
 			departmentInfo.value = actualDepartment;
 		}
-	})();
+	};
 
 	provide("currentDepartment", currentDepartment);
 	provide("departmentInfo", departmentInfo);
+	provide("verifyDepartment", verifyDepartment);
 
-	const store = useStore();
-	store.dispatch("departments/actionGetDepartment", currentDepartment);
 	return {};
 }

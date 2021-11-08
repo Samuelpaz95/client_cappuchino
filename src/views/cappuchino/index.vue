@@ -8,8 +8,15 @@
 </template>
 
 <script setup lang="ts">
+	import { inject } from "vue";
 	import ListCappuchino from "../../components/listCappuchino/index.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
+	import { useCappuchino } from "../../composables/useCappuchino";
+
+	const verifyDepartment = inject("verifyDepartment") as Function;
+	const currentDepartment = inject("currentDepartment") as string;
+	verifyDepartment();
+	useCappuchino(currentDepartment);
 </script>
 
 <style scoped lang="scss">
@@ -40,6 +47,8 @@
 
 				margin-top: 1rem;
 				margin-left: 1rem;
+				// height: 100%;
+				// align-self: stretch;
 			}
 		}
 	}

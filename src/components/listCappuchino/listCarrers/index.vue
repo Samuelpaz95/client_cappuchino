@@ -12,17 +12,17 @@
 </template>
 
 <script setup lang="ts">
-	import { computed, inject } from "vue";
-	import { useStore } from "vuex";
+	import { inject, Ref } from "vue";
+	import { IdepartementCarrer } from "../../../interfaces";
 	import CarrerItem from "./CarrerItem.vue";
 
-	const store = useStore();
-	const departmentCarrers = computed(() => store.getters["departments/indexCarrersInfo"]);
+	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;
 	const updateInCarrers = inject("updateInCarrers") as Function;
 	const updateSelectCarrer = inject("updateSelectCarrer") as Function;
+	const fetchDepartmentCarrer = inject("fetchDepartmentCarrer") as Function;
 
 	const selectCarrer = (nameCarrer: string) => {
-		store.dispatch("departments/actionGetDepartmentCarrer", nameCarrer);
+		fetchDepartmentCarrer(nameCarrer);
 		updateSelectCarrer(nameCarrer);
 		updateInCarrers(false);
 	};

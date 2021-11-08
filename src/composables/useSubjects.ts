@@ -1,12 +1,13 @@
+import { inject, Ref } from "vue";
 import { useStore } from "vuex";
 import { Icarrer, subject, level, group, scheduleSubject } from "../interfaces";
 
 export function useSubjects() {
 	const store = useStore();
+	const carrer = inject("currentCarrer") as Ref<Icarrer>;
 
 	const formatSchedules = ({ groupCode, subjectCode, levelCode }: propsFormat): scheduleSubject => {
-		const carrer: Icarrer = store.getters["departments/selectCarrer"];
-		const level: level = getProperties(carrer.levels, levelCode);
+		const level: level = getProperties(carrer.value.levels, levelCode);
 		const subject: subject = getProperties(level.subjects, subjectCode);
 		const group: group = getProperties(subject.groups, groupCode);
 
