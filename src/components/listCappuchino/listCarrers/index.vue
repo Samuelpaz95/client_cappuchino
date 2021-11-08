@@ -1,5 +1,5 @@
 <template>
-	<ul class="list-carrers">
+	<ul class="list-carrers" :style="heightList">
 		<CarrerItem
 			v-for="(value, index) in departmentCarrers"
 			:key="index"
@@ -13,9 +13,11 @@
 
 <script setup lang="ts">
 	import { inject, Ref } from "vue";
+	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
 	import { IdepartementCarrer } from "../../../interfaces";
 	import CarrerItem from "./CarrerItem.vue";
 
+	const { heightList } = useScheudleHeight(50);
 	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;
 	const updateInCarrers = inject("updateInCarrers") as Function;
 	const updateSelectCarrer = inject("updateSelectCarrer") as Function;
@@ -34,6 +36,7 @@
 	.list-carrers {
 		padding: 0;
 		margin: 0;
+		overflow-y: auto;
 
 		&__item:not(:last-child) {
 			border-bottom: 1px solid transparentize($font_color, 0.7);

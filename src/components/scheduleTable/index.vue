@@ -1,5 +1,5 @@
 <template>
-	<div class="schedule-table">
+	<div class="schedule-table" id="schedule-table">
 		<table class="schedule-table__table">
 			<schedule-table-header :days="semanticDays"> Horarios Disponibles </schedule-table-header>
 			<ScheduleTableBody :schedules="schedules" />

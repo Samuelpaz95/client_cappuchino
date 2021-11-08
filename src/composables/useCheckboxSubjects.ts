@@ -1,4 +1,4 @@
-import { Ref, ref, provide } from "vue";
+import { Ref, ref, provide, readonly } from "vue";
 
 export const useCheckboxSubjects = () => {
 	const groupsSelect: Ref<String[]> = ref([]);
@@ -14,6 +14,7 @@ export const useCheckboxSubjects = () => {
 
 	const isInGroup = (groupKey: string) => groupsSelect.value.includes(groupKey);
 
+	provide("groupsSelect", readonly(groupsSelect));
 	provide("addGroup", addGroup);
 	provide("removeGroup", removeGroup);
 	provide("isInGroup", isInGroup);

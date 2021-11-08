@@ -1,5 +1,5 @@
 <template>
-	<ul class="subject-list">
+	<ul class="subject-list" :style="[heightList]">
 		<SubjectItem
 			class="subject-list__item"
 			v-for="subject of subjects"
@@ -14,6 +14,7 @@
 	import { toRefs } from "vue";
 	import SubjectItem from "./SubjectItem.vue";
 	import { useLevels } from "../../../../composables/useLevels";
+	import { useScheudleHeight } from "../../../../composables/useScheduleHeight";
 
 	const props = defineProps({
 		level: {
@@ -24,6 +25,7 @@
 	});
 	const { level } = toRefs(props);
 	const { detailLevel } = useLevels();
+	const { heightList } = useScheudleHeight(100);
 	const subjects = detailLevel(level.value);
 </script>
 
@@ -34,7 +36,6 @@
 		padding: 0;
 		margin: 0;
 		background-color: $background_color;
-		height: calc(100vh - 80px - 1rem - 50px - 50px);
 		overflow-y: auto;
 
 		&__item:not(:first-child) {
