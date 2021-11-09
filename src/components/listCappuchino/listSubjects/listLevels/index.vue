@@ -11,11 +11,11 @@
 </template>
 
 <script setup lang="ts">
+	import { inject, ComputedRef } from "vue";
 	import LevelItem from "./LevelItem.vue";
-	import { useLevels } from "../../../../composables/useLevels";
 
 	defineEmits(["level:select"]);
-	const { levels } = useLevels();
+	const levels = inject("levels") as ComputedRef<string[]>;
 </script>
 
 <style lang="scss" scoped>

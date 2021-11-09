@@ -1,5 +1,5 @@
-import { ref, Ref, provide } from "vue";
-import { Icarrer, IdepartementCarrer } from "../interfaces";
+import { ref, Ref, provide, computed, ComputedRef } from "vue";
+import { Icarrer, IdepartementCarrer, level, subjects } from "../interfaces";
 import departmentService from "../services/departments";
 
 export const useCappuchino = (department: string) => {
@@ -17,7 +17,19 @@ export const useCappuchino = (department: string) => {
 		}
 	};
 
+	const detailLevel = (codeLevel: string): subjects | undefined => {
+		const level = currentCarrer.value?.levels.find((level: level) => level.code == codeLevel);
+		return level ? level.subjects : undefined;
+	};
+
+	const levels: ComputedRef<string[]> = computed(() => {
+		const data: string[] | undefined = currentCarrer.value?.levels.map((level: level) => level.code);
+		return data ? data : [];
+	});
+
 	provide("fetchDepartmentCarrer", fetchDepartmentCarrer);
 	provide("indexDepartments", indexDepartments);
 	provide("currentCarrer", currentCarrer);
+	provide("detailLevel", detailLevel);
+	provide("levels", levels);
 };

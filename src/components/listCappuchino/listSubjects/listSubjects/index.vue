@@ -11,9 +11,8 @@
 </template>
 
 <script setup lang="ts">
-	import { toRefs } from "vue";
+	import { toRefs, inject } from "vue";
 	import SubjectItem from "./SubjectItem.vue";
-	import { useLevels } from "../../../../composables/useLevels";
 	import { useScheudleHeight } from "../../../../composables/useScheduleHeight";
 
 	const props = defineProps({
@@ -24,7 +23,7 @@
 		},
 	});
 	const { level } = toRefs(props);
-	const { detailLevel } = useLevels();
+	const detailLevel = inject("detailLevel") as Function;
 	const { heightList } = useScheudleHeight(100);
 	const subjects = detailLevel(level.value);
 </script>
