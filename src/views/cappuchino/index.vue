@@ -20,34 +20,36 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_mixins.scss";
+	@import "@/scss/abstracts/mixins.scss", "@/scss/abstracts/variables.scss";
 
 	.cappuchino {
-		posi
+		position: relative;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		grid-template-rows: 1fr auto;
 
 		@include large {
+			gap: 1rem;
 			grid-template-columns: 1fr 2fr;
+			grid-template-rows: 1fr;
 			align-items: start;
 			margin: 1rem;
 		}
 
 		&__table {
 			margin: 1rem;
-			margin-bottom: 0;
 
 			@include large {
 				margin: 0;
 				grid-column: 2 / 3;
 				grid-row: 1;
-				height: 100%
+				min-height: calc(100vh - 80px - 80px - 2rem);
 			}
 		}
 
 		&__options {
-			position: absolute;
+			position: inherit;
+			bottom: 0;
 
 			@include large {
 				grid-column: 1 / 2;
