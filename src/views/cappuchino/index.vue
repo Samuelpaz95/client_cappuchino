@@ -25,6 +25,8 @@
 	.cappuchino {
 		display: grid;
 		grid-template-columns: 1fr;
+		margin: 1rem;
+		gap: 1rem;
 
 		@include large {
 			grid-template-columns: 1fr 2fr;
@@ -32,11 +34,11 @@
 		}
 
 		&__table {
-			margin: 1rem;
 
 			@include large {
 				grid-column: 2 / 3;
 				grid-row: 1;
+				height: 100%
 			}
 		}
 
@@ -44,8 +46,6 @@
 			@include large {
 				grid-column: 1 / 2;
 				grid-row: 1;
-				margin-top: 1rem;
-				margin-left: 1rem;
 			}
 		}
 	}
