@@ -1,6 +1,6 @@
 <template>
-	<div class="search">
-		<div class="search__bar">
+	<div @focusout="clearMatchOptions" class="search">
+		<form @submit.prevent="searchOptions(inputSearch)" class="search__bar">
 			<input
 				type="search"
 				autofocus
@@ -8,46 +8,39 @@
 				spellcheck="false"
 				placeholder="Nombre del docente a buscar"
 				class="search__input"
-				@focus="showOptions()"
+				@input="searchOptions(inputSearch)"
+				@focusin="searchOptions(inputSearch)"
 			/>
-			<ButtonIcon icon="search" height="16" class="search__button" />
-		</div>
-		<ul class="search__options" v-show="matches.length > 0">
+			<ButtonIcon type="button" icon="search" height="16" class="search__button" />
+		</form>
+		<ul class="search__options" v-show="matchOptions.length > 0">
 			<div>Resultados</div>
-			<li :key="index" class="search__option" v-for="(value, index) in matches.slice(0, 5)">
+			<li
+				@click="$emit('select:professor', value)"
+				:key="index"
+				class="search__option"
+				v-for="(value, index) in matchOptions.slice(0, 5)"
+			>
 				<div>{{ value }}</div>
-				<div>Facultad de Ciencias y Tecnologia | Fcyt</div>
+				<div>{{ departmentInfoDisplay }}</div>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
+	import { ref, Ref, inject, computed } from "vue";
+	import { Idepartment } from "../interfaces";
+	import { useSearch } from "../composables/useSearch";
+	import ButtonIcon from "../components/ui/ButtonIcon.vue";
 
-	import { onMounted, ref, toRefs, PropType, Ref } from "vue";
-
-	const props = defineProps({
-		listOfItems: {
-			required: true,
-			type: Array as PropType<string[]>,
-		},
-	});
-
-	const { listOfItems } = toRefs(props);
 	const inputSearch = ref("");
-	let matches: Ref<string[]> = ref([]);
+	const departmentInfo = inject("departmentInfo") as Ref<Idepartment | null>;
 
-	onMounted(() => {
-		matches.value = listOfItems.value;
-	});
-
-	const showOptions = () => {
-		if (inputSearch.value != "") {
-		} else {
-			matches.value = listOfItems.value;
-		}
-	};
+	const departmentInfoDisplay = computed(
+		() => departmentInfo.value?.name + " | " + departmentInfo.value?.semanticName.toUpperCase()
+	);
+	const { matchOptions, searchOptions, clearMatchOptions } = useSearch();
 </script>
 
 <style scoped lang="scss">
@@ -85,6 +78,7 @@
 
 		&__option {
 			width: 100%;
+			padding: 3px 0;
 			list-style: none;
 			transition: 1s;
 
@@ -92,9 +86,13 @@
 				border-bottom: 1px solid $font_color;
 			}
 
+			div:first-child {
+				line-height: 24px;
+			}
+
 			div:nth-child(2) {
 				font-size: 0.76rem;
-				opacity: 0.7;
+				opacity: 0.6;
 				line-height: 1.2rem;
 			}
 		}
@@ -109,7 +107,7 @@
 			background-color: $primary_color;
 			border: none;
 			border-radius: $border_radius;
-			font-size: 14px;
+			font-size: 1rem;
 			color: $font_color;
 			padding-left: 1rem;
 			width: 100%;

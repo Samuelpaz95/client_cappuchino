@@ -1,13 +1,19 @@
 <template>
 	<main class="tracker">
-		<InputSearch class="tracker__search" :listOfItems="['1', '2']" />
+		<InputSearch class="tracker__search" @select:professor="searchDocent" />
 		<ScheduleTable class="tracker__table" />
 	</main>
 </template>
 
 <script setup lang="ts">
-	import InputSearch from "@/components/InputSearch.vue";
+	import { inject } from "vue";
+	import { useTeacherTrakcer } from "../../composables/useTeacherTracker";
+	import InputSearch from "../../components/InputSearch.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
+
+	const { searchDocent } = useTeacherTrakcer();
+	const verifyDepartment = inject("verifyDepartment") as Function;
+	verifyDepartment();
 </script>
 
 <style scoped lang="scss">
