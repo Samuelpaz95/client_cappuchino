@@ -54,6 +54,8 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.search {
+		position: relative;
+
 		&__bar {
 			height: 54px;
 			border-radius: $border_radius;
@@ -64,6 +66,9 @@
 		}
 
 		&__options {
+			position: absolute;
+			width: 100%;
+			z-index: 1;
 			background-color: $primary_color;
 			border-radius: $border_radius;
 			padding: 1rem 1rem;

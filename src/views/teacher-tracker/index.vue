@@ -27,6 +27,7 @@
 
 			@include large {
 				margin: 0;
+				margin-left: 1rem;
 			}
 		}
 	}
