@@ -1,6 +1,5 @@
 import { ref, Ref, provide } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useStore } from "vuex";
 import { Idepartment } from "../interfaces";
 import departmentService from "../services/departments";
 
@@ -23,6 +22,4 @@ export function useDepartment() {
 	provide("currentDepartment", currentDepartment);
 	provide("departmentInfo", departmentInfo);
 	provide("verifyDepartment", verifyDepartment);
-
-	return {};
 }
