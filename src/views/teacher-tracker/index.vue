@@ -6,14 +6,13 @@
 </template>
 
 <script setup lang="ts">
-	import { inject } from "vue";
 	import { useTeacherTrakcer } from "../../composables/useTeacherTracker";
+	import { useDepartment } from "../../composables/useDepartment";
 	import InputSearch from "../../components/InputSearch.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
 
-	const { searchDocent } = useTeacherTrakcer();
-	const verifyDepartment = inject("verifyDepartment") as Function;
-	verifyDepartment();
+	const { currentDepartment } = useDepartment();
+	const { searchDocent } = useTeacherTrakcer(currentDepartment);
 </script>
 
 <style scoped lang="scss">

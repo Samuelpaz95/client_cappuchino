@@ -8,14 +8,12 @@
 </template>
 
 <script setup lang="ts">
-	import { inject } from "vue";
+	import { useCappuchino } from "../../composables/useCappuchino";
+	import { useDepartment } from "../../composables/useDepartment";
 	import ListCappuchino from "../../components/listCappuchino/index.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
-	import { useCappuchino } from "../../composables/useCappuchino";
 
-	const verifyDepartment = inject("verifyDepartment") as Function;
-	const currentDepartment = inject("currentDepartment") as string;
-	verifyDepartment();
+	const { currentDepartment } = useDepartment();
 	useCappuchino(currentDepartment);
 </script>
 
