@@ -18,6 +18,7 @@ const mutations: MutationTree<actualState> = {
 			(scheduleSubject) => scheduleSubject.key != payload
 		);
 	},
+	removeAllScheduleSubjects: (state) => (state.scheduleSubjects = []),
 };
 
 export default {
