@@ -17,7 +17,7 @@ export function useSearch() {
 
 	const searchOptions = (searchedWord: string) => {
 		if (searchedWord.length == 0) {
-			clearMatchOptions();
+			matchOptions.value = [];
 			return;
 		}
 
@@ -41,7 +41,9 @@ export function useSearch() {
 			);
 
 	const clearMatchOptions = () => {
-		matchOptions.value = [];
+		setTimeout(() => {
+			matchOptions.value = [];
+		}, 100);
 	};
 
 	return { matchOptions, searchOptions, clearMatchOptions };
