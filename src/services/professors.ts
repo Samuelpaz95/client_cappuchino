@@ -1,12 +1,14 @@
 import { http } from "./httpRequest";
 import { professor, subjects } from "../interfaces";
 
-class DepartmentsService {
+class ProfessorService {
 	private readonly breakPoint = "/professors";
 
 	async getAllByDepartment(department: string): Promise<professor[] | null> {
 		try {
-			const { data }: { data: professor[] } = await http.get(`${this.breakPoint}/${department}`);
+			const { data }: { data: professor[] } = await http.get(
+				`${this.breakPoint}/${department.toLowerCase()}`
+			);
 			return data;
 		} catch (error) {
 			console.error(error);
@@ -16,7 +18,9 @@ class DepartmentsService {
 
 	async getOneByDepartment(department: string, professor: string): Promise<subjects | null> {
 		try {
-			const { data }: { data: subjects } = await http.get(`${this.breakPoint}/${department}/${professor}`);
+			const { data }: { data: subjects } = await http.get(
+				`${this.breakPoint}/${department.toLowerCase()}/${professor}`
+			);
 			return data;
 		} catch (error) {
 			console.error(error);
@@ -25,4 +29,4 @@ class DepartmentsService {
 	}
 }
 
-export default new DepartmentsService();
+export default new ProfessorService();
