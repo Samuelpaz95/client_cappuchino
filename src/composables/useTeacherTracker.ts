@@ -1,9 +1,8 @@
-import { inject, onUnmounted } from "vue";
+import { onUnmounted } from "vue";
 import { useStore } from "vuex";
 import professorsService from "../services/professors";
 
-export function useTeacherTrakcer() {
-	const department = inject("currentDepartment") as string;
+export function useTeacherTrakcer(department: string) {
 	const store = useStore();
 
 	const searchDocent = async (professor: string) => {
