@@ -1,4 +1,4 @@
-<template>Pagina no encontrada :p</template>
+<template><p>Pagina no encontrada :p</p></template>
 
 <script lang="ts">
 	import { defineComponent } from "vue";
