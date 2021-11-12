@@ -9,9 +9,6 @@
 <script setup lang="ts">
 	import BaseHeader from "@/components/frontend/BaseHeader.vue";
 	import BaseFooter from "@/components/frontend/BaseFooter.vue";
-	import { useDepartment } from "../composables/useDepartment";
-
-	useDepartment();
 </script>
 
 <style scoped lang="scss">
