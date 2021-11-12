@@ -1,21 +1,13 @@
 <template>
 	<main class="tracker">
-		<section class="tracker__container">
-			<InputSearch class="tracker__search" :listOfItems="['1', '2']" />
-		</section>
+		<InputSearch class="tracker__search" :listOfItems="['1', '2']" />
+		<ScheduleTable class="tracker__table" />
 	</main>
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
 	import InputSearch from "@/components/InputSearch.vue";
-
-	export default defineComponent({
-		name: "TracherDocent",
-		components: {
-			InputSearch,
-		},
-	});
+	import ScheduleTable from "../../components/scheduleTable/index.vue";
 </script>
 
 <style scoped lang="scss">
@@ -23,13 +15,11 @@
 
 	.tracker {
 		margin: 1rem;
+		display: grid;
 
-		&__container {
-			display: grid;
-
-			@include large {
-				grid-template-columns: 0.54fr 1fr;
-			}
+		@include large {
+			grid-template-columns: 0.54fr 1fr;
+			gap: 1rem;
 		}
 
 		&__search {
