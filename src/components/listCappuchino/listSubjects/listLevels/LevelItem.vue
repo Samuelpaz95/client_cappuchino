@@ -1,9 +1,7 @@
 <template>
-	<li class="list-subjects-level">
-		<span class="list-subjects-level__level" @click="$emit('level:select', level)">{{
-			formatLevel(level)
-		}}</span>
-		<ButtonIcon icon="angle" :rotate="90" @click="$emit('level:select', level)" />
+	<li class="list-subjects-level" @click="$emit('level:select', level)">
+		<span class="list-subjects-level__level">{{ formatLevel(level) }}</span>
+		<ButtonIcon icon="angle" :rotate="90" />
 	</li>
 </template>
 
@@ -32,9 +30,9 @@
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem;
+		cursor: pointer;
 
 		&__level {
-			cursor: pointer;
 			font-weight: 700;
 		}
 	}
