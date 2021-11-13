@@ -1,7 +1,7 @@
 <template>
 	<div :class="[{ 'schedule-item__conflictive': schedulesItem.isConfictive }, 'schedule-item']">
 		<div v-for="schedule of schedulesItem.schedules" :key="schedule.key">
-			<div>{{ schedule.subjectName }}</div>
+			<div><strong v-if="!schedule.isClass">*</strong> {{ schedule.subjectName }}</div>
 			<span>G {{ schedule.groupCode }}</span> - <span>A {{ schedule.room }}</span>
 		</div>
 	</div>
