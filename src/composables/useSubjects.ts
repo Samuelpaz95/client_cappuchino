@@ -1,4 +1,4 @@
-import { inject, Ref, onUnmounted } from "vue";
+import { inject, Ref } from "vue";
 import { useStore } from "vuex";
 import { Icarrer, subject, level, group, scheduleSubject } from "../interfaces";
 
@@ -38,10 +38,6 @@ export function useSubjects() {
 		if (!iteration) throw new Error("Not find the code");
 		return iteration;
 	};
-
-	onUnmounted(() => {
-		store.commit("scheduleSubjects/removeAllScheduleSubjects");
-	});
 
 	return { addSubject, removeSubject };
 }

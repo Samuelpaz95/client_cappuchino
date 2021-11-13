@@ -1,4 +1,5 @@
-import { ref, Ref, provide, computed, ComputedRef } from "vue";
+import { ref, Ref, provide, computed, ComputedRef, onUnmounted } from "vue";
+import { useStore } from "vuex";
 import { Icarrer, IdepartementCarrer, level, subjects } from "../interfaces";
 import departmentService from "../services/departments";
 
@@ -25,6 +26,11 @@ export const useCappuchino = (department: string) => {
 	const levels: ComputedRef<string[]> = computed(() => {
 		const data: string[] | undefined = currentCarrer.value?.levels.map((level: level) => level.code);
 		return data ? data : [];
+	});
+
+	onUnmounted(() => {
+		const store = useStore();
+		store.commit("scheduleSubjects/removeAllScheduleSubjects");
 	});
 
 	provide("fetchDepartmentCarrer", fetchDepartmentCarrer);
