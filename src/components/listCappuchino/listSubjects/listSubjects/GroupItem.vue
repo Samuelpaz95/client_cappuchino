@@ -74,11 +74,13 @@
 			padding-left: 1rem;
 			padding-top: 2px;
 			padding-bottom: 2px;
+			cursor: pointer;
 		}
 
 		&__input {
 			margin: 0;
 			accent-color: $secondary_color;
+			cursor: pointer;
 		}
 
 		&__group {
