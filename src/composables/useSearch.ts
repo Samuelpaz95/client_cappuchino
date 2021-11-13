@@ -43,7 +43,7 @@ export function useSearch() {
 	const clearMatchOptions = () => {
 		setTimeout(() => {
 			matchOptions.value = [];
-		}, 100);
+		}, 400);
 	};
 
 	return { matchOptions, searchOptions, clearMatchOptions };
