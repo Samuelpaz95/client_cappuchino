@@ -14,6 +14,7 @@ export const useCappuchino = (department: string) => {
 	const fetchDepartmentCarrer = async (nameCarrer: string) => {
 		const indexCarrer = indexDepartments.value?.find(({ name }) => nameCarrer == name);
 		if (indexCarrer) {
+			currentCarrer.value = null;
 			currentCarrer.value = await departmentService.getDepartmentCarrer(department, indexCarrer.code);
 		}
 	};
