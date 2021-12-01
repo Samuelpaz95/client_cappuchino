@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-	import BaseHeader from "@/components/frontend/BaseHeader.vue";
-	import BaseFooter from "@/components/frontend/BaseFooter.vue";
+	import BaseHeader from "../components/frontend/BaseHeader.vue";
+	import BaseFooter from "../components/frontend/BaseFooter.vue";
 </script>
 
 <style scoped lang="scss">
