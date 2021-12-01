@@ -1,22 +1,18 @@
 <template>
-	<li class="list-item-carrer">
-		<span class="list-item-carrer__content" @click="$emit('carrer:select', nameCarrer)">
+	<li class="list-item-carrer"  @click="$emit('carrer:select', nameCarrer)">
+		<span class="list-item-carrer__content" >
 			<div class="list-item-carrer__name">{{ nameCarrer }}</div>
-			<div class="list-item-carrer__description">
-				<div>{{ departmentName }}</div>
-				<div>Actualizado al {{ updateAt }}</div>
-			</div>
+			<div class="list-item-carrer__description">Actualizado al {{ updateAt }}</div>
 		</span>
-		<span class="list-item-carrer__actions" @click="$emit('carrer:select', nameCarrer)">
+		<span class="list-item-carrer__actions">
 			<ButtonIcon icon="angle" :rotate="90" />
 		</span>
 	</li>
 </template>
 
-<script setup="props, { emit }" lang="ts">
-	import { inject, Ref } from "vue";
+<script setup lang="ts">
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-	import { IdepartementCarrer } from "../../../interfaces";
+
 	defineEmits(["carrer:select"]);
 
 	defineProps({
@@ -30,8 +26,6 @@
 			require: true,
 		},
 	});
-
-	const departmentName = (inject("departmentInfo") as Ref<IdepartementCarrer | undefined>).value?.name;
 </script>
 
 <style scoped lang="scss">
@@ -43,11 +37,11 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 1rem;
+		cursor: pointer;
 
 		&__content {
 			font-size: 0.8rem;
 			line-height: 12px;
-			cursor: pointer;
 		}
 
 		&__name {
