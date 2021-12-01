@@ -3,14 +3,16 @@
 </template>
 
 <style lang="scss" scoped>
+	@import "@/scss/abstracts/variables.scss";
+
 	.spinner {
-		border: 4px solid rgba(0, 0, 0, 0.1);
+		border: 4px solid $primary_color;
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
-		border-left-color: rgb(204, 232, 250);
-
+		border-left-color: $secondary_color;
 		animation: spin 1s ease infinite;
+		margin: 1rem auto;
 	}
 
 	@keyframes spin {

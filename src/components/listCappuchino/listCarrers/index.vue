@@ -1,5 +1,5 @@
 <template>
-	<ul class="list-carrers" :style="heightList">
+	<ul class="list-carrers" :style="heightList" v-if="departmentCarrers">
 		<CarrerItem
 			v-for="(value, index) in departmentCarrers"
 			:key="index"
@@ -9,6 +9,7 @@
 			@carrer:select="selectCarrer"
 		/>
 	</ul>
+	<Spinner v-else />
 </template>
 
 <script setup lang="ts">
@@ -16,6 +17,7 @@
 	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
 	import { IdepartementCarrer } from "../../../interfaces";
 	import CarrerItem from "./CarrerItem.vue";
+	import Spinner from "../../ui/Spinner.vue";
 
 	const { heightList } = useScheudleHeight(50);
 	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;

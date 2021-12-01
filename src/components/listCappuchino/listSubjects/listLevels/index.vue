@@ -1,5 +1,5 @@
 <template>
-	<ul class="list-subjects-levels">
+	<ul class="list-subjects-levels" v-if="levels.length > 0">
 		<LevelItem
 			v-for="level in levels"
 			:key="level"
@@ -8,11 +8,13 @@
 			@level:select="$emit('level:select', $event)"
 		/>
 	</ul>
+	<Spinner v-else />
 </template>
 
 <script setup lang="ts">
 	import { inject, ComputedRef } from "vue";
 	import LevelItem from "./LevelItem.vue";
+	import Spinner from "../../../ui/Spinner.vue";
 
 	defineEmits(["level:select"]);
 	const levels = inject("levels") as ComputedRef<string[]>;
