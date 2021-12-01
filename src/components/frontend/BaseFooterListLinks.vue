@@ -47,11 +47,11 @@
 			list-style: none;
 
 			:link {
-				color: $font_color;
+				color: var(--font-color);
 			}
 
 			:visited {
-				color: $font_color;
+				color: var(--font-color);
 			}
 
 			a {

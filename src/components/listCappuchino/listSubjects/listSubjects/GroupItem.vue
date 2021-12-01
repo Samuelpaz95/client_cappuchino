@@ -56,7 +56,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
 	.group-item {
 		display: flex;
 		line-height: 24px;
@@ -79,7 +78,7 @@
 
 		&__input {
 			margin: 0;
-			accent-color: $secondary_color;
+			accent-color: var(--secondary-color);
 			cursor: pointer;
 		}
 

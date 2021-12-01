@@ -28,8 +28,6 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables";
-
 	.subject-item {
 		list-style: none;
 		padding: 10px;
@@ -45,7 +43,7 @@
 		&__name {
 			padding: 0;
 			margin: 0;
-			color: $secondary_color;
+			color: var(--secondary-color);
 			font-weight: 700;
 		}
 	}

@@ -21,15 +21,13 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
-
 	.list-subjects-levels {
 		padding: 0;
 		margin: 0;
 		overflow: auto;
 
 		&__item:not(:last-child) {
-			border-bottom: 1px solid transparentize($font_color, 0.7);
+			border-bottom: 1px solid var(--transparent-font-color);
 		}
 	}
 </style>

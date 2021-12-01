@@ -22,14 +22,14 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables";
 
 	.list-carrers {
 		// box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16);
 		border-bottom-right-radius: $border_radius;
 
 		&__options {
-			background-color: $background_color;
+			background-color: var(--background-color);
 		}
 
 		&__header {

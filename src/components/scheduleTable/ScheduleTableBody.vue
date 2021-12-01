@@ -42,11 +42,10 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
 	.schedule-table-body {
 		th,
 		td {
-			border: 1px solid $secondary_color;
+			border: 1px solid var(--secondary-color);
 			text-align: center;
 		}
 

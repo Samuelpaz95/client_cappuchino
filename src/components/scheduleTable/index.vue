@@ -22,7 +22,7 @@
 
 	.schedule-table {
 		font-size: 12px;
-		background-color: $primary_color;
+		background-color: var(--primary-color);
 		border-radius: $border_radius;
 		display: flex;
 		overflow-x: auto;

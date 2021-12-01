@@ -70,9 +70,9 @@
 			justify-content: center;
 			text-align: center;
 			border-radius: $border_radius;
-			background-color: $primary_color;
+			background-color: var(--primary-color);
 			padding: 1rem;
-			color: $font_color;
+			color: var(--font-color);
 			text-decoration: none;
 			font-weight: bold;
 			font-size: 1.4rem;

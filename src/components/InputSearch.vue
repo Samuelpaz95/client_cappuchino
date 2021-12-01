@@ -44,7 +44,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables";
 
 	.search {
 		position: relative;
@@ -52,7 +52,7 @@
 		&__bar {
 			height: 54px;
 			border-radius: $border_radius;
-			background-color: $primary_color;
+			background-color: var(--primary-color);
 			display: flex;
 			width: 100%;
 		}
@@ -61,7 +61,7 @@
 			position: absolute;
 			width: 100%;
 			z-index: 1;
-			background-color: $primary_color;
+			background-color: var(--primary-color);
 			border-radius: $border_radius;
 			padding: 1rem 1rem;
 			transition: 1s;
@@ -71,7 +71,7 @@
 			}
 
 			li:nth-child(2) {
-				border-top: 3px solid $secondary_color;
+				border-top: 3px solid var(--secondary-color);
 			}
 		}
 
@@ -82,7 +82,7 @@
 			transition: 1s;
 
 			:not(:last-child) {
-				border-bottom: 1px solid $font_color;
+				border-bottom: 1px solid var(--font-color);
 			}
 
 			div:first-child {
@@ -103,17 +103,17 @@
 		}
 
 		&__input {
-			background-color: $primary_color;
+			background-color: var(--primary-color);
 			border: none;
 			border-radius: $border_radius;
 			font-size: 1rem;
-			color: $font_color;
+			color: var(--font-color);
 			padding-left: 1rem;
 			width: 100%;
 		}
 
 		::placeholder {
-			color: $font_color;
+			color: var(--font-color);
 		}
 	}
 </style>

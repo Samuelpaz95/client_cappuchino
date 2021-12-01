@@ -15,7 +15,7 @@
 	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
 
 	.footer {
-		background-color: $primary_color;
+		background-color: var(--primary-color);
 		width: 100%;
 		height: 100%;
 		display: flex;

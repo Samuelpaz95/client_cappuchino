@@ -3,14 +3,12 @@
 </template>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
-
 	.spinner {
-		border: 4px solid $primary_color;
+		border: 4px solid var(--primary-color);
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
-		border-left-color: $secondary_color;
+		border-left-color: var(--secondary-color);
 		animation: spin 1s ease infinite;
 		margin: 1rem auto;
 	}

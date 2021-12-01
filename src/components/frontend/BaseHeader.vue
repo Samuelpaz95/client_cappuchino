@@ -12,7 +12,7 @@
 	.header {
 		width: 100%;
 		height: 100%;
-		background-color: $primary_color;
+		background-color: var(--primary-color);
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -24,7 +24,8 @@
 		}
 
 		&__title {
-			color: $font_color;
+			color: var(--font-color);
+			margin: 0;
 
 			@include large {
 				font-size: 2rem;

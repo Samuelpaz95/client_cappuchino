@@ -29,16 +29,14 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables";
-
 	.subject-list {
 		padding: 0;
 		margin: 0;
-		background-color: $background_color;
+		background-color: var(--background-color);
 		overflow-y: auto;
 
 		&__item:not(:first-child) {
-			border-top: 1px solid transparentize($font_color, 0.7);
+			border-top: 1px solid var(--transparent-font-color);
 		}
 	}
 </style>

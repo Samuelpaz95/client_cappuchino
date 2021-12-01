@@ -1,6 +1,6 @@
 <template>
-	<li class="list-item-carrer"  @click="$emit('carrer:select', nameCarrer)">
-		<span class="list-item-carrer__content" >
+	<li class="list-item-carrer" @click="$emit('carrer:select', nameCarrer)">
+		<span class="list-item-carrer__content">
 			<div class="list-item-carrer__name">{{ nameCarrer }}</div>
 			<div class="list-item-carrer__description">Actualizado al {{ updateAt }}</div>
 		</span>
@@ -29,8 +29,6 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables.scss";
-
 	.list-item-carrer {
 		margin: 5px;
 		list-style: none;

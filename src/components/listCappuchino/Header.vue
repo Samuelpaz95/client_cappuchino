@@ -38,14 +38,14 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables.scss", "@/scss/abstracts/mixins.scss";
+	@import "@/scss/abstracts/variables", "@/scss/abstracts/mixins";
 
 	.list-carrers-header {
 		display: flex;
 		justify-content: space-between;
 		padding: 0.5rem 1rem;
 		height: $lineHeight;
-		background-color: $primary_color;
+		background-color: var(--primary-color);
 
 		@include large {
 			border-top-left-radius: $border_radius;

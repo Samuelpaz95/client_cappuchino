@@ -20,7 +20,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables";
 
 	.list-subjects-header {
 		height: $lineHeight;
@@ -29,8 +29,8 @@
 		align-items: center;
 		justify-content: center;
 		padding: 0.5rem;
-		background-color: $secondary_color;
-		color: $contrast_font_color;
+		background-color: var(--secondary-color);
+		color: var(--contrast-font-color);
 		font-weight: 700;
 
 		p {

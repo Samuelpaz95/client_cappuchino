@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
+	@import "@/scss/abstracts/variables";
 	.list-subjects-level {
 		list-style: none;
 		height: $lineHeight;

@@ -21,15 +21,13 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "@/scss/abstracts/variables.scss";
-
 	.schedule-item {
 		margin: 10px;
 		font-size: 1em;
 		line-height: 16px;
 
 		&__conflictive {
-			color: $secondary_color;
+			color: var(--secondary-color);
 			font-weight: 700;
 		}
 	}

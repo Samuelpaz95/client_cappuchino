@@ -1,14 +1,25 @@
-$primary_color: #2d323e;
-$secondary_color: #cc2838;
-$background_color: #1f2128;
-$font_color: #d6d7d8;
-$contrast_font_color: #d6d7d8;
+$primary_color_dark: #2d323e;
+$secondary_color_dark: #cc2838;
+$background_color_dark: #1f2128;
+$font_color_dark: #d6d7d8;
+$contrast_font_color_dark: #d6d7d8;
+$transparent_font_color_dark: transparentize($font_color_dark, 0.7);
 
-// $primary_color: #ffffff;
-// $secondary_color: #3471cf;
-// $background_color: #f1f9ff;
-// $font_color: black;
-// $contrast_font_color: white;
+$primary_color_light: #ffffff;
+$secondary_color_light: #3471cf;
+$background_color_light: #f1f9ff;
+$font_color_light: black;
+$contrast_font_color_light: white;
+$transparent_font_color_light: transparentize($font_color_light, 0.7);
 
 $border_radius: 8px;
 $lineHeight: 50px;
+
+:root {
+	--primary-color: #{$primary_color_dark};
+	--secondary-color: #{$secondary_color_dark};
+	--background-color: #{$background_color_dark};
+	--font-color: #{$font_color_dark};
+	--contrast-font-color: #{$contrast_font_color_dark};
+	--transparent-font-color: #{$transparent_font_color_dark};
+}
