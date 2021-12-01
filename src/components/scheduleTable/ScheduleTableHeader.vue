@@ -23,6 +23,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/scss/abstracts/variables.scss";
+
 	.schedule-table-header {
 		&__title {
 			text-align: left;
@@ -33,7 +35,7 @@
 		&__header {
 			th,
 			td {
-				border: 1px solid red;
+				border: 1px solid $secondary_color;
 				border-top: none;
 				text-align: center;
 				min-width: 50px;

@@ -53,7 +53,6 @@
 			height: 54px;
 			border-radius: $border_radius;
 			background-color: $primary_color;
-			box-shadow: $box-shadow;
 			display: flex;
 			width: 100%;
 		}

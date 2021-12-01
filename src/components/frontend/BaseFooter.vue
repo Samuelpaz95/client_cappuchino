@@ -16,7 +16,6 @@
 
 	.footer {
 		background-color: $primary_color;
-		box-shadow: $box-shadow;
 		width: 100%;
 		height: 100%;
 		display: flex;

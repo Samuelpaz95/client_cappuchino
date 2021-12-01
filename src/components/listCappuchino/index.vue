@@ -25,13 +25,11 @@
 	@import "@/scss/abstracts/variables.scss";
 
 	.list-carrers {
-		&__list {
-			padding: 1rem;
-			margin: 0;
-			width: 100%;
-			background-color: $primary_color;
-			position: absolute;
-			z-index: 10;
+		// box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16);
+		border-bottom-right-radius: $border_radius;
+
+		&__options {
+			background-color: $background_color;
 		}
 
 		&__header {

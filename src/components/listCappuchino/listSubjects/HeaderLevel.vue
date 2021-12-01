@@ -30,6 +30,7 @@
 		justify-content: center;
 		padding: 0.5rem;
 		background-color: $secondary_color;
+		color: $contrast_font_color;
 		font-weight: 700;
 
 		p {

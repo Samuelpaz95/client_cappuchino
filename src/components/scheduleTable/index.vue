@@ -26,6 +26,7 @@
 		border-radius: $border_radius;
 		display: flex;
 		overflow-x: auto;
+		// box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16);
 
 		&__table {
 			border-collapse: collapse;

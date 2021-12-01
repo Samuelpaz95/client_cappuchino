@@ -16,7 +16,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		box-shadow: $box-shadow;
+		// box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 		&__linkmain {
 			text-decoration: none;
