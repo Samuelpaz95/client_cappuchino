@@ -3,8 +3,13 @@
 		<router-link class="header__linkmain" to="/">
 			<h2 class="header__title">TITLE</h2>
 		</router-link>
+		<ToggleTheme class="header__option" />
 	</header>
 </template>
+
+<script setup lang="ts">
+	import ToggleTheme from "../ToggleTheme.vue";
+</script>
 
 <style scoped lang="scss">
 	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
@@ -15,7 +20,7 @@
 		background-color: var(--primary-color);
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		justify-content: space-between;
 		// box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 		&__linkmain {
@@ -30,6 +35,10 @@
 			@include large {
 				font-size: 2rem;
 			}
+		}
+
+		&__option {
+			margin-right: 3rem;
 		}
 	}
 </style>

@@ -2,12 +2,10 @@
 	<router-view />
 </template>
 
-<script lang="ts">
-	import { defineComponent } from "vue";
+<script setup lang="ts">
+	import { useTheme } from "./composables/useTheme";
 
-	export default defineComponent({
-		name: "App",
-	});
+	useTheme();
 </script>
 
 <style lang="scss">
