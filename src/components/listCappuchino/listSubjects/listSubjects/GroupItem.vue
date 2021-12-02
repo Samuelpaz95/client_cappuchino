@@ -60,6 +60,7 @@
 		display: flex;
 		line-height: 24px;
 		padding: 0 1rem;
+		align-items: center;
 
 		&__teacher {
 			overflow: hidden;
