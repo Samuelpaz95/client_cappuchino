@@ -1,10 +1,13 @@
-import { provide } from "vue";
+import { provide, ref, Ref } from "vue";
 import { THEME } from "../enums/theme";
 
+type themeType = "LIGHT" | "DARK";
+
 export function useTheme() {
-	const defineTheme = (theme: "LIGHT" | "DARK") => {
+	let currentTheme: Ref<themeType> = ref("LIGHT");
+
+	const defineTheme = (theme: themeType) => {
 		const root = document.documentElement;
-		console.log(THEME[theme]);
 
 		root.style.setProperty("--primary-color", THEME[theme].primaryColor);
 		root.style.setProperty("--secondary-color", THEME[theme].secondaryColor);
@@ -15,21 +18,24 @@ export function useTheme() {
 	};
 
 	const toggleTheme = () => {
-		const theme = localStorage.getItem("theme") as "LIGHT" | "DARK";
+		const theme = localStorage.getItem("theme") as themeType;
 		const newTheme = theme == "DARK" ? "LIGHT" : "DARK";
 		localStorage.setItem("theme", newTheme);
+		currentTheme.value = newTheme;
 		defineTheme(newTheme);
 	};
 
 	(() => {
-		let theme = localStorage.getItem("theme") as null | "LIGHT" | "DARK";
+		let theme = localStorage.getItem("theme") as null | themeType;
 		if (theme == null) {
 			const isDark = window.matchMedia("(prefers-color-scheme: dark)");
-			theme = isDark ? "DARK" : "LIGHT";
+			theme = isDark.matches ? "DARK" : "LIGHT";
 			localStorage.setItem("theme", theme);
 		}
+		currentTheme.value = theme;
 		defineTheme(theme);
 	})();
 
 	provide("theme/toggleTheme", toggleTheme);
+	provide("theme/currentTheme", currentTheme);
 }

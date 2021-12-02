@@ -2,13 +2,17 @@
 	<footer class="footer">
 		<div class="footer__container">
 			<BaseFooterListLinks />
-			<img class="footer__image" src="@/assets/scesi_white.png" alt="scesi" />
+			<img v-if="theme == 'LIGHT'" class="footer__image" src="@/assets/scesi_black.png" alt="scesi" />
+			<img v-else class="footer__image" src="@/assets/scesi_white.png" alt="scesi" />
 		</div>
 	</footer>
 </template>
 
 <script setup lang="ts">
+	import { inject, Ref } from "vue";
 	import BaseFooterListLinks from "./BaseFooterListLinks.vue";
+
+	const theme = inject("theme/currentTheme") as Ref<string>;
 </script>
 
 <style scoped lang="scss">
