@@ -1,6 +1,5 @@
 <template>
 	<main class="home">
-		<h1>SCESI</h1>
 		<nav class="home__nav">
 			<router-link
 				v-for="{ name, routeName, department } of routes"
@@ -42,7 +41,7 @@
 	@import "@/scss/abstracts/variables", "@/scss/abstracts/mixins";
 	.home {
 		display: grid;
-		grid-template-rows: auto 1fr;
+		grid-template-rows: 1fr;
 		padding: 1rem 2rem;
 		height: 100%;
 

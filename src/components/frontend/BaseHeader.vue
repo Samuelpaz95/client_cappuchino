@@ -1,14 +1,21 @@
 <template>
 	<header class="header">
 		<router-link class="header__linkmain" to="/">
-			<h2 class="header__title">TITLE</h2>
+			<h2 class="header__title">{{ title }}</h2>
 		</router-link>
 		<ToggleTheme class="header__option" />
 	</header>
 </template>
 
 <script setup lang="ts">
+	import { computed } from "vue";
+	import { useRoute } from "vue-router";
+	import { getPath } from "../../utils/routes";
+	import { TITLE } from "../../enums/titleRoutes";
 	import ToggleTheme from "../ToggleTheme.vue";
+
+	const route = useRoute();
+	const title = computed(() => TITLE[getPath(route.path)]);
 </script>
 
 <style scoped lang="scss">
