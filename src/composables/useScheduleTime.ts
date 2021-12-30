@@ -1,6 +1,6 @@
 import { ref, inject } from "vue";
-import { DAYS } from "../enums/days";
-import { HOURS } from "../enums/hours";
+import { DAYS } from "../constants/days";
+import { HOURS } from "../constants/hours";
 
 export function useScheduleTime() {
 	const currentDepartment = (inject("currentDepartment") as string).toUpperCase();
