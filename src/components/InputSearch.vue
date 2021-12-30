@@ -118,11 +118,15 @@
 		&__input {
 			background-color: var(--primary-color);
 			border: none;
+			font-size: 1rem;
 			border-radius: $border_radius;
-			font-size: 20px;
 			color: var(--font-color);
 			padding-left: 2rem;
 			width: 100%;
+
+			@include large {
+				font-size: 20px;
+			}
 		}
 
 		::placeholder {
