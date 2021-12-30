@@ -1,11 +1,14 @@
 import { ref, Ref, inject } from "vue";
+import { mediaQueries } from "../enums/mediaQueries";
 import { professor } from "../interfaces";
 import professorsService from "../services/professors";
+import { useMediaQueries } from "./useMediaQueries";
 
 export function useSearch() {
 	const department = inject("currentDepartment") as string;
 	const listOptions: Ref<professor[]> = ref([]);
 	const matchOptions: Ref<professor[]> = ref([]);
+	const { listenMediaQuery } = useMediaQueries();
 
 	(async () => {
 		if (department) {
@@ -41,9 +44,13 @@ export function useSearch() {
 			);
 
 	const clearMatchOptions = () => {
-		setTimeout(() => {
-			matchOptions.value = [];
-		}, 400);
+		listenMediaQuery(mediaQueries.isLarge, ({ matches }) => {
+			if (!matches) {
+				setTimeout(() => {
+					matchOptions.value = [];
+				}, 400);
+			}
+		});
 	};
 
 	return { matchOptions, searchOptions, clearMatchOptions };
