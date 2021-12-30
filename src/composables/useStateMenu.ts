@@ -1,7 +1,6 @@
 import { provide, readonly, ref, Ref, watchEffect } from "vue";
 
-import { mapLevels } from "../constants/levels";
-import { mediaQueries } from "../constants/mediaQueries";
+import { mediaQueries, mapLevels } from "../constants";
 import { useMediaQueries } from "./useMediaQueries";
 
 export function useStateMenu() {

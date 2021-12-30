@@ -1,5 +1,5 @@
 import { ref, onMounted, Ref, inject, watch } from "vue";
-import { mediaQueries } from "../constants/mediaQueries";
+import { mediaQueries } from "../constants";
 import { useMediaQueries } from "./useMediaQueries";
 
 export function useScheudleHeight(counterHeight: number = 0) {

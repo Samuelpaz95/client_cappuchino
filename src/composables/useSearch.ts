@@ -1,5 +1,5 @@
 import { ref, Ref, inject } from "vue";
-import { mediaQueries } from "../constants/mediaQueries";
+import { mediaQueries } from "../constants";
 import { professor } from "../interfaces";
 import professorsService from "../services/professors";
 import { useMediaQueries } from "./useMediaQueries";

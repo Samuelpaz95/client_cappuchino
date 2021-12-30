@@ -1,5 +1,5 @@
 import { provide, ref, Ref } from "vue";
-import { THEME } from "../constants/theme";
+import { THEME } from "../constants";
 
 type themeType = "LIGHT" | "DARK";
 

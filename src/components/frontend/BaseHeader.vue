@@ -11,7 +11,7 @@
 	import { computed } from "vue";
 	import { useRoute } from "vue-router";
 	import { getPath } from "../../utils/routes";
-	import { TITLE } from "../../constants/titleRoutes";
+	import { TITLE } from "../../constants";
 	import ToggleTheme from "../ToggleTheme.vue";
 
 	const route = useRoute();
