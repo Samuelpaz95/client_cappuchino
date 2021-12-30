@@ -24,11 +24,9 @@
 	.header {
 		width: 100%;
 		height: 100%;
-		background-color: var(--primary-color);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		// box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 
 		&__linkmain {
 			text-decoration: none;
