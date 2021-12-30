@@ -4,7 +4,6 @@ export const COLORS = {
 	[THEMES.DARK]: [
 		"#aeda00",
 		"#efd828",
-		"#ff6363",
 		"#2490fc",
 		"#62c8ab",
 		"#bba1ff",

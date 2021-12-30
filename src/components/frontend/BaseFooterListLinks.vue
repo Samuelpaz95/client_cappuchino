@@ -47,11 +47,11 @@
 			list-style: none;
 
 			:link {
-				color: var(--font-color);
+				color: var(--contrast-font-color);
 			}
 
 			:visited {
-				color: var(--font-color);
+				color: var(--contrast-font-color);
 			}
 
 			a {
@@ -69,6 +69,7 @@
 				content: "Siguenos en:";
 				font-size: 18px;
 				padding-right: 1rem;
+				color: var(--contrast-font-color);
 			}
 		}
 	}

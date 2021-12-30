@@ -1,6 +1,8 @@
 <template>
 	<caption class="schedule-table-header__title">
-		<slot></slot>
+		<h3>
+			<slot></slot>
+		</h3>
 	</caption>
 	<thead class="schedule-table-header__header">
 		<tr>
@@ -26,8 +28,13 @@
 	.schedule-table-header {
 		&__title {
 			text-align: left;
-			font-size: 1.2rem;
-			margin-bottom: 1rem;
+			font-size: 1.4rem;
+			margin-bottom: 1.6rem;
+
+			h3 {
+				font-weight: 100;
+				margin: 0;
+			}
 		}
 
 		&__header {

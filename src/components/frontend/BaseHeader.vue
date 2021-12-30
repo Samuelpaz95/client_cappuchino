@@ -3,7 +3,10 @@
 		<router-link class="header__linkmain" to="/">
 			<h2 class="header__title">{{ title }}</h2>
 		</router-link>
-		<ToggleTheme class="header__option" />
+		<div class="header__icons">
+			<ToggleTheme class="header__option" />
+			<Notifications class="header__option" />
+		</div>
 	</header>
 </template>
 
@@ -13,14 +16,13 @@
 	import { getPath } from "../../utils/routes";
 	import { TITLE } from "../../constants";
 	import ToggleTheme from "../ToggleTheme.vue";
+	import Notifications from "../Notifications.vue";
 
 	const route = useRoute();
 	const title = computed(() => TITLE[getPath(route.path)]);
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
-
 	.header {
 		width: 100%;
 		height: 100%;
@@ -36,10 +38,14 @@
 		&__title {
 			color: var(--font-color);
 			margin: 0;
+			font-weight: 100;
+			font-size: 34px;
+		}
 
-			@include large {
-				font-size: 2rem;
-			}
+		&__icons {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 		}
 
 		&__option {

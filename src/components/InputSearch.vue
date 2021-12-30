@@ -11,17 +11,17 @@
 				@input="searchOptions(inputSearch)"
 				@focusin="searchOptions(inputSearch)"
 			/>
-			<ButtonIcon type="button" icon="search" height="16" class="search__button" />
+			<ButtonIcon type="button" icon="search" height="26.26" class="search__button" />
 		</form>
 		<ul class="search__options" v-show="matchOptions.length > 0">
-			<div>Resultados</div>
+			<div class="search__result">Resultados</div>
 			<li
 				@click="$emit('select:professor', value)"
 				:key="index"
 				class="search__option"
 				v-for="(value, index) in matchOptions.slice(0, 5)"
 			>
-				<div>{{ value }}</div>
+				<div>{{ capitalizeText(value.toLocaleLowerCase()) }}</div>
 				<div>{{ departmentInfoDisplay }}</div>
 			</li>
 		</ul>
@@ -32,6 +32,7 @@
 	import { ref, Ref, inject, computed } from "vue";
 	import { Idepartment } from "../interfaces";
 	import { useSearch } from "../composables/useSearch";
+	import { capitalizeText } from "../utils/capitalizeText";
 	import ButtonIcon from "../components/ui/ButtonIcon.vue";
 
 	const inputSearch = ref("");
@@ -50,7 +51,7 @@
 		position: relative;
 
 		&__bar {
-			height: 54px;
+			height: 77px;
 			border-radius: $border_radius;
 			background-color: var(--primary-color);
 			display: flex;
@@ -63,30 +64,29 @@
 			z-index: 1;
 			background-color: var(--primary-color);
 			border-radius: $border_radius;
-			padding: 1rem 1rem;
-			transition: 1s;
-
-			> div {
-				padding-bottom: 0.4rem;
-			}
+			padding: 2rem 2rem;
 
 			li:nth-child(2) {
 				border-top: 3px solid var(--secondary-color);
 			}
 		}
+		&__result {
+			font-family: "Allerta Stencil", sans-serif;
+			padding-bottom: 1rem;
+			font-size: 20px;
+			line-height: 25.57px;
+			font-weight: 400;
+		}
 
 		&__option {
 			width: 100%;
-			padding: 3px 0;
+			padding: 1rem 0;
 			list-style: none;
-			transition: 1s;
-
-			:not(:last-child) {
-				border-bottom: 1px solid var(--font-color);
-			}
+			border-bottom: 0.5px solid var(--font-color);
 
 			div:first-child {
 				line-height: 24px;
+				font-weight: 700;
 			}
 
 			div:nth-child(2) {
@@ -106,9 +106,9 @@
 			background-color: var(--primary-color);
 			border: none;
 			border-radius: $border_radius;
-			font-size: 1rem;
+			font-size: 20px;
 			color: var(--font-color);
-			padding-left: 1rem;
+			padding-left: 2rem;
 			width: 100%;
 		}
 
