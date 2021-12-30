@@ -1,5 +1,10 @@
+export const THEMES = {
+	LIGHT: "LIGHT",
+	DARK: "DARK",
+};
+
 export const THEME = {
-	LIGHT: {
+	[THEMES.LIGHT]: {
 		primaryColor: "#ffffff",
 		secondaryColor: "#3471cf",
 		backgroundColor: "#f1f9ff",
@@ -7,7 +12,7 @@ export const THEME = {
 		contrastFontColor: "#ffffff",
 		transparentFontColor: "#000000",
 	},
-	DARK: {
+	[THEMES.DARK]: {
 		primaryColor: "#2d323e",
 		secondaryColor: "#cc2838",
 		backgroundColor: "#1f2128",

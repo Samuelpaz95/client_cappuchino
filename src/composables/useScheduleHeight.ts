@@ -1,5 +1,5 @@
 import { ref, onMounted, Ref, inject, watch } from "vue";
-import { mediaQueries } from "../constants";
+import { MEDIA_QUERIES } from "../constants";
 import { useMediaQueries } from "./useMediaQueries";
 
 export function useScheudleHeight(counterHeight: number = 0) {
@@ -16,7 +16,7 @@ export function useScheudleHeight(counterHeight: number = 0) {
 	onMounted(() => {
 		scheduleHeight.value = readScheduleHeight();
 
-		listenMediaQuery(mediaQueries.isLarge, (evt) => {
+		listenMediaQuery(MEDIA_QUERIES.isLarge, (evt) => {
 			heightList.value =
 				evt.matches && scheduleHeight.value ? `height: ${scheduleHeight.value - counterHeight}px;` : "";
 		});

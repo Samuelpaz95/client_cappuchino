@@ -1,5 +1,7 @@
+import { THEMES } from "./theme";
+
 export const COLORS = {
-	DARK: [
+	[THEMES.DARK]: [
 		"#aeda00",
 		"#efd828",
 		"#ff6363",
@@ -12,5 +14,5 @@ export const COLORS = {
 		"#e66cef",
 		"#f97308",
 	],
-	LIGHT: ["#d89b96", "#c4d7d1", "#bddee5", "#b29299", "#e2d3a8", "#e7ad87"],
+	[THEMES.LIGHT]: ["#d89b96", "#c4d7d1", "#bddee5", "#b29299", "#e2d3a8", "#e7ad87"],
 };

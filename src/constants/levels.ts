@@ -1,4 +1,4 @@
-const mapLevels: { [key: string]: string } = {
+export const MAP_LEVELS: { [key: string]: string } = {
 	A: "Semestre 1",
 	B: "Semestre 2",
 	C: "Semestre 3",
@@ -10,5 +10,3 @@ const mapLevels: { [key: string]: string } = {
 	I: "Semestre 9",
 	J: "Semestre 10",
 };
-
-export { mapLevels };

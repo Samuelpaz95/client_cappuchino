@@ -1,5 +1,5 @@
 import { ref, Ref, inject } from "vue";
-import { mediaQueries } from "../constants";
+import { MEDIA_QUERIES } from "../constants";
 import { professor } from "../interfaces";
 import professorsService from "../services/professors";
 import { useMediaQueries } from "./useMediaQueries";
@@ -44,7 +44,7 @@ export function useSearch() {
 			);
 
 	const clearMatchOptions = () => {
-		listenMediaQuery(mediaQueries.isLarge, ({ matches }) => {
+		listenMediaQuery(MEDIA_QUERIES.isLarge, ({ matches }) => {
 			if (!matches) {
 				setTimeout(() => {
 					matchOptions.value = [];

@@ -1,6 +1,6 @@
 import { provide, readonly, ref, Ref, watchEffect } from "vue";
 
-import { mediaQueries, mapLevels } from "../constants";
+import { MEDIA_QUERIES, MAP_LEVELS } from "../constants";
 import { useMediaQueries } from "./useMediaQueries";
 
 export function useStateMenu() {
@@ -29,9 +29,9 @@ export function useStateMenu() {
 		selectLevel.value = level;
 	};
 
-	const formatLevel = (level: string) => mapLevels[level];
+	const formatLevel = (level: string) => MAP_LEVELS[level];
 
-	listenMediaQuery(mediaQueries.isLarge, (evt) => {
+	listenMediaQuery(MEDIA_QUERIES.isLarge, (evt) => {
 		isInDesktop.value = evt.matches;
 	});
 

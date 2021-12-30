@@ -1,6 +1,6 @@
 import { DEPARMENTS } from "./departments";
 
-const HOURS = {
+export const HOURS = {
 	[DEPARMENTS.FCYT]: [
 		"0645",
 		"0730",
@@ -26,5 +26,3 @@ const HOURS = {
 	],
 	[DEPARMENTS.FCE]: ["0645", "0815", "0945", "1115", "1245", "1415", "1545", "1715", "1845", "2015", "2145"],
 };
-
-export { HOURS };

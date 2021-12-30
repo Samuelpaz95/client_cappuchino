@@ -1,4 +1,4 @@
-export const mediaQueries = {
+export const MEDIA_QUERIES = {
 	isExtraSmall: window.matchMedia("(min-width: 576px)"),
 	isSmall: window.matchMedia("(min-width: 576px)"),
 	isMedium: window.matchMedia("(min-width: 768px)"),
