@@ -28,7 +28,7 @@
 		}
 
 		&__search {
-			margin: 15px 30px;
+			margin: 15px;
 
 			@include large {
 				margin: 0;

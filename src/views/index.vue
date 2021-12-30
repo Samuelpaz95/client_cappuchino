@@ -63,8 +63,8 @@
 		&__department {
 			height: 100%;
 			display: grid;
-			gap: 2rem;
-			grid-template-rows: 50px 1fr;
+			gap: 1rem;
+			grid-template-rows: auto 1fr;
 
 			@include large {
 				gap: 0;
@@ -72,6 +72,7 @@
 
 			h2 {
 				font-weight: 100;
+				margin-bottom: 0;
 			}
 		}
 

@@ -45,7 +45,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables";
+	@import "@/scss/abstracts/variables", "@/scss/abstracts/mixins";
 
 	.search {
 		position: relative;
@@ -72,17 +72,25 @@
 		}
 		&__result {
 			font-family: "Allerta Stencil", sans-serif;
-			padding-bottom: 1rem;
+			padding-bottom: 0.4rem;
 			font-size: 20px;
 			line-height: 25.57px;
 			font-weight: 400;
+
+			@include large {
+				padding-bottom: 1rem;
+			}
 		}
 
 		&__option {
 			width: 100%;
-			padding: 1rem 0;
 			list-style: none;
+			padding: 0.5rem 0;
 			border-bottom: 0.5px solid var(--font-color);
+
+			@include large {
+				padding: 1rem 0;
+			}
 
 			div:first-child {
 				line-height: 24px;
@@ -90,9 +98,14 @@
 			}
 
 			div:nth-child(2) {
-				font-size: 0.76rem;
+				font-size: 0.6rem;
 				opacity: 0.6;
-				line-height: 1.2rem;
+				line-height: 0.8rem;
+
+				@include large {
+					font-size: 0.76rem;
+					line-height: 1.2rem;
+				}
 			}
 		}
 
