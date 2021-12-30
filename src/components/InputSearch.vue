@@ -90,6 +90,7 @@
 
 			@include large {
 				padding: 1rem 0;
+				cursor: pointer;
 			}
 
 			div:first-child {
