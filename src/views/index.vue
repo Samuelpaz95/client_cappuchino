@@ -69,6 +69,10 @@
 			@include large {
 				gap: 0;
 			}
+
+			h2 {
+				font-weight: 100;
+			}
 		}
 
 		&_links {
