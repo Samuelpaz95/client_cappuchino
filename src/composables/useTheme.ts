@@ -1,12 +1,12 @@
-import { provide, ref, Ref } from "vue";
-import { THEME } from "../constants";
+import { provide, ref } from "vue";
+import { THEMES, THEME } from "../constants";
 
-type themeType = "LIGHT" | "DARK";
+const THEME_ITEM = "theme";
 
 export function useTheme() {
-	let currentTheme: Ref<themeType> = ref("LIGHT");
+	let currentTheme = ref(THEMES.LIGHT);
 
-	const defineTheme = (theme: themeType) => {
+	const defineTheme = (theme: string) => {
 		const root = document.documentElement;
 
 		root.style.setProperty("--primary-color", THEME[theme].primaryColor);
@@ -18,19 +18,19 @@ export function useTheme() {
 	};
 
 	const toggleTheme = () => {
-		const theme = localStorage.getItem("theme") as themeType;
-		const newTheme = theme == "DARK" ? "LIGHT" : "DARK";
-		localStorage.setItem("theme", newTheme);
+		const theme = localStorage.getItem(THEME_ITEM);
+		const newTheme = theme == THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
+		localStorage.setItem(THEME_ITEM, newTheme);
 		currentTheme.value = newTheme;
 		defineTheme(newTheme);
 	};
 
 	(() => {
-		let theme = localStorage.getItem("theme") as null | themeType;
+		let theme = localStorage.getItem(THEME_ITEM);
 		if (theme == null) {
 			const isDark = window.matchMedia("(prefers-color-scheme: dark)");
-			theme = isDark.matches ? "DARK" : "LIGHT";
-			localStorage.setItem("theme", theme);
+			theme = isDark.matches ? THEMES.DARK : THEMES.LIGHT;
+			localStorage.setItem(THEME_ITEM, theme);
 		}
 		currentTheme.value = theme;
 		defineTheme(theme);

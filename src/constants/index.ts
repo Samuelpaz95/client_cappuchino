@@ -4,5 +4,5 @@ export { DEPARMENTS } from "./departments";
 export { HOURS } from "./hours";
 export { MAP_LEVELS } from "./levels";
 export { MEDIA_QUERIES } from "./mediaQueries";
-export { THEME } from "./theme";
+export { THEMES, THEME } from "./theme";
 export { TITLE } from "./titleRoutes";
