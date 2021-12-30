@@ -12,7 +12,7 @@ export function useSchedulesTable() {
 		const scheduleSubjects: scheduleSubject[] = store.getters["scheduleSubjects/scheduleSubjects"];
 		const schedulesTable: scheduleMap = copyObject(emptyScheduleTable);
 
-		scheduleSubjects.forEach((scheduleSubject) => {
+		scheduleSubjects.forEach((scheduleSubject, indexSubject) => {
 			const { schedule: schedules, ...subject } = scheduleSubject;
 			schedules.forEach((schedule) => {
 				schedule.start = schedule.start.length == 3 ? "0" + schedule.start : schedule.start;
@@ -20,11 +20,11 @@ export function useSchedulesTable() {
 
 				const isConflictive = isConfictive(schedulesTable, schedule);
 				if (!isConflictive) {
-					actualSchedule.schedules.push({ ...subject, ...schedule });
+					actualSchedule.schedules.push({ ...subject, ...schedule, indexSubject });
 					actualSchedule.duration = schedule.duration;
 					updateDurationOfCellsInTable(schedulesTable, schedule);
 				} else if (actualSchedule.duration == schedule.duration) {
-					actualSchedule.schedules.push({ ...subject, ...schedule });
+					actualSchedule.schedules.push({ ...subject, ...schedule, indexSubject });
 					actualSchedule.isConfictive = true;
 				}
 			});

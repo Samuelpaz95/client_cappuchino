@@ -3,11 +3,12 @@
 		<tr v-for="hour of semanticHours" :key="hour">
 			<template v-for="(day, indexDay) of semanticDays" :key="day + hour">
 				<td v-if="indexDay == 0">{{ hour }}</td>
-				<template v-else-if="isTimeSchedule(day, hour)">
-					<td :rowspan="getRowSpan(day, hour)">
-						<ScheduleTableItem :schedulesItem="getScheduleItem(day, hour)" />
-					</td>
-				</template>
+				<ScheduleTableItem
+					v-else-if="isTimeSchedule(day, hour)"
+					:rowspan="getRowSpan(day, hour)"
+					:colors="colors"
+					:schedulesItem="getScheduleItem(day, hour)"
+				/>
 				<td v-else-if="canRender(day, hour)"></td>
 			</template>
 		</tr>
@@ -15,10 +16,11 @@
 </template>
 
 <script setup lang="ts">
-	import { PropType, toRefs } from "vue";
+	import { computed, inject, PropType, Ref, toRefs } from "vue";
 	import ScheduleTableItem from "./ScheduleTableItem.vue";
 	import { scheduleMap } from "../../interfaces";
 	import { useScheduleTime } from "../../composables/useScheduleTime";
+	import { COLORS } from "../../constants";
 
 	const props = defineProps({
 		schedules: {
@@ -30,6 +32,8 @@
 
 	const { schedules } = toRefs(props);
 	const { semanticHours, semanticDays } = useScheduleTime();
+	const currentTheme = inject("theme/currentTheme") as Ref<string>;
+	const colors = computed(() => COLORS[currentTheme.value]);
 
 	const getScheduleItem = (day: string, hour: string) =>
 		schedules.value[day.slice(0, 2) + hour.replace(":", "")];

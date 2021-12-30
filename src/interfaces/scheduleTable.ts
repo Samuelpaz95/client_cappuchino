@@ -2,6 +2,7 @@ import { schedule } from ".";
 
 interface scheduleTable extends schedule {
 	key: string;
+	indexSubject: number;
 	subjectName: string;
 	groupCode: string;
 }
