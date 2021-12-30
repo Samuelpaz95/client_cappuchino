@@ -11,6 +11,7 @@ export const THEME = {
 		fontColor: "#000000",
 		contrastFontColor: "#ffffff",
 		transparentFontColor: "#000000",
+		scrollColor: "#3471cf",
 	},
 	[THEMES.DARK]: {
 		primaryColor: "#2d323e",
@@ -19,5 +20,6 @@ export const THEME = {
 		fontColor: "#d6d7d8",
 		contrastFontColor: "#d6d7d8",
 		transparentFontColor: "#d6d7d8",
+		scrollColor: "#cc2838",
 	},
 };
