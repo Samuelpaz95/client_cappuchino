@@ -1,7 +1,7 @@
 import { provide, ref } from "vue";
 import { THEMES, THEME } from "../constants";
 
-const THEME_ITEM = "theme";
+const THEME_ITEM = "SCESI_THEME";
 
 export function useTheme() {
 	let currentTheme = ref(THEMES.LIGHT);
