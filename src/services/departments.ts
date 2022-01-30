@@ -33,6 +33,16 @@ class DepartmentsService {
 			return null;
 		}
 	}
+
+	async takeScreenshot(contentHtml: string): Promise<string> {
+		try {
+			const { data }: { data: string } = await http.post(`/download/schedule`, { contentHtml });
+			return data;
+		} catch (error) {
+			console.error(error);
+			return "";
+		}
+	}
 }
 
 export default new DepartmentsService();
