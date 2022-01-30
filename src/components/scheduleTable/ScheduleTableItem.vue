@@ -2,6 +2,7 @@
 	<td
 		:rowspan="rowspan"
 		:class="[{ 'schedule-item__conflictive': schedulesItem.isConfictive }, 'schedule-item']"
+		:style="`background-color: ${!schedulesItem.isConfictive ? backgroundColor : null}`"
 	>
 		<div :key="schedule.key" v-for="schedule of schedulesItem.schedules">
 			<div><strong v-if="!schedule.isClass">*</strong> {{ schedule.subjectName }}</div>
@@ -11,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-	import { computed, PropType, watchEffect } from "vue";
+	import { computed, PropType } from "vue";
 	import { scheduleItem } from "../../interfaces";
 
 	const { schedulesItem, colors, rowspan } = defineProps({

@@ -1,17 +1,22 @@
 <template>
-	<div class="schedule-table" id="schedule-table">
+	<div ref="schedule" class="schedule-table" id="schedule-table">
 		<table class="schedule-table__table">
-			<schedule-table-header :days="semanticDays"> Horarios Disponibles </schedule-table-header>
+			<ScheduleTableHeader :scheduleRef="schedule" :days="semanticDays">
+				Horarios Disponibles
+			</ScheduleTableHeader>
 			<ScheduleTableBody :schedules="schedules" />
 		</table>
 	</div>
 </template>
 
 <script setup lang="ts">
+	import { Ref, ref } from "vue";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/useScheduleTime";
 	import { useSchedulesTable } from "../../composables/useSchedulesTable";
+
+	const schedule: Ref<HTMLElement | null> = ref(null);
 
 	const { semanticDays } = useScheduleTime();
 	const { schedules } = useSchedulesTable();
