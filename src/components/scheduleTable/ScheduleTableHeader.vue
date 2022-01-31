@@ -4,9 +4,7 @@
 			<h3 class="schedule-table-header__title">
 				<slot></slot>
 			</h3>
-			<div class="schedule-table-header__icons">
-				<ButtonIcon @click="downloadSchedule()" icon="camera" />
-			</div>
+			<ScheduleTableActions class="schedule-table-header__icons" :downloadSchedule="downloadSchedule" />
 		</div>
 	</caption>
 	<thead class="schedule-table-header__header">
@@ -20,7 +18,7 @@
 
 <script setup lang="ts">
 	import { PropType } from "vue";
-	import ButtonIcon from "../ui/ButtonIcon.vue";
+	import ScheduleTableActions from "./ScheduleTableActions.vue";
 
 	defineProps({
 		downloadSchedule: {
@@ -36,6 +34,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "@/scss/abstracts/mixins";
+
 	.schedule-table-header {
 		&__title {
 			text-align: left;
@@ -73,7 +73,9 @@
 		}
 
 		&__icons {
-			margin-right: 1rem;
+			@include large {
+				margin-right: 1rem;
+			}
 		}
 	}
 </style>

@@ -216,24 +216,6 @@
 		/>
 	</svg>
 	<svg
-		v-else-if="icon == 'bell'"
-		aria-hidden="true"
-		focusable="false"
-		data-prefix="fas"
-		data-icon="bell"
-		class="svg-inline--fa fa-bell fa-w-14"
-		role="img"
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 448 512"
-		:height="height"
-		:style="styles"
-	>
-		<path
-			fill="currentColor"
-			d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
-		/>
-	</svg>
-	<svg
 		v-else-if="icon == 'camera'"
 		aria-hidden="true"
 		focusable="false"
@@ -249,6 +231,60 @@
 		<path
 			fill="currentColor"
 			d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"
+		/>
+	</svg>
+	<svg
+		v-else-if="icon == 'save'"
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="fas"
+		data-icon="save"
+		class="svg-inline--fa fa-save fa-w-14"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 448 512"
+		:height="height"
+		:style="styles"
+	>
+		<path
+			fill="currentColor"
+			d="M433.941 129.941l-83.882-83.882A48 48 0 0 0 316.118 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V163.882a48 48 0 0 0-14.059-33.941zM224 416c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64s64 28.654 64 64c0 35.346-28.654 64-64 64zm96-304.52V212c0 6.627-5.373 12-12 12H76c-6.627 0-12-5.373-12-12V108c0-6.627 5.373-12 12-12h228.52c3.183 0 6.235 1.264 8.485 3.515l3.48 3.48A11.996 11.996 0 0 1 320 111.48z"
+		/>
+	</svg>
+	<svg
+		v-else-if="icon == 'trash'"
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="fas"
+		data-icon="trash"
+		class="svg-inline--fa fa-trash fa-w-14"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 448 512"
+		:height="height"
+		:style="styles"
+	>
+		<path
+			fill="currentColor"
+			d="M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z"
+		/>
+	</svg>
+	<svg
+		v-else-if="icon == 'copy'"
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="fas"
+		data-icon="copy"
+		class="svg-inline--fa fa-copy fa-w-14"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 448 512"
+		:height="height"
+		:style="styles"
+	>
+		<path
+			fill="currentColor"
+			d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"
 		/>
 	</svg>
 </template>
