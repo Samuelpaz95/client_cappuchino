@@ -23,6 +23,8 @@
 </script>
 
 <style scoped lang="scss">
+	@import "@/scss/abstracts/_mixins.scss";
+
 	.header {
 		width: 100%;
 		height: 100%;
@@ -49,7 +51,11 @@
 		}
 
 		&__option {
-			margin-right: 3rem;
+			margin-right: 1rem;
+
+			@include large {
+				margin-right: 3rem;
+			}
 		}
 	}
 </style>
