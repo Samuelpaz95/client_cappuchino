@@ -5,7 +5,7 @@
 				<slot></slot>
 			</h3>
 			<div class="schedule-table-header__icons">
-				<ButtonIcon @click="downloadSchedule" icon="camera" />
+				<ButtonIcon @click="downloadSchedule()" icon="camera" />
 			</div>
 		</div>
 	</caption>
@@ -21,18 +21,12 @@
 <script setup lang="ts">
 	import { PropType } from "vue";
 	import ButtonIcon from "../ui/ButtonIcon.vue";
-	import { downloadImageBase64 } from "../../utils/downloadImage64";
-	import departmentService from "../../services/departments";
 
-	const downloadSchedule = async () => {
-		const image64: string = await departmentService.takeScreenshot(scheduleRef ? scheduleRef.outerHTML : "");
-		downloadImageBase64(image64);
-	};
-
-	const { scheduleRef } = defineProps({
-		scheduleRef: {
-			type: [HTMLElement, null] as PropType<HTMLElement | null>,
+	defineProps({
+		downloadSchedule: {
+			type: Function,
 			require: true,
+			default: () => {},
 		},
 		days: {
 			type: Array as PropType<string[]>,

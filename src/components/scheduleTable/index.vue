@@ -1,7 +1,7 @@
 <template>
 	<div ref="schedule" class="schedule-table" id="schedule-table">
 		<table class="schedule-table__table">
-			<ScheduleTableHeader :scheduleRef="schedule" :days="semanticDays">
+			<ScheduleTableHeader :downloadSchedule="downloadSchedule" :days="semanticDays">
 				Horarios Disponibles
 			</ScheduleTableHeader>
 			<ScheduleTableBody :schedules="schedules" />
@@ -15,8 +15,18 @@
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/useScheduleTime";
 	import { useSchedulesTable } from "../../composables/useSchedulesTable";
+	import { downloadImageBase64 } from "../../utils/downloadImage64";
+	import departmentService from "../../services/departments";
 
 	const schedule: Ref<HTMLElement | null> = ref(null);
+
+	const downloadSchedule = async () => {
+		const image64: string = await departmentService.takeScreenshot(
+			schedule.value ? schedule.value.outerHTML : ""
+		);
+
+		downloadImageBase64(image64);
+	};
 
 	const { semanticDays } = useScheduleTime();
 	const { schedules } = useSchedulesTable();
