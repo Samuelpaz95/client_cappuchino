@@ -1,5 +1,5 @@
 <template>
-	<button class="button-icon">
+	<button class="button-icon" :title="title">
 		<BaseSystemIcons :icon="icon" :height="height" :rotate="rotate" />
 	</button>
 </template>
@@ -7,7 +7,7 @@
 <script setup lang="ts">
 	import BaseSystemIcons from "@/components/ui/BaseSystemIcons.vue";
 
-	const { icon, height, rotate } = defineProps({
+	defineProps({
 		icon: {
 			type: String,
 			require: true,
@@ -20,6 +20,9 @@
 		rotate: {
 			type: Number,
 			default: 0,
+		},
+		title: {
+			type: String,
 		},
 	});
 </script>

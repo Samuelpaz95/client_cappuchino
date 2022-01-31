@@ -1,5 +1,10 @@
 <template>
-	<ButtonIcon icon="toggle-theme" @click="toggleTheme()" aria-label="toggle theme" />
+	<ButtonIcon
+		@click="toggleTheme()"
+		icon="toggle-theme"
+		aria-label="Cambiar de tema"
+		title="Cambiar de tema"
+	/>
 </template>
 
 <script setup lang="ts">

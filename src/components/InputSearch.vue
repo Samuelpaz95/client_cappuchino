@@ -11,7 +11,7 @@
 				@input="searchOptions(inputSearch)"
 				@focusin="searchOptions(inputSearch)"
 			/>
-			<ButtonIcon type="button" icon="search" height="26.26" class="search__button" />
+			<ButtonIcon class="search__button" icon="search" height="26.26" title="Buscar" aria-label="Buscar" />
 		</form>
 		<ul class="search__options" v-show="matchOptions.length > 0">
 			<div class="search__result">Resultados</div>

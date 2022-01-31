@@ -1,5 +1,5 @@
 <template>
-	<ButtonIcon icon="bell" aria-label="Notification" />
+	<ButtonIcon icon="bell" aria-label="Notificaciones" title="Notificaciones" />
 </template>
 
 <script setup lang="ts">
