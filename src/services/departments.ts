@@ -34,9 +34,9 @@ class DepartmentsService {
 		}
 	}
 
-	async takeScreenshot(contentHtml: string): Promise<string> {
+	async takeScreenshot(contentHtml: string, cssVariables: string): Promise<string> {
 		try {
-			const { data }: { data: string } = await http.post(`/download/schedule`, { contentHtml });
+			const { data }: { data: string } = await http.post(`/download/schedule`, { contentHtml, cssVariables });
 			return data;
 		} catch (error) {
 			console.error(error);

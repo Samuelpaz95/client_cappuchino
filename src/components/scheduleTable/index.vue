@@ -21,8 +21,17 @@
 	const schedule: Ref<HTMLElement | null> = ref(null);
 
 	const downloadSchedule = async () => {
+		const cssVariables = `--primary-color: ${getComputedStyle(document.documentElement).getPropertyValue(
+			"--primary-color"
+		)};
+		--secondary-color: ${getComputedStyle(document.documentElement).getPropertyValue("--secondary-color")};
+		--background-color: ${getComputedStyle(document.documentElement).getPropertyValue("--background-color")};
+		--font-color: ${getComputedStyle(document.documentElement).getPropertyValue("--font-color")};
+		`;
+
 		const image64: string = await departmentService.takeScreenshot(
-			schedule.value ? schedule.value.outerHTML : ""
+			schedule.value ? schedule.value.outerHTML : "",
+			cssVariables
 		);
 
 		downloadImageBase64(image64);
