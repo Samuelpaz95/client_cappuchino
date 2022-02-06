@@ -27,6 +27,13 @@ export function useTheme() {
 		defineTheme(newTheme);
 	};
 
+	const themeVariables = () =>
+		`--primary-color: ${getComputedStyle(document.documentElement).getPropertyValue("--primary-color")};
+		--secondary-color: ${getComputedStyle(document.documentElement).getPropertyValue("--secondary-color")};
+		--background-color: ${getComputedStyle(document.documentElement).getPropertyValue("--background-color")};
+		--font-color: ${getComputedStyle(document.documentElement).getPropertyValue("--font-color")};
+		`;
+
 	(() => {
 		let theme = localStorage.getItem(THEME_ITEM);
 		if (theme == null) {
@@ -40,4 +47,5 @@ export function useTheme() {
 
 	provide("theme/toggleTheme", toggleTheme);
 	provide("theme/currentTheme", currentTheme);
+	provide("theme/themeVariables", themeVariables);
 }

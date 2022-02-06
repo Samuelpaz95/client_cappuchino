@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-	import { Ref, ref } from "vue";
+	import { Ref, ref, inject } from "vue";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/useScheduleTime";
@@ -19,22 +19,16 @@
 	import departmentService from "../../services/departments";
 
 	const schedule: Ref<HTMLElement | null> = ref(null);
+	const themeVariables = inject("theme/themeVariables") as Function;
 
 	const downloadSchedule = async () => {
-		const cssVariables = `--primary-color: ${getComputedStyle(document.documentElement).getPropertyValue(
-			"--primary-color"
-		)};
-		--secondary-color: ${getComputedStyle(document.documentElement).getPropertyValue("--secondary-color")};
-		--background-color: ${getComputedStyle(document.documentElement).getPropertyValue("--background-color")};
-		--font-color: ${getComputedStyle(document.documentElement).getPropertyValue("--font-color")};
-		`;
-
-		const image64: string = await departmentService.takeScreenshot(
-			schedule.value ? schedule.value.outerHTML : "",
-			cssVariables
-		);
-
-		downloadImageBase64(image64);
+		try {
+			const image64: string = await departmentService.takeScreenshot(
+				schedule.value ? schedule.value.outerHTML : "",
+				themeVariables()
+			);
+			downloadImageBase64(image64);
+		} catch (error) {}
 	};
 
 	const { semanticDays } = useScheduleTime();

@@ -40,7 +40,7 @@ class DepartmentsService {
 			return data;
 		} catch (error) {
 			console.error(error);
-			return "";
+			throw new Error("");
 		}
 	}
 }
