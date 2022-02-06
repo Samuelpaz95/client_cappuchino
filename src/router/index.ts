@@ -34,11 +34,19 @@ const routes: RouteRecordRaw[] = [
 		name: "404",
 		component: NotFound,
 	},
+	{
+		path: "/:pathMatch(.*)",
+		name: "NotFound",
+		component: NotFound,
+	},
 ];
 
 const router: Router = createRouter({
 	history: createWebHistory(),
 	routes,
+	scrollBehavior() {
+		return { top: 0 };
+	},
 });
 
 export { router };
