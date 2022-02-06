@@ -19,7 +19,7 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/mixins";
+	@import "@/scss/abstracts/variables", "@/scss/abstracts/mixins";
 
 	.not-found {
 		display: grid;
@@ -46,13 +46,14 @@
 			justify-content: space-evenly;
 
 			background-color: transparent;
+			border-radius: $border_radius;
 			color: inherit;
 			border: 1px solid var(--secondary-color);
 			padding: 1rem;
 			margin: 2rem;
+			width: calc(100% - 4rem);
 			font-size: 2rem;
 			font-weight: 700;
-			width: calc(100% - 4rem);
 		}
 	}
 </style>
