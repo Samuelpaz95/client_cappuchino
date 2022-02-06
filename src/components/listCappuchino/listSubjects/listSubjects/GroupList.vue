@@ -38,9 +38,9 @@
 	const { codeSubject, level } = toRefs(props);
 	const { addSubject, removeSubject } = useSubjects();
 
-	const addGroup = inject("addGroup") as Function;
-	const removeGroup = inject("removeGroup") as Function;
-	const isInGroup = inject("isInGroup") as Function;
+	const addGroup = inject("checkBox/addGroup") as Function;
+	const removeGroup = inject("checkBox/removeGroup") as Function;
+	const isInGroup = inject("checkBox/isInGroup") as Function;
 
 	const selectGroup = ({
 		isSelect,

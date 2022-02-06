@@ -14,8 +14,8 @@ export const useCheckboxSubjects = () => {
 
 	const isInGroup = (groupKey: string) => groupsSelect.value.includes(groupKey);
 
-	provide("groupsSelect", readonly(groupsSelect));
-	provide("addGroup", addGroup);
-	provide("removeGroup", removeGroup);
-	provide("isInGroup", isInGroup);
+	provide("checkBox/groupsSelect", readonly(groupsSelect));
+	provide("checkBox/addGroup", addGroup);
+	provide("checkBox/removeGroup", removeGroup);
+	provide("checkBox/isInGroup", isInGroup);
 };

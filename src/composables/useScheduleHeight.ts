@@ -6,7 +6,7 @@ export function useScheudleHeight(counterHeight: number = 0) {
 	let scheduleHeight: Ref<number | undefined> = ref(undefined);
 	let heightList = ref("");
 	const { listenMediaQuery } = useMediaQueries();
-	const groupsSelect = inject("groupsSelect") as Ref<String[]>;
+	const groupsSelect = inject("checkBox/groupsSelect") as Ref<String[]>;
 
 	const readScheduleHeight = () => {
 		const element = document.getElementById("schedule-table");
