@@ -17,7 +17,7 @@
 	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
 	import { IdepartementCarrer } from "../../../interfaces";
 	import CarrerItem from "./CarrerItem.vue";
-	import Spinner from "../../ui/Spinner.vue";
+	import Spinner from "../../ui/BaseSpinner.vue";
 
 	const { heightList } = useScheudleHeight(50);
 	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;

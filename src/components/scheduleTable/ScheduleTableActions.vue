@@ -2,10 +2,11 @@
 	<div class="schedule-table-actions">
 		<ButtonIcon
 			v-for="{ action, icon, title } of actions"
-			@click="action()"
+			:key="title"
 			:icon="icon"
 			:title="title"
 			:aria-label="title"
+			@click="action()"
 		/>
 	</div>
 </template>
@@ -19,7 +20,7 @@
 	const loadSchedule = () => store.dispatch("scheduleSubjects/loadSchedule");
 	const deleteSchedule = () => store.commit("scheduleSubjects/removeAllScheduleSubjects");
 
-	const { downloadSchedule } = defineProps({
+	const props = defineProps({
 		downloadSchedule: {
 			type: Function,
 			require: true,
@@ -29,7 +30,7 @@
 
 	const actions = [
 		{
-			action: downloadSchedule,
+			action: props.downloadSchedule,
 			icon: "camera",
 			title: "Tomar foto de horario",
 		},

@@ -310,7 +310,7 @@
 <script setup lang="ts">
 	import { ref } from "vue";
 
-	const { rotate, height, icon } = defineProps({
+	const props = defineProps({
 		icon: {
 			default: "",
 			type: String,
@@ -325,7 +325,7 @@
 		},
 	});
 
-	let styles = ref(`transform: rotate(${rotate}deg);`);
+	let styles = ref(`transform: rotate(${props.rotate}deg);`);
 </script>
 
 <style lang="scss" scoped>

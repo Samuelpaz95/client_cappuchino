@@ -1,1 +1,1 @@
-export type professor = string
+export type professor = string;

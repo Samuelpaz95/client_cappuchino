@@ -1,10 +1,10 @@
 <template>
 	<div class="list-subjects-header">
 		<ButtonIcon
-			@click="$emit('level:deselect', null)"
 			class="list-subjects-header__back"
 			icon="angle"
 			:rotate="270"
+			@click="$emit('level:deselect', null)"
 		/>
 		<p>{{ actualLevel }}</p>
 	</div>

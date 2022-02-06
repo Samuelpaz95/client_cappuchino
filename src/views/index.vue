@@ -1,11 +1,12 @@
 <template>
 	<main class="home">
 		<nav class="home__nav">
-			<div class="home__department" v-for="[title, links] of Object.entries(options)">
+			<div v-for="[title, links] of Object.entries(options)" :key="title" class="home__department">
 				<h2>{{ title }}</h2>
 				<div class="home_links">
 					<router-link
 						v-for="{ name, routeName, department } of links"
+						:key="name + routeName"
 						:to="{ name: routeName, params: { department: department } }"
 						class="home__link"
 					>

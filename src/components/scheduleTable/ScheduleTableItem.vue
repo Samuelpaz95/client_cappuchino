@@ -6,7 +6,7 @@
 	>
 		<div :key="schedule.key" v-for="schedule of schedulesItem.schedules">
 			<div><strong v-if="!schedule.isClass">*</strong> {{ schedule.subjectName }}</div>
-			<span>G {{ schedule.groupCode }}</span> - <span>A {{ schedule.room }}</span>
+			<span>G {{ schedule.groupCode }}</span> - <span>{{ schedule.room }}</span>
 		</div>
 	</td>
 </template>

@@ -14,7 +14,7 @@
 <script setup lang="ts">
 	import { inject, ComputedRef } from "vue";
 	import LevelItem from "./LevelItem.vue";
-	import Spinner from "../../../ui/Spinner.vue";
+	import Spinner from "../../../ui/BaseSpinner.vue";
 
 	defineEmits(["level:select"]);
 	const levels = inject("levels") as ComputedRef<string[]>;
