@@ -1,12 +1,14 @@
-import { ref, onMounted, Ref, inject, watch } from "vue";
+import { ref, onMounted, Ref, inject, watch, computed } from "vue";
+import { useStore } from "vuex";
 import { MEDIA_QUERIES } from "../constants";
 import { useMediaQueries } from "./useMediaQueries";
 
 export function useScheudleHeight(counterHeight: number = 0) {
+	const store = useStore();
 	let scheduleHeight: Ref<number | undefined> = ref(undefined);
 	let heightList = ref("");
 	const { listenMediaQuery } = useMediaQueries();
-	const groupsSelect = inject("checkBox/groupsSelect") as Ref<String[]>;
+	const groupsSelect = computed(() => store.getters["scheduleSubjects/keyScheduleSubjects"]);
 
 	const readScheduleHeight = () => {
 		const element = document.getElementById("schedule-table");

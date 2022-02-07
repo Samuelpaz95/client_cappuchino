@@ -1,12 +1,6 @@
 <template>
-	<li class="group-item">
-		<input
-			checked="isSelected"
-			v-model="isSelect"
-			class="group-item__input"
-			type="checkbox"
-			:id="groupCode + nameTeacher"
-		/>
+	<li @click="select" class="group-item">
+		<input :checked="isSelect" class="group-item__input" type="checkbox" :id="groupCode + nameTeacher" />
 		<label class="group-item__label" :for="groupCode + nameTeacher">
 			<span class="group-item__teacher">{{ transformNameTeacherToCapitalize }}</span>
 			<span class="group-item__group">{{ groupCode }}</span>
@@ -19,11 +13,6 @@
 
 	export default defineComponent({
 		name: "GroupItem",
-		data() {
-			return {
-				isSelect: this.isSelected,
-			};
-		},
 		props: {
 			nameTeacher: {
 				type: String,
@@ -31,7 +20,6 @@
 				require: true,
 			},
 			groupCode: String,
-			isSelected: Boolean,
 		},
 		computed: {
 			transformNameTeacherToCapitalize(): string {
@@ -42,11 +30,16 @@
 				);
 				return capitalizeArrayName.join(" ");
 			},
+			isSelect(): boolean {
+				return this.$store.getters["scheduleSubjects/keyScheduleSubjects"].includes(
+					this.groupCode + this.nameTeacher
+				);
+			},
 		},
-		watch: {
-			isSelect(value: boolean) {
+		methods: {
+			select() {
 				this.$emit("group:select", {
-					isSelect: value,
+					isSelect: !this.isSelect,
 					groupCode: this.groupCode,
 					key: this.groupCode + this.nameTeacher,
 				});
@@ -57,6 +50,8 @@
 
 <style lang="scss" scoped>
 	.group-item {
+		cursor: pointer;
+
 		display: flex;
 		line-height: 24px;
 		padding: 0 1rem;
@@ -74,13 +69,12 @@
 			padding-left: 1rem;
 			padding-top: 2px;
 			padding-bottom: 2px;
-			cursor: pointer;
+			pointer-events: none;
 		}
 
 		&__input {
 			margin: 0;
 			accent-color: var(--secondary-color);
-			cursor: pointer;
 		}
 
 		&__group {

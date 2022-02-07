@@ -12,12 +12,13 @@
 </template>
 
 <script setup lang="ts">
-	import { PropType, toRefs, inject } from "vue";
-
+	import { computed, PropType, toRefs } from "vue";
 	import GroupItem from "./GroupItem.vue";
 	import { useSubjects } from "../../../../composables/useSubjects";
 	import { groups as IGroups } from "../../../../interfaces";
+	import { useStore } from "vuex";
 
+	const store = useStore();
 	const props = defineProps({
 		groups: {
 			type: Array as PropType<IGroups>,
@@ -35,27 +36,17 @@
 			require: true,
 		},
 	});
+
 	const { codeSubject, level } = toRefs(props);
 	const { addSubject, removeSubject } = useSubjects();
+	const keys = computed(() => store.getters["scheduleSubjects/keyScheduleSubjects"]);
 
-	const addGroup = inject("checkBox/addGroup") as Function;
-	const removeGroup = inject("checkBox/removeGroup") as Function;
-	const isInGroup = inject("checkBox/isInGroup") as Function;
+	const isInGroup = (groupKey: string) => keys.value.includes(groupKey);
 
-	const selectGroup = ({
-		isSelect,
-		groupCode,
-		key,
-	}: {
-		isSelect: boolean;
-		groupCode: string;
-		key: string;
-	}) => {
+	const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string; key: string }) => {
 		if (isSelect) {
-			addGroup(key);
 			addSubject({ groupCode, levelCode: level.value, subjectCode: codeSubject.value });
 		} else {
-			removeGroup(key);
 			removeSubject({ groupCode, subjectCode: codeSubject.value });
 		}
 	};

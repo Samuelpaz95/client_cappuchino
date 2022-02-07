@@ -15,10 +15,8 @@
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
 	import { useStateMenu } from "../../composables/useStateMenu";
-	import { useCheckboxSubjects } from "../../composables/useCheckboxSubjects";
 
 	const { isOpenMenu, isInCarrers } = useStateMenu();
-	useCheckboxSubjects();
 </script>
 
 <style scoped lang="scss">
