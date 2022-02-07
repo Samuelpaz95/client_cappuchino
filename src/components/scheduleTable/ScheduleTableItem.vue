@@ -15,7 +15,7 @@
 	import { computed, PropType } from "vue";
 	import { scheduleItem } from "../../interfaces";
 
-	const { schedulesItem, colors, rowspan } = defineProps({
+	const props = defineProps({
 		schedulesItem: {
 			require: true,
 			default: () => [],
@@ -34,8 +34,8 @@
 	});
 
 	const backgroundColor = computed(() =>
-		schedulesItem.schedules.length == 1
-			? colors[schedulesItem.schedules[0].indexSubject % (colors.length - 1)]
+		props.schedulesItem.schedules.length == 1
+			? props.colors[props.schedulesItem.schedules[0].indexSubject % (props.colors.length - 1)]
 			: null
 	);
 </script>
