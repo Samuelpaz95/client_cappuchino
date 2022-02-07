@@ -4,9 +4,9 @@
 			v-for="group of groups"
 			:key="group.code"
 			:groupCode="group.code"
-			:nameTeacher="group.schedule[0].teacher"
+			:nameTeacher="group.schedule[1].teacher || group.schedule[0].teacher"
 			@group:select="selectGroup"
-			:isSelected="isInGroup(group.code + group.schedule[0].teacher)"
+			:isSelected="isInGroup(group.code + group.schedule[1].teacher || group.schedule[0].teacher)"
 		/>
 	</ul>
 </template>
