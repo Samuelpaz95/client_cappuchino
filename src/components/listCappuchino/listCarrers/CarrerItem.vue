@@ -5,7 +5,7 @@
 			<div class="list-item-carrer__description">Actualizado al {{ updateAt }}</div>
 		</span>
 		<span class="list-item-carrer__actions">
-			<ButtonIcon icon="angle" :rotate="90" />
+			<ButtonIcon :aria-label="`Abrir carrera ${nameCarrer}`" icon="angle" :rotate="90" />
 		</span>
 	</li>
 </template>

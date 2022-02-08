@@ -1,7 +1,7 @@
 <template>
 	<li class="list-subjects-level" @click="$emit('level:select', level)">
 		<span class="list-subjects-level__level">{{ formatLevel(level) }}</span>
-		<ButtonIcon icon="angle" :rotate="90" />
+		<ButtonIcon :aria-label="`Abrir nivel ${formatLevel(level)}`" icon="angle" :rotate="90" />
 	</li>
 </template>
 

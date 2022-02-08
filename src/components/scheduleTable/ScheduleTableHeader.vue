@@ -4,7 +4,7 @@
 			<h3 class="schedule-table-header__title">
 				<slot></slot>
 			</h3>
-			<ScheduleTableActions class="schedule-table-header__icons" :downloadSchedule="downloadSchedule" />
+			<ScheduleTableActions :downloadSchedule="downloadSchedule" />
 		</div>
 	</caption>
 	<thead class="schedule-table-header__header">
@@ -70,12 +70,6 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-		}
-
-		&__icons {
-			@include large {
-				margin-right: 1rem;
-			}
 		}
 	}
 </style>
