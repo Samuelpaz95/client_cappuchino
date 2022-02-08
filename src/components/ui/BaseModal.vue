@@ -1,5 +1,5 @@
 <template>
-	<Portal target="#popup-target">
+	<teleport to="body">
 		<div v-if="isOpen" @click="clcikOutSide" class="modal">
 			<div id="modal-content" class="modal__content">
 				<div class="modal__header">
@@ -14,7 +14,7 @@
 				<slot></slot>
 			</div>
 		</div>
-	</Portal>
+	</teleport>
 </template>
 
 <script setup lang="ts">
