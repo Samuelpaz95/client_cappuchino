@@ -1,6 +1,8 @@
 <template>
-	<ButtonIcon @click="active = !active" icon="bell" aria-label="Notificaciones" title="Notificaciones" />
-	<div v-if="active" class="notification">Horarios actualizados al 2021-2</div>
+	<div>
+		<ButtonIcon @click="active = !active" icon="bell" aria-label="Notificaciones" title="Notificaciones" />
+		<div v-if="active" class="notification">Horarios actualizados al 2021-2</div>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -11,19 +13,21 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/variables";
+	@import "@/scss/abstracts/variables", "@/scss/abstracts/mixins";
 	.notification {
 		position: absolute;
 		z-index: 10;
 		top: calc(100% + 20px);
-		right: 20px;
-
-		// background-color: var(--primary-color);
+		right: 32px;
 		border: 1px solid var(--secondary-color);
 		border-radius: $border_radius;
 		border-top-right-radius: 0;
 		padding: 0.4rem 0.6rem;
 		min-width: 260px;
+
+		@include large {
+			right: 64px;
+		}
 
 		&::after {
 			content: "";
