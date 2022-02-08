@@ -23,7 +23,6 @@
 	@import "@/scss/abstracts/variables";
 
 	.list-carrers {
-		// box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.16);
 		border-bottom-right-radius: $border_radius;
 
 		&__options {
