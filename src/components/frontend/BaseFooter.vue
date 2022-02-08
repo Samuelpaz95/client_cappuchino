@@ -12,8 +12,6 @@
 </script>
 
 <style scoped lang="scss">
-	@import "@/scss/abstracts/_variables.scss", "@/scss/abstracts/_mixins.scss";
-
 	.footer {
 		background-color: var(--background-footer-color);
 		width: 100%;
@@ -27,11 +25,7 @@
 			align-items: center;
 			width: 100%;
 			height: 100%;
-			padding: 0 3rem;
-
-			@include large {
-				padding: 0 2rem;
-			}
+			padding: 0 2rem;
 		}
 	}
 </style>

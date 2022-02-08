@@ -34,7 +34,11 @@
 
 		&__linkmain {
 			text-decoration: none;
-			padding-left: 3rem;
+			padding-left: 1rem;
+
+			@include large {
+				padding-left: 3rem;
+			}
 		}
 
 		&__title {
@@ -45,9 +49,15 @@
 		}
 
 		&__icons {
+			position: relative;
+			margin-right: 1rem;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+
+			@include large {
+				margin-right: 3rem;
+			}
 		}
 
 		&__option {
