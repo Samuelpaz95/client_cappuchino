@@ -234,24 +234,6 @@
 		/>
 	</svg>
 	<svg
-		v-else-if="icon == 'save'"
-		aria-hidden="true"
-		focusable="false"
-		data-prefix="fas"
-		data-icon="save"
-		class="svg-inline--fa fa-save fa-w-14"
-		role="img"
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 448 512"
-		:height="height"
-		:style="styles"
-	>
-		<path
-			fill="currentColor"
-			d="M433.941 129.941l-83.882-83.882A48 48 0 0 0 316.118 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V163.882a48 48 0 0 0-14.059-33.941zM224 416c-35.346 0-64-28.654-64-64 0-35.346 28.654-64 64-64s64 28.654 64 64c0 35.346-28.654 64-64 64zm96-304.52V212c0 6.627-5.373 12-12 12H76c-6.627 0-12-5.373-12-12V108c0-6.627 5.373-12 12-12h228.52c3.183 0 6.235 1.264 8.485 3.515l3.48 3.48A11.996 11.996 0 0 1 320 111.48z"
-		/>
-	</svg>
-	<svg
 		v-else-if="icon == 'trash'"
 		aria-hidden="true"
 		focusable="false"
@@ -270,24 +252,6 @@
 		/>
 	</svg>
 	<svg
-		v-else-if="icon == 'copy'"
-		aria-hidden="true"
-		focusable="false"
-		data-prefix="fas"
-		data-icon="copy"
-		class="svg-inline--fa fa-copy fa-w-14"
-		role="img"
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 448 512"
-		:height="height"
-		:style="styles"
-	>
-		<path
-			fill="currentColor"
-			d="M320 448v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V120c0-13.255 10.745-24 24-24h72v296c0 30.879 25.121 56 56 56h168zm0-344V0H152c-13.255 0-24 10.745-24 24v368c0 13.255 10.745 24 24 24h272c13.255 0 24-10.745 24-24V128H344c-13.2 0-24-10.8-24-24zm120.971-31.029L375.029 7.029A24 24 0 0 0 358.059 0H352v96h96v-6.059a24 24 0 0 0-7.029-16.97z"
-		/>
-	</svg>
-	<svg
 		v-else-if="icon == 'home'"
 		aria-hidden="true"
 		focusable="false"
@@ -303,6 +267,24 @@
 		<path
 			fill="currentColor"
 			d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+		/>
+	</svg>
+	<svg
+		v-else-if="icon == 'bookmark'"
+		aria-hidden="true"
+		focusable="false"
+		data-prefix="fas"
+		data-icon="bookmark"
+		class="svg-inline--fa fa-bookmark fa-w-12"
+		role="img"
+		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 384 512"
+		:height="height"
+		:style="styles"
+	>
+		<path
+			fill="currentColor"
+			d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"
 		/>
 	</svg>
 </template>
