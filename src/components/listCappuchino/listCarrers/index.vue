@@ -14,21 +14,20 @@
 
 <script setup lang="ts">
 	import { inject, Ref } from "vue";
-	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
-	import { IdepartementCarrer } from "../../../interfaces";
 	import CarrerItem from "./CarrerItem.vue";
 	import Spinner from "../../ui/BaseSpinner.vue";
+	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
+	import { stateMenu } from "../../../store/state/Menu";
+	import { IdepartementCarrer } from "../../../interfaces";
 
 	const { heightList } = useScheudleHeight(50);
 	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;
-	const updateInCarrers = inject("updateInCarrers") as Function;
-	const updateSelectCarrer = inject("updateSelectCarrer") as Function;
 	const fetchDepartmentCarrer = inject("fetchDepartmentCarrer") as Function;
 
 	const selectCarrer = (nameCarrer: string) => {
 		fetchDepartmentCarrer(nameCarrer);
-		updateSelectCarrer(nameCarrer);
-		updateInCarrers(false);
+		stateMenu.updateSelectCarrer(nameCarrer);
+		stateMenu.isInCarrers = false;
 	};
 </script>
 

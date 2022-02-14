@@ -1,19 +1,18 @@
 <template>
-	<template v-if="selectLevel">
-		<HeaderLevel @level:deselect="updateSelectLevel($event)" :actualLevel="formatLevel(selectLevel)" />
-		<ListSubject :level="selectLevel" />
+	<template v-if="stateMenu.selectLevel">
+		<HeaderLevel
+			@level:deselect="stateMenu.selectLevel = $event"
+			:actualLevel="formatLevel(stateMenu.selectLevel)"
+		/>
+		<ListSubject :level="stateMenu.selectLevel" />
 	</template>
-	<ListLevels v-else @level:select="updateSelectLevel($event)" />
+	<ListLevels v-else @level:select="stateMenu.selectLevel = $event" />
 </template>
 
 <script setup lang="ts">
-	import { inject, Ref } from "vue";
-	import { formatLevel } from "../../../utils/formatLevel";
-
 	import ListLevels from "./listLevels/index.vue";
 	import HeaderLevel from "./HeaderLevel.vue";
 	import ListSubject from "./listSubjects/index.vue";
-
-	const selectLevel: Ref<string | null> | undefined = inject("selectLevel");
-	const updateSelectLevel = inject("updateSelectLevel") as Function;
+	import { formatLevel } from "../../../utils/formatLevel";
+	import { stateMenu } from "../../../store/state/Menu";
 </script>

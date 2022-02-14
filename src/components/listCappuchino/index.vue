@@ -8,7 +8,7 @@
 		/>
 		<template v-if="isOpenMenu">
 			<div class="list-carrers__options">
-				<ListCarrers v-if="isInCarrers" />
+				<ListCarrers v-if="stateMenu.isInCarrers" />
 				<ListSubjects v-else />
 			</div>
 		</template>
@@ -20,11 +20,10 @@
 	import Header from "./Header.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
-	import { useStateMenu } from "../../composables/useStateMenu";
 	import { useMediaQueries } from "../../composables/useMediaQueries";
 	import { MEDIA_QUERIES } from "../../constants";
+	import { stateMenu } from "../../store/state/Menu";
 
-	const { isInCarrers } = useStateMenu();
 	const { listenMediaQuery } = useMediaQueries();
 
 	const isInDesktop = ref(true);

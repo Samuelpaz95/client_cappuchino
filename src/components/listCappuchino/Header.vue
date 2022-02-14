@@ -1,9 +1,14 @@
 <template>
 	<header class="list-carrers-header">
 		<template v-if="isOpenMenu">
-			<template v-if="!isInCarrers">
-				<ButtonIcon aria-label="back-to-menu" icon="angle" :rotate="270" @click="updateInCarrers(true)" />
-				<p>{{ selectCarrer }}</p>
+			<template v-if="!stateMenu.isInCarrers">
+				<ButtonIcon
+					aria-label="back-to-menu"
+					icon="angle"
+					:rotate="270"
+					@click="stateMenu.isInCarrers = true"
+				/>
+				<p>{{ stateMenu.selectCarrer }}</p>
 			</template>
 			<p v-else>CARRERAS</p>
 		</template>
@@ -25,12 +30,8 @@
 </template>
 
 <script setup lang="ts">
-	import { inject, Ref } from "vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
-
-	const isInCarrers = inject("isInCarrers") as Ref<boolean>;
-	const selectCarrer = inject("selectCarrer") as Ref<string | null>;
-	const updateInCarrers = inject("updateInCarrers") as Function;
+	import { stateMenu } from "../../store/state/Menu";
 
 	defineProps({
 		isInDesktop: Boolean,
