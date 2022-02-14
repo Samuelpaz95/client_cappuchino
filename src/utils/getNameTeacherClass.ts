@@ -5,5 +5,5 @@ export const nameTeacher = (group: group | scheduleSubject) => {
 		? group.schedule[0].teacher
 		: group.schedule[1]
 		? group.schedule[1].teacher
-		: "AUXILIAR: " + group.schedule[0].teacher;
+		: "* " + group.schedule[0].teacher;
 };
