@@ -1,7 +1,5 @@
 import { provide, readonly, ref, Ref } from "vue";
 
-import { MAP_LEVELS } from "../constants";
-
 export function useStateMenu() {
 	const isInCarrers = ref(true);
 	const selectCarrer: Ref<string | null> = ref(null);
@@ -20,8 +18,6 @@ export function useStateMenu() {
 		selectLevel.value = level;
 	};
 
-	const formatLevel = (level: string) => MAP_LEVELS[level];
-
 	provide("isInCarrers", readonly(isInCarrers));
 	provide("selectCarrer", readonly(selectCarrer));
 	provide("selectLevel", readonly(selectLevel));
@@ -29,8 +25,6 @@ export function useStateMenu() {
 	provide("updateInCarrers", updateInCarrers);
 	provide("updateSelectCarrer", updateSelectCarrer);
 	provide("updateSelectLevel", updateSelectLevel);
-
-	provide("formatLevel", formatLevel);
 
 	return {
 		isInCarrers,

@@ -6,8 +6,9 @@
 </template>
 
 <script setup lang="ts">
-	import { inject, Ref, toRef } from "vue";
+	import { Ref, toRef } from "vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
+	import { formatLevel } from "../../../../utils/formatLevel";
 
 	defineEmits(["level:select"]);
 	const props = defineProps({
@@ -18,7 +19,6 @@
 		},
 	});
 	const level: Ref<string> = toRef(props, "level");
-	const formatLevel = inject("formatLevel") as Function;
 </script>
 
 <style lang="scss" scoped>
