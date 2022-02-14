@@ -1,5 +1,6 @@
 import { ActionContext, ActionTree, GetterTree, MutationTree } from "vuex";
 import { scheduleSubject } from "../../interfaces";
+import { nameTeacher } from "../../utils/getNameTeacherClass";
 
 const SCHEDULE_ITEM = "SCESI_SCHEDULE";
 
@@ -11,10 +12,7 @@ type actualState = ReturnType<typeof state>;
 
 const getters: GetterTree<actualState, unknown> = {
 	scheduleSubjects: (state) => state.scheduleSubjects,
-	keyScheduleSubjects: (state) =>
-		state.scheduleSubjects.map(
-			({ groupCode, schedule }) => groupCode + schedule[1].teacher || schedule[0].teacher
-		),
+	keyScheduleSubjects: (state) => state.scheduleSubjects.map((group) => group.groupCode + nameTeacher(group)),
 };
 
 const mutations: MutationTree<actualState> = {

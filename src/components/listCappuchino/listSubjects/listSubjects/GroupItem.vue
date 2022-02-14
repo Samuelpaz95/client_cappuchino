@@ -41,7 +41,6 @@
 				this.$emit("group:select", {
 					isSelect: !this.isSelect,
 					groupCode: this.groupCode,
-					key: this.groupCode + this.nameTeacher,
 				});
 			},
 		},

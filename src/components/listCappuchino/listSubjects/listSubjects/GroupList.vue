@@ -4,9 +4,9 @@
 			v-for="group of groups"
 			:key="group.code"
 			:groupCode="group.code"
-			:nameTeacher="group.schedule[1].teacher || group.schedule[0].teacher"
+			:nameTeacher="nameTeacher(group)"
 			@group:select="selectGroup"
-			:isSelected="isInGroup(group.code + group.schedule[1].teacher || group.schedule[0].teacher)"
+			:isSelected="isInGroup(group.code + nameTeacher(group))"
 		/>
 	</ul>
 </template>
@@ -16,6 +16,7 @@
 	import GroupItem from "./GroupItem.vue";
 	import { useSubjects } from "../../../../composables/useSubjects";
 	import { groups as IGroups } from "../../../../interfaces";
+	import { nameTeacher } from "../../../../utils/getNameTeacherClass";
 	import { useStore } from "vuex";
 
 	const store = useStore();
@@ -43,7 +44,7 @@
 
 	const isInGroup = (groupKey: string) => keys.value.includes(groupKey);
 
-	const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string; key: string }) => {
+	const selectGroup = ({ isSelect, groupCode }: { isSelect: boolean; groupCode: string }) => {
 		if (isSelect) {
 			addSubject({ groupCode, levelCode: level.value, subjectCode: codeSubject.value });
 		} else {
