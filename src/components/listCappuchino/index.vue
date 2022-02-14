@@ -36,6 +36,12 @@
 	watchEffect(() => {
 		isOpenMenu.value = isInDesktop.value || isOpenMenu.value;
 	});
+
+	onBeforeUnmount(() => {
+		stateMenu.selectLevel = null;
+		stateMenu.selectCarrer = null;
+		stateMenu.isInCarrers = true;
+	});
 </script>
 
 <style scoped lang="scss">
