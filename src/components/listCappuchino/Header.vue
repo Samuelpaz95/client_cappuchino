@@ -11,14 +11,14 @@
 			v-if="!isOpenMenu"
 			aria-label="burger-menu"
 			icon="bars"
-			@click="updateOpenMenu(!isOpenMenu)"
+			@click="$emit('update:openMenu', !isOpenMenu)"
 		/>
 		<div v-if="isOpenMenu">
 			<ButtonIcon
 				v-if="!isInDesktop"
 				aria-label="close-menu"
 				icon="close"
-				@click="updateOpenMenu(!isOpenMenu)"
+				@click="$emit('update:openMenu', !isOpenMenu)"
 			/>
 		</div>
 	</header>
@@ -28,13 +28,14 @@
 	import { inject, Ref } from "vue";
 	import ButtonIcon from "@/components/ui/ButtonIcon.vue";
 
-	const isOpenMenu = inject("isOpenMenu") as Ref<boolean>;
 	const isInCarrers = inject("isInCarrers") as Ref<boolean>;
 	const selectCarrer = inject("selectCarrer") as Ref<string | null>;
-	const isInDesktop = inject("isInDesktop") as Ref<string | null>;
-
 	const updateInCarrers = inject("updateInCarrers") as Function;
-	const updateOpenMenu = inject("updateOpenMenu") as Function;
+
+	defineProps({
+		isInDesktop: Boolean,
+		isOpenMenu: Boolean,
+	});
 </script>
 
 <style scoped lang="scss">

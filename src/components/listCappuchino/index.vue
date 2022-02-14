@@ -1,6 +1,11 @@
 <template>
 	<div class="list-carrers">
-		<Header class="list-carrers__header" />
+		<Header
+			class="list-carrers__header"
+			:isInDesktop="isInDesktop"
+			:isOpenMenu="isOpenMenu"
+			@update:openMenu="isOpenMenu = $event"
+		/>
 		<template v-if="isOpenMenu">
 			<div class="list-carrers__options">
 				<ListCarrers v-if="isInCarrers" />
@@ -11,12 +16,27 @@
 </template>
 
 <script setup lang="ts">
+	import { ref, watchEffect } from "vue";
 	import Header from "./Header.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
 	import { useStateMenu } from "../../composables/useStateMenu";
+	import { useMediaQueries } from "../../composables/useMediaQueries";
+	import { MEDIA_QUERIES } from "../../constants";
 
-	const { isOpenMenu, isInCarrers } = useStateMenu();
+	const { isInCarrers } = useStateMenu();
+	const { listenMediaQuery } = useMediaQueries();
+
+	const isInDesktop = ref(true);
+	const isOpenMenu = ref(isInDesktop.value);
+
+	listenMediaQuery(MEDIA_QUERIES.isLarge, (evt) => {
+		isInDesktop.value = evt.matches;
+	});
+
+	watchEffect(() => {
+		isOpenMenu.value = isInDesktop.value || isOpenMenu.value;
+	});
 </script>
 
 <style scoped lang="scss">

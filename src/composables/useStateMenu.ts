@@ -1,20 +1,11 @@
-import { provide, readonly, ref, Ref, watchEffect } from "vue";
+import { provide, readonly, ref, Ref } from "vue";
 
-import { MEDIA_QUERIES, MAP_LEVELS } from "../constants";
-import { useMediaQueries } from "./useMediaQueries";
+import { MAP_LEVELS } from "../constants";
 
 export function useStateMenu() {
-	const { listenMediaQuery } = useMediaQueries();
-
-	const isInDesktop = ref(false);
-	const isOpenMenu = ref(isInDesktop.value);
 	const isInCarrers = ref(true);
 	const selectCarrer: Ref<string | null> = ref(null);
 	const selectLevel: Ref<string | null> = ref(null);
-
-	const updateOpenMenu = (openMenu: boolean) => {
-		isOpenMenu.value = openMenu;
-	};
 
 	const updateInCarrers = (inCarrers: boolean) => {
 		isInCarrers.value = inCarrers;
@@ -31,21 +22,10 @@ export function useStateMenu() {
 
 	const formatLevel = (level: string) => MAP_LEVELS[level];
 
-	listenMediaQuery(MEDIA_QUERIES.isLarge, (evt) => {
-		isInDesktop.value = evt.matches;
-	});
-
-	watchEffect(() => {
-		isOpenMenu.value = isInDesktop.value || isOpenMenu.value;
-	});
-
-	provide("isOpenMenu", readonly(isOpenMenu));
 	provide("isInCarrers", readonly(isInCarrers));
 	provide("selectCarrer", readonly(selectCarrer));
 	provide("selectLevel", readonly(selectLevel));
-	provide("isInDesktop", readonly(isInDesktop));
 
-	provide("updateOpenMenu", updateOpenMenu);
 	provide("updateInCarrers", updateInCarrers);
 	provide("updateSelectCarrer", updateSelectCarrer);
 	provide("updateSelectLevel", updateSelectLevel);
@@ -53,7 +33,6 @@ export function useStateMenu() {
 	provide("formatLevel", formatLevel);
 
 	return {
-		isOpenMenu,
 		isInCarrers,
 	};
 }
