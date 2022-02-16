@@ -19,10 +19,11 @@
 	import { useScheudleHeight } from "../../../composables/ui/useScheduleHeight";
 	import { stateMenu } from "../../../store/state/Menu";
 	import { IdepartementCarrer } from "../../../interfaces";
+	import { CAPPUCHINO_FETCH_DEPARTMENT, CAPPUCHINO_INDEX_DEPARTMENTS } from "../../../constants/composables";
 
 	const { heightList } = useScheudleHeight(50);
-	const departmentCarrers = inject("indexDepartments") as Ref<IdepartementCarrer[] | null>;
-	const fetchDepartmentCarrer = inject("fetchDepartmentCarrer") as Function;
+	const departmentCarrers = inject(CAPPUCHINO_INDEX_DEPARTMENTS) as Ref<IdepartementCarrer[] | null>;
+	const fetchDepartmentCarrer = inject(CAPPUCHINO_FETCH_DEPARTMENT) as Function;
 
 	const selectCarrer = (nameCarrer: string) => {
 		fetchDepartmentCarrer(nameCarrer);

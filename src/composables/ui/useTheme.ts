@@ -1,5 +1,6 @@
 import { provide, ref } from "vue";
 import { THEMES, THEME } from "../../constants";
+import { THEME_CURRENT, THEME_TOGGLE, THEME_VARAIBLES } from "../../constants/composables";
 
 const THEME_ITEM = "SCESI_THEME";
 
@@ -46,7 +47,7 @@ export function useTheme() {
 		defineTheme(theme);
 	})();
 
-	provide("theme/toggleTheme", toggleTheme);
-	provide("theme/currentTheme", currentTheme);
-	provide("theme/themeVariables", themeVariables);
+	provide(THEME_TOGGLE, toggleTheme);
+	provide(THEME_CURRENT, currentTheme);
+	provide(THEME_VARAIBLES, themeVariables);
 }

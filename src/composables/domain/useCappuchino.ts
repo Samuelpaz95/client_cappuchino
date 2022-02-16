@@ -1,5 +1,12 @@
 import { ref, Ref, provide, computed, ComputedRef, onUnmounted } from "vue";
 import { useStore } from "vuex";
+import {
+	CAPPUCHINO_CURRENT_CARRER,
+	CAPPUCHINO_DETAIL_CARRER,
+	CAPPUCHINO_FETCH_DEPARTMENT,
+	CAPPUCHINO_INDEX_DEPARTMENTS,
+	CAPPUCHINO_LEVELS,
+} from "../../constants/composables";
 import { Icarrer, IdepartementCarrer, level, subjects } from "../../interfaces";
 import departmentService from "../../services/departments";
 
@@ -25,8 +32,7 @@ export const useCappuchino = (department: string) => {
 	};
 
 	const levels: ComputedRef<string[]> = computed(() => {
-		const data: string[] | undefined = currentCarrer.value?.levels.map((level: level) => level.code);
-		return data ? data : [];
+		return currentCarrer.value?.levels ? currentCarrer.value?.levels.map((level: level) => level.code) : [];
 	});
 
 	onUnmounted(() => {
@@ -34,9 +40,9 @@ export const useCappuchino = (department: string) => {
 		store.commit("scheduleSubjects/removeAllScheduleSubjects");
 	});
 
-	provide("fetchDepartmentCarrer", fetchDepartmentCarrer);
-	provide("indexDepartments", indexDepartments);
-	provide("currentCarrer", currentCarrer);
-	provide("detailLevel", detailLevel);
-	provide("levels", levels);
+	provide(CAPPUCHINO_FETCH_DEPARTMENT, fetchDepartmentCarrer);
+	provide(CAPPUCHINO_INDEX_DEPARTMENTS, indexDepartments);
+	provide(CAPPUCHINO_CURRENT_CARRER, currentCarrer);
+	provide(CAPPUCHINO_DETAIL_CARRER, detailLevel);
+	provide(CAPPUCHINO_LEVELS, levels);
 };

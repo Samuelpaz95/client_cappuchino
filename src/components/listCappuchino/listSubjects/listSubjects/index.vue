@@ -14,6 +14,7 @@
 	import { toRefs, inject } from "vue";
 	import SubjectItem from "./SubjectItem.vue";
 	import { useScheudleHeight } from "../../../../composables/ui/useScheduleHeight";
+	import { CAPPUCHINO_DETAIL_CARRER } from "../../../../constants/composables";
 
 	const props = defineProps({
 		level: {
@@ -23,7 +24,7 @@
 		},
 	});
 	const { level } = toRefs(props);
-	const detailLevel = inject("detailLevel") as Function;
+	const detailLevel = inject(CAPPUCHINO_DETAIL_CARRER) as Function;
 	const { heightList } = useScheudleHeight(100);
 	const subjects = detailLevel(level.value);
 </script>

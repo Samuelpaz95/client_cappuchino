@@ -15,9 +15,10 @@
 	import { inject, ComputedRef } from "vue";
 	import LevelItem from "./LevelItem.vue";
 	import Spinner from "../../../ui/BaseSpinner.vue";
+	import { CAPPUCHINO_LEVELS } from "../../../../constants/composables";
 
 	defineEmits(["level:select"]);
-	const levels = inject("levels") as ComputedRef<string[]>;
+	const levels = inject(CAPPUCHINO_LEVELS) as ComputedRef<string[]>;
 </script>
 
 <style lang="scss" scoped>

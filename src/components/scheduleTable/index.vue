@@ -17,9 +17,10 @@
 	import { useSchedulesTable } from "../../composables/domain/useSchedulesTable";
 	import { downloadImageBase64 } from "../../utils/downloadImage64";
 	import departmentService from "../../services/departments";
+	import { THEME_VARAIBLES } from "../../constants/composables";
 
 	const schedule: Ref<HTMLElement | null> = ref(null);
-	const themeVariables = inject("theme/themeVariables") as Function;
+	const themeVariables = inject(THEME_VARAIBLES) as Function;
 
 	const downloadSchedule = async () => {
 		try {

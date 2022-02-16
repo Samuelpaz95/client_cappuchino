@@ -1,10 +1,11 @@
 import { inject, Ref } from "vue";
 import { useStore } from "vuex";
+import { CAPPUCHINO_CURRENT_CARRER } from "../../constants/composables";
 import { Icarrer, subject, level, group, scheduleSubject } from "../../interfaces";
 
 export function useSubjects() {
 	const store = useStore();
-	const carrer = inject("currentCarrer") as Ref<Icarrer>;
+	const carrer = inject(CAPPUCHINO_CURRENT_CARRER) as Ref<Icarrer>;
 
 	const formatSchedules = ({ groupCode, subjectCode, levelCode }: propsFormat): scheduleSubject => {
 		const level: level = getProperties(carrer.value.levels, levelCode);

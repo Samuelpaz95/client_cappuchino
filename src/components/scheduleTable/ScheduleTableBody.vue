@@ -21,6 +21,7 @@
 	import { scheduleMap } from "../../interfaces";
 	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
 	import { COLORS } from "../../constants";
+	import { THEME_CURRENT } from "../../constants/composables";
 
 	const props = defineProps({
 		schedules: {
@@ -32,7 +33,7 @@
 
 	const { schedules } = toRefs(props);
 	const { semanticHours, semanticDays } = useScheduleTime();
-	const currentTheme = inject("theme/currentTheme") as Ref<string>;
+	const currentTheme = inject(THEME_CURRENT) as Ref<string>;
 	const colors = computed(() => COLORS[currentTheme.value]);
 
 	const getScheduleItem = (day: string, hour: string) =>

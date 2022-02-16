@@ -1,8 +1,9 @@
 import { ref, inject } from "vue";
 import { DAYS, HOURS } from "../../constants";
+import { DEPARTMENT_CURRENT } from "../../constants/composables";
 
 export function useScheduleTime() {
-	const currentDepartment = (inject("currentDepartment") as string).toUpperCase();
+	const currentDepartment = (inject(DEPARTMENT_CURRENT) as string).toUpperCase();
 	const days = ref(DAYS[currentDepartment]);
 	const hours = ref(HOURS[currentDepartment]);
 
