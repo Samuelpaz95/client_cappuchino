@@ -20,7 +20,7 @@
 	import Header from "./Header.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
-	import { useMediaQueries } from "../../composables/useMediaQueries";
+	import { useMediaQueries } from "../../composables/ui/useMediaQueries";
 	import { MEDIA_QUERIES } from "../../constants";
 	import { stateMenu } from "../../store/state/Menu";
 

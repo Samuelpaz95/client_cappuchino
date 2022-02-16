@@ -14,7 +14,7 @@
 <script setup lang="ts">
 	import { computed, PropType, toRefs } from "vue";
 	import GroupItem from "./GroupItem.vue";
-	import { useSubjects } from "../../../../composables/useSubjects";
+	import { useSubjects } from "../../../../composables/domain/useSubjects";
 	import { groups as IGroups } from "../../../../interfaces";
 	import { nameTeacher } from "../../../../utils/getNameTeacherClass";
 	import { useStore } from "vuex";

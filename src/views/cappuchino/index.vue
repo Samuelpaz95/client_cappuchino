@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-	import { useCappuchino } from "../../composables/useCappuchino";
-	import { useDepartment } from "../../composables/useDepartment";
+	import { useCappuchino } from "../../composables/domain/useCappuchino";
+	import { useDepartment } from "../../composables/domain/useDepartment";
 	import ListCappuchino from "../../components/listCappuchino/index.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
 

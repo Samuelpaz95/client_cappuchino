@@ -1,6 +1,6 @@
 import { onUnmounted } from "vue";
 import { useStore } from "vuex";
-import professorsService from "../services/professors";
+import professorsService from "../../services/professors";
 
 export function useTeacherTrakcer(department: string) {
 	const store = useStore();

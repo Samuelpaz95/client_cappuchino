@@ -13,8 +13,8 @@
 	import { Ref, ref, inject } from "vue";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
-	import { useScheduleTime } from "../../composables/useScheduleTime";
-	import { useSchedulesTable } from "../../composables/useSchedulesTable";
+	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
+	import { useSchedulesTable } from "../../composables/domain/useSchedulesTable";
 	import { downloadImageBase64 } from "../../utils/downloadImage64";
 	import departmentService from "../../services/departments";
 

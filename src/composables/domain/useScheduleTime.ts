@@ -1,5 +1,5 @@
 import { ref, inject } from "vue";
-import { DAYS, HOURS } from "../constants";
+import { DAYS, HOURS } from "../../constants";
 
 export function useScheduleTime() {
 	const currentDepartment = (inject("currentDepartment") as string).toUpperCase();

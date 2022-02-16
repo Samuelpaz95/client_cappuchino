@@ -19,7 +19,7 @@
 	import { computed, inject, PropType, Ref, toRefs } from "vue";
 	import ScheduleTableItem from "./ScheduleTableItem.vue";
 	import { scheduleMap } from "../../interfaces";
-	import { useScheduleTime } from "../../composables/useScheduleTime";
+	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
 	import { COLORS } from "../../constants";
 
 	const props = defineProps({

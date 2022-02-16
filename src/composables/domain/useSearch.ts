@@ -1,8 +1,8 @@
 import { ref, Ref, inject } from "vue";
-import { MEDIA_QUERIES } from "../constants";
-import { professor } from "../interfaces";
-import professorsService from "../services/professors";
-import { useMediaQueries } from "./useMediaQueries";
+import { MEDIA_QUERIES } from "../../constants";
+import { professor } from "../../interfaces";
+import professorsService from "../../services/professors";
+import { useMediaQueries } from "../ui/useMediaQueries";
 
 export function useSearch() {
 	const department = inject("currentDepartment") as string;

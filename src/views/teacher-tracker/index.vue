@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-	import { useTeacherTrakcer } from "../../composables/useTeacherTracker";
-	import { useDepartment } from "../../composables/useDepartment";
+	import { useTeacherTrakcer } from "../../composables/domain/useTeacherTracker";
+	import { useDepartment } from "../../composables/domain/useDepartment";
 	import InputSearch from "../../components/InputSearch.vue";
 	import ScheduleTable from "../../components/scheduleTable/index.vue";
 

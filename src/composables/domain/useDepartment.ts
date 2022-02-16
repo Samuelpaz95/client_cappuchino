@@ -1,7 +1,7 @@
 import { ref, Ref, provide, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { Idepartment } from "../interfaces";
-import departmentService from "../services/departments";
+import { Idepartment } from "../../interfaces";
+import departmentService from "../../services/departments";
 
 export function useDepartment() {
 	const { params } = useRoute();

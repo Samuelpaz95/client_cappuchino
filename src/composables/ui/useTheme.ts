@@ -1,5 +1,5 @@
 import { provide, ref } from "vue";
-import { THEMES, THEME } from "../constants";
+import { THEMES, THEME } from "../../constants";
 
 const THEME_ITEM = "SCESI_THEME";
 

@@ -16,7 +16,7 @@
 	import { inject, Ref } from "vue";
 	import CarrerItem from "./CarrerItem.vue";
 	import Spinner from "../../ui/BaseSpinner.vue";
-	import { useScheudleHeight } from "../../../composables/useScheduleHeight";
+	import { useScheudleHeight } from "../../../composables/ui/useScheduleHeight";
 	import { stateMenu } from "../../../store/state/Menu";
 	import { IdepartementCarrer } from "../../../interfaces";
 

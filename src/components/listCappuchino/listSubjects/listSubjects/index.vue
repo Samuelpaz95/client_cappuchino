@@ -13,7 +13,7 @@
 <script setup lang="ts">
 	import { toRefs, inject } from "vue";
 	import SubjectItem from "./SubjectItem.vue";
-	import { useScheudleHeight } from "../../../../composables/useScheduleHeight";
+	import { useScheudleHeight } from "../../../../composables/ui/useScheduleHeight";
 
 	const props = defineProps({
 		level: {

@@ -31,7 +31,7 @@
 <script setup lang="ts">
 	import { ref, Ref, inject, computed } from "vue";
 	import { Idepartment } from "../interfaces";
-	import { useSearch } from "../composables/useSearch";
+	import { useSearch } from "../composables/domain/useSearch";
 	import { capitalizeText } from "../utils/capitalizeText";
 	import ButtonIcon from "../components/ui/ButtonIcon.vue";
 

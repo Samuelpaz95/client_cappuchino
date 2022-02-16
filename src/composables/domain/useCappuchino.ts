@@ -1,7 +1,7 @@
 import { ref, Ref, provide, computed, ComputedRef, onUnmounted } from "vue";
 import { useStore } from "vuex";
-import { Icarrer, IdepartementCarrer, level, subjects } from "../interfaces";
-import departmentService from "../services/departments";
+import { Icarrer, IdepartementCarrer, level, subjects } from "../../interfaces";
+import departmentService from "../../services/departments";
 
 export const useCappuchino = (department: string) => {
 	let indexDepartments: Ref<IdepartementCarrer[] | null> = ref(null);

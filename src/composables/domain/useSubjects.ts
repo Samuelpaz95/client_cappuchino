@@ -1,6 +1,6 @@
 import { inject, Ref } from "vue";
 import { useStore } from "vuex";
-import { Icarrer, subject, level, group, scheduleSubject } from "../interfaces";
+import { Icarrer, subject, level, group, scheduleSubject } from "../../interfaces";
 
 export function useSubjects() {
 	const store = useStore();
