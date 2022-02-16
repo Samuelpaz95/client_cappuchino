@@ -44,6 +44,7 @@
 		border-radius: $border_radius;
 		display: flex;
 		overflow-x: auto;
+		box-shadow: var(--box-shadow);
 
 		&__table {
 			border-collapse: collapse;

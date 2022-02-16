@@ -32,6 +32,7 @@
 		background-color: var(--secondary-color);
 		color: var(--contrast-font-color);
 		font-weight: 700;
+		box-shadow: var(--box-shadow);
 
 		p {
 			margin: 0;

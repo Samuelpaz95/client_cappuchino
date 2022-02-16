@@ -17,6 +17,7 @@ export function useTheme() {
 		root.style.setProperty("--transparent-font-color", THEME[theme].transparentFontColor);
 		root.style.setProperty("--scroll-color", THEME[theme].scrollColor);
 		root.style.setProperty("--background-footer-color", THEME[theme].backgroundColorFooter);
+		root.style.setProperty("--box-shadow", THEME[theme].boxShadow);
 	};
 
 	const toggleTheme = () => {

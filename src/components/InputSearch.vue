@@ -56,6 +56,7 @@
 			background-color: var(--primary-color);
 			display: flex;
 			width: 100%;
+			box-shadow: var(--box-shadow);
 		}
 
 		&__options {
@@ -65,6 +66,7 @@
 			background-color: var(--primary-color);
 			border-radius: $border_radius;
 			padding: 2rem 2rem;
+			box-shadow: var(--box-shadow);
 
 			li:nth-child(2) {
 				border-top: 3px solid var(--secondary-color);

@@ -18,6 +18,7 @@
 		height: 100%;
 		display: flex;
 		align-items: center;
+		box-shadow: var(--box-shadow);
 
 		&__container {
 			display: flex;

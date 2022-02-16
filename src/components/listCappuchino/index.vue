@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-	import { ref, watchEffect } from "vue";
+	import { onBeforeUnmount, ref, watchEffect } from "vue";
 	import Header from "./Header.vue";
 	import ListCarrers from "./listCarrers/index.vue";
 	import ListSubjects from "./listSubjects/index.vue";
@@ -56,6 +56,7 @@
 
 		&__header {
 			position: relative;
+			box-shadow: var(--box-shadow);
 		}
 	}
 </style>

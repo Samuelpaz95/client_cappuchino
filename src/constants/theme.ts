@@ -13,6 +13,7 @@ export const THEME = {
 		contrastFontColor: "#D6D7D8",
 		transparentFontColor: "#000000",
 		scrollColor: "#808191",
+		boxShadow: "3px 3px 10px -1px rgba(0, 0, 0, 0.75)",
 	},
 	[THEMES.DARK]: {
 		primaryColor: "#252836",
@@ -23,5 +24,6 @@ export const THEME = {
 		contrastFontColor: "#D6D7D8",
 		transparentFontColor: "#D6D7D8",
 		scrollColor: "#FD6564",
+		boxShadow: "none",
 	},
 };

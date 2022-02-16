@@ -104,6 +104,7 @@
 			text-decoration: none;
 			font-weight: bold;
 			font-size: 1.4rem;
+			box-shadow: var(--box-shadow);
 
 			@include large {
 				height: 50%;
