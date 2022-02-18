@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-	import { Ref, ref, inject, computed, watch } from "vue";
+	import { Ref, ref, inject, computed } from "vue";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
@@ -21,6 +21,13 @@
 
 	const schedule: Ref<HTMLElement | null> = ref(null);
 	const themeVariables = inject(THEME_VARAIBLES) as Function;
+	const {
+		semanticDays,
+		hours: planeHours,
+		transformHoursToSemanticHours,
+		nextHourByStep,
+	} = useScheduleTime();
+	const { schedules } = useSchedulesTable();
 
 	const downloadSchedule = async () => {
 		try {
@@ -31,9 +38,6 @@
 			downloadImageBase64(image64);
 		} catch (error) {}
 	};
-
-	const { semanticDays, hours: goodHours } = useScheduleTime();
-	const { schedules } = useSchedulesTable();
 
 	const schedulesKey = computed(() =>
 		Object.entries(schedules.value).filter(([, { schedules }]) => schedules.length)
@@ -47,10 +51,9 @@
 			}
 			return acc;
 		}, []);
+		const usedSemanticDays = semanticDays.filter((day) => usedDays.includes(day.slice(0, 2))); //TODO
 
-		return usedDays.length === 0
-			? semanticDays
-			: ["", ...semanticDays.filter((day) => usedDays.includes(day.slice(0, 2)))];
+		return usedDays.length === 0 ? semanticDays : ["", ...usedSemanticDays];
 	});
 
 	const hours = computed(() => {
@@ -60,17 +63,18 @@
 				acc.push(hour);
 			}
 			if (duration > 1) {
-				const indexInitialHour = goodHours.value.findIndex((h) => h === hour);
 				for (let index: number = 1; index < duration; index++) {
-					if (!acc.includes(goodHours.value[indexInitialHour + index]))
-						acc.push(goodHours.value[indexInitialHour + index]);
+					const nextHour = nextHourByStep(hour, index);
+					if (!acc.includes(nextHour)) acc.push(nextHour);
 				}
 			}
 
-			return acc.sort();
+			return acc;
 		}, []);
 
-		return usedHours.length === 0 ? goodHours.value : usedHours;
+		return usedHours.length === 0
+			? transformHoursToSemanticHours(planeHours.value)
+			: transformHoursToSemanticHours(usedHours).sort();
 	});
 </script>
 
