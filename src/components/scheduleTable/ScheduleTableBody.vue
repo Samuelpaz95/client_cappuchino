@@ -1,7 +1,7 @@
 <template>
 	<tbody class="schedule-table-body">
-		<tr v-for="hour of semanticHours" :key="hour">
-			<template v-for="(day, indexDay) of semanticDays" :key="day + hour">
+		<tr v-for="hour of hours" :key="hour">
+			<template v-for="(day, indexDay) of days" :key="day + hour">
 				<td v-if="indexDay == 0">{{ hour }}</td>
 				<ScheduleTableItem
 					v-else-if="isTimeSchedule(day, hour)"
@@ -19,7 +19,6 @@
 	import { computed, inject, PropType, Ref, toRefs } from "vue";
 	import ScheduleTableItem from "./ScheduleTableItem.vue";
 	import { scheduleMap } from "../../interfaces";
-	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
 	import { COLORS } from "../../constants";
 	import { THEME_CURRENT } from "../../constants/composables";
 
@@ -29,10 +28,19 @@
 			require: true,
 			default: () => {},
 		},
+		days: {
+			type: Array as PropType<Array<string>>,
+			require: true,
+			default: () => {},
+		},
+		hours: {
+			type: Array as PropType<Array<string>>,
+			require: true,
+			default: () => {},
+		},
 	});
 
 	const { schedules } = toRefs(props);
-	const { semanticHours, semanticDays } = useScheduleTime();
 	const currentTheme = inject(THEME_CURRENT) as Ref<string>;
 	const colors = computed(() => COLORS[currentTheme.value]);
 

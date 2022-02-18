@@ -1,16 +1,16 @@
 <template>
 	<div ref="schedule" class="schedule-table" id="schedule-table">
 		<table class="schedule-table__table">
-			<ScheduleTableHeader :downloadSchedule="downloadSchedule" :days="semanticDays">
+			<ScheduleTableHeader :downloadSchedule="downloadSchedule" :days="days">
 				Horarios Disponibles
 			</ScheduleTableHeader>
-			<ScheduleTableBody :schedules="schedules" />
+			<ScheduleTableBody :days="days" :hours="hours" :schedules="schedules" />
 		</table>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import { Ref, ref, inject } from "vue";
+	import { Ref, ref, inject, computed, watch } from "vue";
 	import ScheduleTableHeader from "./ScheduleTableHeader.vue";
 	import ScheduleTableBody from "./ScheduleTableBody.vue";
 	import { useScheduleTime } from "../../composables/domain/useScheduleTime";
@@ -32,8 +32,46 @@
 		} catch (error) {}
 	};
 
-	const { semanticDays } = useScheduleTime();
+	const { semanticDays, hours: goodHours } = useScheduleTime();
 	const { schedules } = useSchedulesTable();
+
+	const schedulesKey = computed(() =>
+		Object.entries(schedules.value).filter(([, { schedules }]) => schedules.length)
+	);
+
+	const days = computed(() => {
+		const usedDays = schedulesKey.value.reduce((acc: string[], [key]) => {
+			const day = key.slice(0, 2);
+			if (!acc.includes(day)) {
+				acc.push(day);
+			}
+			return acc;
+		}, []);
+
+		return usedDays.length === 0
+			? semanticDays
+			: ["", ...semanticDays.filter((day) => usedDays.includes(day.slice(0, 2)))];
+	});
+
+	const hours = computed(() => {
+		const usedHours = schedulesKey.value.reduce((acc: string[], [key, { duration }]) => {
+			const hour = key.slice(2, key.length);
+			if (!acc.includes(hour)) {
+				acc.push(hour);
+			}
+			if (duration > 1) {
+				const indexInitialHour = goodHours.value.findIndex((h) => h === hour);
+				for (let index: number = 1; index < duration; index++) {
+					if (!acc.includes(goodHours.value[indexInitialHour + index]))
+						acc.push(goodHours.value[indexInitialHour + index]);
+				}
+			}
+
+			return acc.sort();
+		}, []);
+
+		return usedHours.length === 0 ? goodHours.value : usedHours;
+	});
 </script>
 
 <style lang="scss" scoped>
