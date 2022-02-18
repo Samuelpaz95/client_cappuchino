@@ -12,7 +12,10 @@ type actualState = ReturnType<typeof state>;
 
 const getters: GetterTree<actualState, unknown> = {
 	scheduleSubjects: (state) => state.scheduleSubjects,
-	keyScheduleSubjects: (state) => state.scheduleSubjects.map((group) => group.groupCode + nameTeacher(group)),
+	keyScheduleSubjects: (state) =>
+		state.scheduleSubjects.map(
+			(group) => group.groupCode + nameTeacher(group) + group.schedule[0].day + group.schedule[0].start
+		),
 };
 
 const mutations: MutationTree<actualState> = {

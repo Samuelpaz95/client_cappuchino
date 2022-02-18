@@ -5,8 +5,12 @@
 			:key="group.code"
 			:groupCode="group.code"
 			:nameTeacher="nameTeacher(group)"
+			:scheduleDay="group.schedule[0].day"
+			:scheduleStart="group.schedule[0].start"
 			@group:select="selectGroup"
-			:isSelected="isInGroup(group.code + nameTeacher(group))"
+			:isSelected="
+				isInGroup(group.code + nameTeacher(group) + group.schedule[0].day + group.schedule[0].start)
+			"
 		/>
 	</ul>
 </template>

@@ -20,6 +20,8 @@
 				require: true,
 			},
 			groupCode: String,
+			scheduleDay: String,
+			scheduleStart: String,
 		},
 		computed: {
 			transformNameTeacherToCapitalize(): string {
@@ -32,7 +34,7 @@
 			},
 			isSelect(): boolean {
 				return this.$store.getters["scheduleSubjects/keyScheduleSubjects"].includes(
-					this.groupCode + this.nameTeacher
+					this.groupCode + this.nameTeacher + this.scheduleDay + this.scheduleStart
 				);
 			},
 		},
