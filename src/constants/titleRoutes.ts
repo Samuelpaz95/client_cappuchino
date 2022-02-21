@@ -1,5 +1,5 @@
 export const TITLE: title = {
-	"": "SCESI",
+	"": "Starhucks",
 	cappuchino: "Cappuchino",
 	frappuchino: "Frappuchino",
 };
