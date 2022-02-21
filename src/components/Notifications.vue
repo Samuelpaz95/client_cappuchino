@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<ButtonIcon @click="active = !active" icon="bell" aria-label="Notificaciones" title="Notificaciones" />
-		<div v-if="active" class="notification">Horarios actualizados al 2021-2</div>
+		<div v-if="active" class="notification">
+			<p>Horarios actualizados al 2022-2</p>
+			<p>LICENCIATURA EN INGENIERIA CIVIL (NUEVO)</p>
+		</div>
 	</div>
 </template>
 
@@ -24,6 +27,7 @@
 		border-top-right-radius: 0;
 		padding: 0.4rem 0.6rem;
 		min-width: 260px;
+		background-color: var(--primary-color);
 
 		@include large {
 			right: 64px;
