@@ -1,7 +1,7 @@
 export const TITLE: title = {
 	"": "SCESI",
 	cappuchino: "Cappuchino",
-	"teacher-tracker": "Teacher Tracker",
+	frappuchino: "Frappuchino",
 };
 
 interface title {

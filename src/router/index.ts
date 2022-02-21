@@ -5,7 +5,7 @@ import Frontend from "@/layouts/Frontend.vue";
 const NotFound = () => import("@/views/404/index.vue");
 const Home = () => import("@/views/index.vue");
 const Cappuchino = () => import("@/views/cappuchino/index.vue");
-const TeacherTracker = () => import("@/views/teacher-tracker/index.vue");
+const Frappuchino = () => import("@/views/teacher-tracker/index.vue");
 
 const routes: RouteRecordRaw[] = [
 	{
@@ -23,9 +23,9 @@ const routes: RouteRecordRaw[] = [
 				component: Cappuchino,
 			},
 			{
-				path: "teacher-tracker/:department",
-				name: "TeacherTracker",
-				component: TeacherTracker,
+				path: "frappuchino/:department",
+				name: "Frappuchino",
+				component: Frappuchino,
 			},
 		],
 	},

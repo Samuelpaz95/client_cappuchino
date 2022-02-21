@@ -27,8 +27,8 @@
 				department: "fcyt",
 			},
 			{
-				name: "Teacher Tracker",
-				routeName: "TeacherTracker",
+				name: "Frappuchino",
+				routeName: "Frappuchino",
 				department: "fcyt",
 			},
 		],
@@ -39,8 +39,8 @@
 				department: "fce",
 			},
 			{
-				name: "Teacher Tracker",
-				routeName: "TeacherTracker",
+				name: "Frappuchino",
+				routeName: "Frappuchino",
 				department: "fce",
 			},
 		],
