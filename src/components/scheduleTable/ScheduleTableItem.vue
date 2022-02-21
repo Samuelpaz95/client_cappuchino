@@ -47,7 +47,6 @@
 		font-weight: 700;
 		color: initial;
 		background-color: v-bind(backgroundColor);
-		padding: 0.5rem;
 
 		&__conflictive {
 			background: transparent;

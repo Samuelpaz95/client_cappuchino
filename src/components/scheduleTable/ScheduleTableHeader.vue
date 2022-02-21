@@ -17,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
-	import { PropType } from "vue";
+	import { computed, PropType } from "vue";
 	import ScheduleTableActions from "./ScheduleTableActions.vue";
 
-	defineProps({
+	const props = defineProps({
 		downloadSchedule: {
 			type: Function,
 			require: true,
@@ -29,8 +29,11 @@
 		days: {
 			type: Array as PropType<string[]>,
 			require: true,
+			default: () => [],
 		},
 	});
+
+	const widthForCells = computed(() => 92 / (props.days.length - 1) + "%");
 </script>
 
 <style lang="scss" scoped>
@@ -51,18 +54,22 @@
 		&__header {
 			th,
 			td {
-				border: 1px solid var(--secondary-color);
+				border: 1px solid var(--font-color);
 				border-top: none;
 				text-align: center;
-				min-width: 50px;
 			}
 
 			th:first-child {
 				border-left: none;
+				max-width: 50px;
 			}
 
 			th:last-child {
 				border-right: none;
+			}
+
+			:not(th:first-child) {
+				width: v-bind(widthForCells);
 			}
 		}
 

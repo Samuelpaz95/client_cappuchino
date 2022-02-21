@@ -58,7 +58,7 @@
 	.schedule-table-body {
 		th,
 		td {
-			border: 1px solid var(--secondary-color);
+			border: 1px solid var(--font-color);
 			text-align: center;
 		}
 
@@ -72,7 +72,7 @@
 			}
 		}
 
-		:last-child td {
+		&:last-child td {
 			border-bottom: none;
 		}
 	}
