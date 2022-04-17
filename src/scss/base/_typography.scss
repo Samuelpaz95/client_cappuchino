@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap);
 
 h1,
@@ -9,8 +9,14 @@ h5,
 h6,
 caption {
 	font-family: "Allerta Stencil", sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
 }
 
 body {
 	font-family: "Open Sans", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
 }
