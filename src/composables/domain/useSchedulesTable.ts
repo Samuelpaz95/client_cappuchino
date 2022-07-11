@@ -26,6 +26,8 @@ export function useSchedulesTable() {
 				} else if (actualSchedule.duration == schedule.duration) {
 					actualSchedule.schedules.push({ ...subject, ...schedule, indexSubject });
 					actualSchedule.isConfictive = true;
+				} else {
+					console.log("hola");
 				}
 			});
 		});
@@ -36,8 +38,13 @@ export function useSchedulesTable() {
 	const isConfictive = (schedulesTable: scheduleMap, { day, duration, start }: schedule): boolean => {
 		for (let i = 0; i < duration; i++) {
 			const nextHour = nextHourByStep(start, i);
-			if (schedulesTable[day + nextHour].duration != 1 || schedulesTable[day + start].schedules.length > 0)
+			// console.log(
+			// 	schedulesTable[day + nextHour].duration != 1,
+			// 	schedulesTable[day + start].schedules.length > 0
+			// );
+			if (schedulesTable[day + nextHour].duration !== 1 || schedulesTable[day + start].schedules.length > 0) {
 				return true;
+			}
 		}
 		return false;
 	};
