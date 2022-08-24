@@ -49,11 +49,11 @@
 	});
 
 	const actions = [
-		{
-			action: props.downloadSchedule,
-			icon: "camera",
-			title: "Tomar foto de horario",
-		},
+		// {
+		// 	action: props.downloadSchedule,
+		// 	icon: "camera",
+		// 	title: "Tomar foto de horario",
+		// },
 		{
 			action: () => (isOpen.value = true),
 			icon: "bookmark",
