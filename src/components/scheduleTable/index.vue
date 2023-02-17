@@ -57,24 +57,7 @@
 	});
 
 	const hours = computed(() => {
-		const usedHours = schedulesKey.value.reduce((acc: string[], [key, { duration }]) => {
-			const hour = key.slice(2, key.length);
-			if (!acc.includes(hour)) {
-				acc.push(hour);
-			}
-			if (duration > 1) {
-				for (let index: number = 1; index < duration; index++) {
-					const nextHour = nextHourByStep(hour, index);
-					if (!acc.includes(nextHour)) acc.push(nextHour);
-				}
-			}
-
-			return acc;
-		}, []);
-
-		return usedHours.length === 0
-			? transformHoursToSemanticHours(planeHours.value)
-			: transformHoursToSemanticHours(usedHours).sort();
+		return transformHoursToSemanticHours(planeHours.value);
 	});
 </script>
 
