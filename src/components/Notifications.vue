@@ -1,18 +1,21 @@
 <template>
 	<div>
 		<ButtonIcon @click="active = !active" icon="bell" aria-label="Notificaciones" title="Notificaciones" />
+
 		<div v-if="active" class="notification">
-			<p>Horarios actualizados al 2022-2</p>
-			<p>LICENCIATURA EN INGENIERIA CIVIL (NUEVO)</p>
+			<p v-if="news">{{ news.date }}</p>
+			<p v-else>Sin Actualizaciones</p>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 	import { ref } from "vue";
+	import { useNews } from "../composables/domain/useNews";
 	import ButtonIcon from "./ui/ButtonIcon.vue";
 
 	const active = ref(false);
+	const { news } = useNews();
 </script>
 
 <style scoped lang="scss">
