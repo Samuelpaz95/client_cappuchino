@@ -34,7 +34,7 @@
 	const fetchDepartmentCarrer = inject(CAPPUCHINO_FETCH_DEPARTMENT) as Function;
 
 	const filteredCarrers = computed(() => {
-		if (!inputSearch) return departmentCarrers.value;
+		if (!inputSearch.value) return departmentCarrers.value;
 
 		return departmentCarrers.value!.filter((carrer: IdepartementCarrer | null) => {
 			if (!carrer) return false;
